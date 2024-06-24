@@ -150,7 +150,7 @@ endforeach;
 				</thead>
 				<tbody>
 					<tr align="center">
-						<td>X<sub>0</sub></td>
+						<td>A<sub>0</sub></td>
 						<?php foreach ($kriterias as $kriteria): ?>
 						<td>
 						<?php 
@@ -164,7 +164,7 @@ endforeach;
 						$no=1;
 						foreach ($alternatifs as $alternatif): ?>
 					<tr align="center">
-						<td>X<sub><?= $no; ?></sub></td>
+						<td>A<sub><?= $no; ?></sub></td>
 						<?php
 						foreach ($kriterias as $kriteria):
 							$id_alternatif = $alternatif->id_alternatif;
@@ -204,7 +204,7 @@ endforeach;
 				</thead>
 				<tbody>
 					<tr align="center">
-						<td>X<sub>0</sub></td>
+						<td>A<sub>0</sub></td>
 						<?php foreach ($kriterias as $kriteria): ?>
 						<td>
 						<?php 
@@ -218,7 +218,7 @@ endforeach;
 						$no=1;
 						foreach ($alternatifs as $alternatif): ?>
 					<tr align="center">
-						<td>X<sub><?= $no; ?></sub></td>
+						<td>A<sub><?= $no; ?></sub></td>
 						<?php
 						foreach ($kriterias as $kriteria):
 							$id_alternatif = $alternatif->id_alternatif;
@@ -269,7 +269,7 @@ endforeach;
 				</thead>
 				<tbody>
 					<tr align="center">
-						<td>X<sub>0</sub></td>
+						<td>A<sub>0</sub></td>
 						<?php foreach ($kriterias as $kriteria): ?>
 						<td>
 						<?php 
@@ -283,7 +283,7 @@ endforeach;
 						$no=1;
 						foreach ($alternatifs as $alternatif): ?>
 					<tr align="center">
-						<td>X<sub><?= $no; ?></sub></td>
+						<td>A<sub><?= $no; ?></sub></td>
 						<?php
 						foreach ($kriterias as $kriteria):
 							$id_alternatif = $alternatif->id_alternatif;
@@ -355,7 +355,7 @@ endforeach;
 				</thead>
 				<tbody>
 					<tr align="center">
-						<td>X<sub>0</sub></td>
+						<td>A<sub>0</sub></td>
 						<?php foreach ($kriterias as $kriteria): ?>
 						<td>
 						<?php 
@@ -369,7 +369,7 @@ endforeach;
 						$no=1;
 						foreach ($alternatifs as $alternatif): ?>
 					<tr align="center">
-						<td>X<sub><?= $no; ?></sub></td>
+						<td>A<sub><?= $no; ?></sub></td>
 						<?php
 						foreach ($kriterias as $kriteria):
 							$id_alternatif = $alternatif->id_alternatif;
@@ -408,7 +408,7 @@ endforeach;
 				</thead>
 				<tbody>
 					<tr align="center">
-						<td>X<sub>0</sub></td>
+						<td>A<sub>0</sub></td>
 						<td><?= $total_rb0;?></td>
 						<td><?= $total_rb0/$total_rb0;?></td>
 					</tr>
@@ -419,7 +419,7 @@ endforeach;
 						$id_alternatif = $alternatif->id_alternatif;
 						?>
 					<tr align="center">
-						<td>X<sub><?= $no; ?></sub></td>
+						<td>A<sub><?= $no; ?></sub></td>
 						<?php
 							echo '<td>';
 							echo $total_rb[$id_alternatif];
