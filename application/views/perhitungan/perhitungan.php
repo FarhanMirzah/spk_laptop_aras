@@ -11,6 +11,7 @@ foreach($alternatifs as $alternatif):
 		$data_pencocokan = $this->Perhitungan_model->data_nilai($id_alternatif,$id_kriteria);
 		$nilai = $data_pencocokan['nilai'];
 		
+		// Perhitungan bagian Pembentukan Matriks Keputusan (X) (A0 ke atas)
 		$matriks_x[$id_kriteria][$id_alternatif] = $nilai;
 	endforeach;
 endforeach;
@@ -27,6 +28,7 @@ foreach($kriterias as $kriteria):
 		$x0 = min($matriks_x[$id_kriteria]);
 	endif;
 	
+	// Perhitungan bagian Pembentukan Matriks Keputusan (X) (A0 saja)
 	$matriks_x0[$id_kriteria] = $x0;
 endforeach;
 
@@ -45,6 +47,7 @@ foreach($alternatifs as $alternatif):
 			$x2 = 1/$x;
 		endif;
 		
+		// Perhitungan bagian Merumuskan Matriks Keputusan (X) (A1 dan seterusnya)
 		$matriks_x2[$id_kriteria][$id_alternatif] = $x2;
 	endforeach;
 endforeach;
@@ -59,7 +62,8 @@ foreach($kriterias as $kriteria):
 	elseif($type_kriteria == 'Cost'):
 		$x02 = 1/$x0;
 	endif;
-	
+
+	// Perhitungan bagian Merumuskan Matriks Keputusan (X) (A0 saja)
 	$matriks_x02[$id_kriteria] = $x02;
 endforeach;
 
@@ -73,7 +77,8 @@ foreach($kriterias as $kriteria):
 		$tx += $x;
 	endforeach;
 	$x0 = $matriks_x02[$id_kriteria];
-	$total_matriks_x[$id_kriteria] = $tx + $x0;
+	// Perhitungan bagian Merumuskan Matriks Keputusan (X) (TOTAL)
+	$total_matriks_x[$id_kriteria] = ($tx + $x0);
 endforeach;
 
 //Normalisasi Matriks Keputusan
@@ -86,6 +91,7 @@ foreach($alternatifs as $alternatif):
 		
 		$x = $matriks_x2[$id_kriteria][$id_alternatif];
 		$total = $total_matriks_x[$id_kriteria];
+		// Perhitungan bagian Matriks Normalisasi (A1 dan berikutnya)
 		$matriks_r[$id_kriteria][$id_alternatif] = $x/$total;
 	endforeach;
 endforeach;
@@ -94,6 +100,7 @@ foreach($kriterias as $kriteria):
 	$id_kriteria = $kriteria->id_kriteria;
 	$x0 = $matriks_x02[$id_kriteria];
 	$total = $total_matriks_x[$id_kriteria];
+	// Perhitungan bagian Matriks Normalisasi (A0 saja)
 	$matriks_r0[$id_kriteria] = $x0/$total;
 endforeach;
 
@@ -108,7 +115,9 @@ foreach($alternatifs as $alternatif):
 		$bobot = $kriteria->bobot;
 		$r = $matriks_r[$id_kriteria][$id_alternatif];
 		$rb = $r*$bobot;
+		// Perhitungan bagian Matriks Normalisasi Terbobot (A1 dan berikutnya)
 		$matriks_rb[$id_kriteria][$id_alternatif] = $rb;
+		// Perhitungan bagian Nilai S (A1 dan berikutnya)
 		$t_rb += $rb;
 	endforeach;
 	$total_rb[$id_alternatif] = $t_rb;
@@ -121,7 +130,9 @@ foreach($kriterias as $kriteria):
 	$r0 = $matriks_r0[$id_kriteria];
 	$bobot = $kriteria->bobot;
 	$rb = $r0*$bobot;
+	// Perhitungan bagian Matriks Normalisasi Terbobot (A0 saja)
 	$matriks_rb0[$id_kriteria] = $rb;
+	// Perhitungan bagian Nilai S (A0 saja)
 	$total_rb0 += $rb;
 endforeach;
 ?>
@@ -209,7 +220,9 @@ endforeach;
 						<td>
 						<?php 
 							$id_kriteria = $kriteria->id_kriteria;
-							echo $matriks_x02[$id_kriteria];
+							// Pembulatan bagian Merumuskan Matriks Keputusan (X) (A0 saja) (5 angka belakang koma)
+							echo round($matriks_x02[$id_kriteria],5);
+							// echo $matriks_x02[$id_kriteria];
 						?>
 						</td>
 						<?php endforeach; ?>
@@ -224,7 +237,9 @@ endforeach;
 							$id_alternatif = $alternatif->id_alternatif;
 							$id_kriteria = $kriteria->id_kriteria;
 							echo '<td>';
-							echo $matriks_x2[$id_kriteria][$id_alternatif];
+							// Pembulatan bagian Merumuskan Matriks Keputusan (X) (A1 ke atas) (5 angka belakang koma)
+							echo round($matriks_x2[$id_kriteria][$id_alternatif],5);
+							// echo $matriks_x2[$id_kriteria][$id_alternatif];
 							echo '</td>';
 						endforeach;
 						?>
@@ -239,7 +254,9 @@ endforeach;
 						<th>
 						<?php 
 							$id_kriteria = $kriteria->id_kriteria;
-							echo $total_matriks_x[$id_kriteria];
+							// Pembulatan bagian Merumuskan Matriks Keputusan (X) (TOTAL saja) (5 angka belakang koma)
+							echo round($total_matriks_x[$id_kriteria],5);
+							// echo $total_matriks_x[$id_kriteria];
 						?>
 						</th>
 						<?php endforeach; ?>
@@ -274,7 +291,9 @@ endforeach;
 						<td>
 						<?php 
 							$id_kriteria = $kriteria->id_kriteria;
-							echo $matriks_r0[$id_kriteria];
+							// Pembulatan bagian Matrik Normalisasi (A0 saja) (5 angka belakang koma)
+							echo round($matriks_r0[$id_kriteria],5);
+							// echo $matriks_r0[$id_kriteria];
 						?>
 						</td>
 						<?php endforeach; ?>
@@ -289,7 +308,9 @@ endforeach;
 							$id_alternatif = $alternatif->id_alternatif;
 							$id_kriteria = $kriteria->id_kriteria;
 							echo '<td>';
-							echo $matriks_r[$id_kriteria][$id_alternatif];
+							// Pembulatan bagian Matrik Normalisasi (A1 ke atas) (5 angka belakang koma)
+							echo round($matriks_r[$id_kriteria][$id_alternatif],5);
+							// echo $matriks_r[$id_kriteria][$id_alternatif];
 							echo '</td>';
 						endforeach;
 						?>
@@ -360,7 +381,9 @@ endforeach;
 						<td>
 						<?php 
 							$id_kriteria = $kriteria->id_kriteria;
-							echo $matriks_rb0[$id_kriteria];
+							// Pembulatan bagian Matrik Normalisasi Terbobot (A0 saja) (5 angka belakang koma)
+							echo round($matriks_rb0[$id_kriteria],5);
+							// echo $matriks_rb0[$id_kriteria];
 						?>
 						</td>
 						<?php endforeach; ?>
@@ -375,7 +398,9 @@ endforeach;
 							$id_alternatif = $alternatif->id_alternatif;
 							$id_kriteria = $kriteria->id_kriteria;
 							echo '<td>';
-							echo $matriks_rb[$id_kriteria][$id_alternatif];
+							// Pembulatan bagian Matrik Normalisasi Terbobot (A1 ke atas) (5 angka belakang koma)
+							echo round($matriks_rb[$id_kriteria][$id_alternatif],5);
+							// echo $matriks_rb[$id_kriteria][$id_alternatif];
 							echo '</td>';
 						endforeach;
 						?>
@@ -409,7 +434,9 @@ endforeach;
 				<tbody>
 					<tr align="center">
 						<td>A<sub>0</sub></td>
-						<td><?= $total_rb0;?></td>
+						<!-- Pembulatan bagian Nilai S (A0 saja) (5 angka belakang koma) -->
+						<td><?= round($total_rb0,5);?></td>
+						<!-- <td><?= $total_rb0;?></td> -->
 						<td><?= $total_rb0/$total_rb0;?></td>
 					</tr>
 					<?php 
@@ -422,10 +449,14 @@ endforeach;
 						<td>A<sub><?= $no; ?></sub></td>
 						<?php
 							echo '<td>';
-							echo $total_rb[$id_alternatif];
+							// Pembulatan bagian Nilai S (A1 ke atas) (5 angka belakang koma)
+							echo round($total_rb[$id_alternatif],5);
+							// echo $total_rb[$id_alternatif];
 							echo '</td>';
 							echo '<td>';
-							echo $nilai = $total_rb[$id_alternatif]/$total_rb0;
+							// Pembulatan bagian Nilai K (A1 ke atas) (5 angka belakang koma)
+							echo $nilai = round(($total_rb[$id_alternatif]/$total_rb0),5);
+							// echo $nilai = ($total_rb[$id_alternatif]/$total_rb0);
 							echo '</td>';
 						?>
 					</tr>

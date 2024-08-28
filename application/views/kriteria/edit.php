@@ -42,7 +42,7 @@
 			</div>
 		</div>
 		<div class="card-footer text-right">
-            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
             <button type="reset" class="btn btn-info"><i class="fa fa-sync-alt"></i> Reset</button>
         </div>
 	<?php echo form_close() ?>
