@@ -17,6 +17,7 @@
 			<table class="table table-bordered" width="100%" cellspacing="0">
 				<thead class="bg-info text-white">
 					<tr align="center">
+						<th>Kode</th>
 						<th>Alternatif</th>
 						<th>Nilai K</th>
 						<th width="15%">Ranking</th>
@@ -27,6 +28,7 @@
 						$no=1;
 						foreach ($hasil as $keys): ?>
 					<tr align="center">
+						<td>A<?= $keys->id_alternatif ?></td>
 						<td align="left"><?= $keys->nama ?></td>
 						<td><?= $keys->nilai ?></td>
 						<td><?= $no; ?></td>
