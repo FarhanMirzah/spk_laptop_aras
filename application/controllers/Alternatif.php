@@ -78,10 +78,20 @@
             $data = array(
                 'nama' => $this->input->post('nama')
             );
+            $this->form_validation->set_rules('nama', 'Nama', 'required|is_unique[alternatif.nama]');
 
-            $this->Alternatif_model->update($id_alternatif, $data);
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
-            redirect('Alternatif');
+            if ($this->form_validation->run() != false) {
+                $this->Alternatif_model->update($id_alternatif, $data);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
+                redirect('Alternatif');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal diupdate!</div>');
+                redirect('Alternatif');
+                
+            }
+            // $this->Alternatif_model->update($id_alternatif, $data);
+			// $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
+            // redirect('Alternatif');
         }
     
         public function destroy($id_alternatif)

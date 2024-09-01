@@ -18,6 +18,7 @@
 				<thead class="bg-info text-white">
 					<tr align="center">
 						<th width="5%">No</th>
+						<th width="5%">Kode</th>
 						<th>Alternatif</th>
 						<th width="15%">Aksi</th>
 					</tr>
@@ -28,6 +29,7 @@
 					foreach ($alternatif as $keys): ?>
 					<tr align="center">
 						<td><?=$no ?></td>
+						<td>A<?=$no ?></td>
 						<td align="left"><?= $keys->nama ?></td>
 						<?php $cek_tombol = $this->Penilaian_model->untuk_tombol($keys->id_alternatif); ?>
 
@@ -88,6 +90,7 @@
 								</div>
 								<?= form_open('Penilaian/update_penilaian') ?>
 									<div class="modal-body">
+										<h5 class="modal-title" id="myModalLabel"><b>(A<?= $keys->id_alternatif ?>)</b> <?= $keys->nama ?></h5>
 										<?php foreach ($kriteria as $key): ?>
 										<?php 
 										$sub_kriteria = $this->Penilaian_model->data_sub_kriteria($key->id_kriteria);

@@ -20,6 +20,7 @@
 				<thead class="bg-info text-white">
 					<tr align="center">
 						<th width="5%">No</th>
+						<th width="5%">Kode</th>
 						<th>Nama Alternatif</th>
 						<th width="15%">Aksi</th>
 					</tr>
@@ -31,6 +32,7 @@
 					?>
 					<tr align="center">
 						<td><?=$no ?></td>
+						<td>A<?=$no ?></td>
 						<td align="left"><?php echo $value->nama ?></td>
 						<td>
 							<div class="btn-group" role="group">
