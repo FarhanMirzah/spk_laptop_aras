@@ -417,7 +417,9 @@ class CI_Session {
 				}
 				// Hacky, but 'old' will (implicitly) always be less than time() ;)
 				// DO NOT move this above the 'new' check!
-				elseif ($value < $current_time)
+				// elseif ($value < $current_time)
+				// New one from https://stackoverflow.com/questions/18846462/flashdata-not-getting-cleared-in-codeigniter
+				elseif ($value === 'old' || $value < $current_time)
 				{
 					unset($_SESSION[$key], $_SESSION['__ci_vars'][$key]);
 				}
