@@ -55,7 +55,7 @@
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal disimpan!</div>');
-                    redirect('Sub_kriteria/create');
+                    redirect('Sub_kriteria');
                     
                 }
             
@@ -72,9 +72,18 @@
 				'nilai' => $this->input->post('nilai')
             );
 
-            $this->Sub_Kriteria_model->update($id_sub_kriteria, $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
-			redirect('Sub_kriteria');
+            $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|is_unique[sub_kriteria.deskripsi]');
+            if ($this->form_validation->run() != false) {
+                $this->Sub_Kriteria_model->update($id_sub_kriteria, $data);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
+                redirect('Sub_kriteria');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal diupdate!</div>');
+                redirect('Sub_kriteria');
+            }
+            // $this->Sub_Kriteria_model->update($id_sub_kriteria, $data);
+            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
+			// redirect('Sub_kriteria');
         }
     
         public function destroy($id_sub_kriteria)

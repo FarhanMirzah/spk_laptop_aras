@@ -45,7 +45,7 @@
                     'jenis' => $this->input->post('jenis')
                 ];
                 
-                $this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
+                $this->form_validation->set_rules('keterangan', 'Keterangan', 'required|is_unique[kriteria.keterangan]');
                 $this->form_validation->set_rules('kode_kriteria', 'Kode Kriteria', 'required|is_unique[kriteria.kode_kriteria]');
                 $this->form_validation->set_rules('bobot', 'Bobot', 'required');
                 $this->form_validation->set_rules('jenis', 'Jenis', 'required');
@@ -60,8 +60,8 @@
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal disimpan!</div>');
-                    redirect('Kriteria/create');
-                    
+                    redirect('Kriteria');
+
                 }
             
 
@@ -85,9 +85,18 @@
                 'jenis' => $this->input->post('jenis')
             );
 
-            $this->Kriteria_model->update($id_kriteria, $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
-			redirect('Kriteria');
+            $this->form_validation->set_rules('keterangan', 'Keterangan', 'required|is_unique[kriteria.keterangan]');
+            if ($this->form_validation->run() != false) {
+                $this->Kriteria_model->update($id_kriteria, $data);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
+                redirect('Kriteria');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal diupdate!</div>');
+                redirect('Kriteria');
+            }
+            // $this->Kriteria_model->update($id_kriteria, $data);
+            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
+			// redirect('Kriteria');
         }
     
         public function destroy($id_kriteria)
