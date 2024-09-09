@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sistem Pendukung Keputusan Metode ARAS</title>
+	<title>Sistem Pendukung Keputusan Pemilihan Laptop - Metode ARAS</title>
 </head>
 <style>
     table {
