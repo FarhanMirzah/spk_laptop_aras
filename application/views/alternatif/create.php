@@ -25,7 +25,7 @@
 
 				<div class="form-group col-md-12">
 					<label class="font-weight-bold">Nama Alternatif</label>
-					<input autocomplete="off" type="text" name="nama" required class="form-control"/>
+					<input autocomplete="off" type="text" name="nama_alternatif" required class="form-control"/>
 				</div>
 			</div>
 		</div>

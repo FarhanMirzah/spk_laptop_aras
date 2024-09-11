@@ -29,7 +29,7 @@
 						foreach ($hasil as $keys): ?>
 					<tr align="center">
 						<td><?= $keys->kode_alternatif ?></td>
-						<td align="left"><?= $keys->nama ?></td>
+						<td align="left"><?= $keys->nama_alternatif ?></td>
 						<td><?= $keys->nilai_k ?></td>
 						<td><?= $no; ?></td>
 					</tr>

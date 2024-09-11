@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2024 at 04:35 PM
+-- Generation Time: Sep 11, 2024 at 04:43 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -30,14 +30,14 @@ SET time_zone = "+00:00";
 CREATE TABLE `alternatif` (
   `id_alternatif` int(11) NOT NULL,
   `kode_alternatif` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
-  `nama` varchar(255) CHARACTER SET utf8mb4 NOT NULL
+  `nama_alternatif` varchar(255) CHARACTER SET utf8mb4 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `alternatif`
 --
 
-INSERT INTO `alternatif` (`id_alternatif`, `kode_alternatif`, `nama`) VALUES
+INSERT INTO `alternatif` (`id_alternatif`, `kode_alternatif`, `nama_alternatif`) VALUES
 (1, 'A1', 'ASUS M415DAO-FHD321'),
 (2, 'A2', 'ASUS A416MAO-FHD425'),
 (3, 'A3', 'ASUS A1400EA-FHD321'),

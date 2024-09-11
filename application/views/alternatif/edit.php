@@ -22,7 +22,7 @@
 					<input autocomplete="off" type="text" name="kode_alternatif" value="<?php echo $alternatif->kode_alternatif ?>" required class="form-control"/>
 					<br>
 					<label class="font-weight-bold">Nama Alternatif</label>
-					<input autocomplete="off" type="text" name="nama" value="<?php echo $alternatif->nama ?>" required class="form-control"/>
+					<input autocomplete="off" type="text" name="nama_alternatif" value="<?php echo $alternatif->nama_alternatif ?>" required class="form-control"/>
 				</div>
 			</div>
 		</div>

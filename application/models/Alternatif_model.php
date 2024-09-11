@@ -27,7 +27,7 @@
         {
             $ubah = array(
                 'kode_alternatif'  => $data['kode_alternatif'],
-                'nama'  => $data['nama']
+                'nama_alternatif'  => $data['nama_alternatif']
             );
 
             $this->db->where('id_alternatif', $id_alternatif);
