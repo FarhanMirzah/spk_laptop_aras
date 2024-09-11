@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2024 at 01:05 PM
+-- Generation Time: Sep 11, 2024 at 04:22 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -58,14 +58,14 @@ INSERT INTO `alternatif` (`id_alternatif`, `kode_alternatif`, `nama`) VALUES
 CREATE TABLE `hasil` (
   `id_hasil` int(11) NOT NULL,
   `id_alternatif` int(11) NOT NULL,
-  `nilai` float NOT NULL
+  `nilai_k` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `hasil`
 --
 
-INSERT INTO `hasil` (`id_hasil`, `id_alternatif`, `nilai`) VALUES
+INSERT INTO `hasil` (`id_hasil`, `id_alternatif`, `nilai_k`) VALUES
 (1, 1, 0.4217),
 (2, 2, 0.3404),
 (3, 3, 0.3841),

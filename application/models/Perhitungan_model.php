@@ -24,7 +24,7 @@
 		
 		public function get_hasil()
         {
-			$query = $this->db->query("SELECT * FROM hasil JOIN alternatif ON hasil.id_alternatif=alternatif.id_alternatif ORDER BY hasil.nilai DESC;");
+			$query = $this->db->query("SELECT * FROM hasil JOIN alternatif ON hasil.id_alternatif=alternatif.id_alternatif ORDER BY hasil.nilai_k DESC;");
             return $query->result();
         }
 		

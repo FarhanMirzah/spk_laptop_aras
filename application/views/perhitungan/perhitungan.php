@@ -9,10 +9,10 @@ foreach($alternatifs as $alternatif):
 		$id_kriteria = $kriteria->id_kriteria;
 		
 		$data_pencocokan = $this->Perhitungan_model->data_nilai($id_alternatif,$id_kriteria);
-		$nilai = $data_pencocokan['nilai'];
+		$nilai_k = $data_pencocokan['nilai'];
 		
 		// Perhitungan bagian Pembentukan Matriks Keputusan (X) (A0 ke atas)
-		$matriks_x[$id_kriteria][$id_alternatif] = $nilai;
+		$matriks_x[$id_kriteria][$id_alternatif] = $nilai_k;
 	endforeach;
 endforeach;
 
@@ -455,8 +455,8 @@ endforeach;
 							echo '</td>';
 							echo '<td>';
 							// Pembulatan bagian Nilai K (A1 ke atas) (4 angka belakang koma)
-							echo $nilai = round(($total_rb[$id_alternatif]/$total_rb0),4);
-							// echo $nilai = ($total_rb[$id_alternatif]/$total_rb0);
+							echo $nilai_k = round(($total_rb[$id_alternatif]/$total_rb0),4);
+							// echo $nilai_k = ($total_rb[$id_alternatif]/$total_rb0);
 							echo '</td>';
 						?>
 					</tr>
@@ -464,7 +464,7 @@ endforeach;
 						$no++;
 						$hasil_akhir = [
 							'id_alternatif' => $id_alternatif,
-							'nilai' => $nilai,
+							'nilai_k' => $nilai_k,
 						];
 						$this->Perhitungan_model->insert_hasil($hasil_akhir);
 						endforeach;

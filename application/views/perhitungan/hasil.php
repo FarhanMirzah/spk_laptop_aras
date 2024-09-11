@@ -30,7 +30,7 @@
 					<tr align="center">
 						<td><?= $keys->kode_alternatif ?></td>
 						<td align="left"><?= $keys->nama ?></td>
-						<td><?= $keys->nilai ?></td>
+						<td><?= $keys->nilai_k ?></td>
 						<td><?= $no; ?></td>
 					</tr>
 					<?php
