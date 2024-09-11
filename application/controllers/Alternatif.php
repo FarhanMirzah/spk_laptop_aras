@@ -81,8 +81,13 @@
                 'kode_alternatif' => $this->input->post('kode_alternatif'),
                 'nama' => $this->input->post('nama')
             );
-            $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|is_unique[alternatif.kode_alternatif]');  
-            $this->form_validation->set_rules('nama', 'Nama', 'required|is_unique[alternatif.nama]');
+
+            // Validasi update data  (https://stackoverflow.com/questions/27621250/is-unique-in-codeigniter-for-edit-function) Ellix4u's solution
+            $id = $this->uri->segment(3);
+            $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|edit_unique[alternatif.kode_alternatif.id_alternatif.'.$id.']');
+            $this->form_validation->set_rules('nama', 'Nama', 'required|edit_unique[alternatif.nama.id_alternatif.'.$id.']');
+            // $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|is_unique[alternatif.kode_alternatif]');  
+            // $this->form_validation->set_rules('nama', 'Nama', 'required|is_unique[alternatif.nama]');
 
             if ($this->form_validation->run() != false) {
                 $this->Alternatif_model->update($id_alternatif, $data);
