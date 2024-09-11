@@ -39,6 +39,29 @@
             $this->db->where('id_alternatif', $id_alternatif);
             $this->db->delete('alternatif');
         }
+
+        // Semua kode di bawah Untuk Detail Alternatif
+        public function get_kriteria()
+        {
+            $query = $this->db->get('kriteria');
+            return $query->result();
+        }
+        public function get_alternatif()
+        {
+            $query = $this->db->query("SELECT * FROM alternatif");
+            return $query->result();
+        }
+
+        public function data_penilaian($id_alternatif,$id_kriteria)
+        {
+            $query = $this->db->query("SELECT * FROM penilaian WHERE id_alternatif='$id_alternatif' AND id_kriteria='$id_kriteria';");
+            return $query->row_array();
+        }
+		public function data_sub_kriteria($id_kriteria)
+		{
+			$query = $this->db->query("SELECT * FROM sub_kriteria WHERE id_kriteria='$id_kriteria' ORDER BY nilai DESC;");
+			return $query->result_array();
+		}
     }
     
     

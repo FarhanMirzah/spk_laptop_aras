@@ -25,8 +25,8 @@
         {
 			$data = [
                 'page' => "Alternatif",
-				'list' => $this->Alternatif_model->tampil(),
-                
+                'kriteria'=> $this->Alternatif_model->get_kriteria(),
+				'alternatif'=> $this->Alternatif_model->get_alternatif(),
             ];
             $this->load->view('alternatif/index', $data);
         }
