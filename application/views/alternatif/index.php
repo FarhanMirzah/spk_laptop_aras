@@ -64,11 +64,11 @@
 										<input type="text" name="id_kriteria[]" value="<?= $key->id_kriteria ?>" hidden>
 										<div class="form-group">
 											<label class="font-weight-bold" for="<?= $key->id_kriteria ?>"><?= $key->keterangan ?></label>
-											<select name="nilai[]" class="form-control" id="<?= $key->id_kriteria ?>" required disabled>
+											<select name="id_sub_kriteria[]" class="form-control" id="<?= $key->id_kriteria ?>" required disabled>
 												<?php foreach ($sub_kriteria as $subs_kriteria): ?>
 												<?php $s_option = $this->Alternatif_model->data_penilaian($keys->id_alternatif,$subs_kriteria['id_kriteria']); ?>
 													<?php if ($s_option!=NULL): ?>
-														<option value="<?= $subs_kriteria['id_sub_kriteria'] ?>" <?php if($subs_kriteria['id_sub_kriteria']==$s_option['nilai']){echo "selected";} ?>><?= $subs_kriteria['deskripsi'] ?> </option>
+														<option value="<?= $subs_kriteria['id_sub_kriteria'] ?>" <?php if($subs_kriteria['id_sub_kriteria']==$s_option['id_sub_kriteria']){echo "selected";} ?>><?= $subs_kriteria['deskripsi'] ?> </option>
 													<?php endif ?>
 													
 													<?php if ($s_option==NULL): ?>

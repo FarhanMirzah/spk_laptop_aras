@@ -4,15 +4,15 @@
     
     class Penilaian_model extends CI_Model {
       
-        public function tambah_penilaian($id_alternatif,$id_kriteria,$nilai)
+        public function tambah_penilaian($id_alternatif,$id_kriteria,$id_sub_kriteria)
         {
-            $query = $this->db->simple_query("INSERT INTO penilaian VALUES (DEFAULT,'$id_alternatif','$id_kriteria',$nilai);");
+            $query = $this->db->simple_query("INSERT INTO penilaian VALUES (DEFAULT,'$id_alternatif','$id_kriteria',$id_sub_kriteria);");
             return $query;	
         }
        
-        public function edit_penilaian($id_alternatif,$id_kriteria,$nilai)
+        public function edit_penilaian($id_alternatif,$id_kriteria,$id_sub_kriteria)
         {
-            $query = $this->db->simple_query("UPDATE penilaian SET nilai=$nilai WHERE id_alternatif='$id_alternatif' AND id_kriteria='$id_kriteria';");
+            $query = $this->db->simple_query("UPDATE penilaian SET id_sub_kriteria=$id_sub_kriteria WHERE id_alternatif='$id_alternatif' AND id_kriteria='$id_kriteria';");
             return $query;	
         }
        

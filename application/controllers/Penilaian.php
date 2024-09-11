@@ -36,10 +36,10 @@
         {
             $id_alternatif = $this->input->post('id_alternatif');
             $id_kriteria = $this->input->post('id_kriteria');
-            $nilai = $this->input->post('nilai');
+            $id_sub_kriteria = $this->input->post('id_sub_kriteria');
             $i = 0;
-            echo var_dump($nilai);
-            foreach ($nilai as $key) {
+            echo var_dump($id_sub_kriteria);
+            foreach ($id_sub_kriteria as $key) {
                 $this->Penilaian_model->tambah_penilaian($id_alternatif,$id_kriteria[$i],$key);
                 $i++;
             }
@@ -53,10 +53,10 @@
 		{
 			$id_alternatif = $this->input->post('id_alternatif');
 			$id_kriteria = $this->input->post('id_kriteria');
-			$nilai = $this->input->post('nilai');
+			$id_sub_kriteria = $this->input->post('id_sub_kriteria');
 			$i = 0;
 
-			foreach ($nilai as $key) {
+			foreach ($id_sub_kriteria as $key) {
 				$cek = $this->Penilaian_model->data_penilaian($id_alternatif,$id_kriteria[$i]);
 				if ($cek==0) {
 					$this->Penilaian_model->tambah_penilaian($id_alternatif,$id_kriteria[$i],$key);

@@ -62,7 +62,7 @@
 										<input type="text" name="id_kriteria[]" value="<?= $key->id_kriteria ?>" hidden>
 										<div class="form-group">
 											<label class="font-weight-bold" for="<?= $key->id_kriteria ?>"><?= $key->keterangan ?></label>
-											<select name="nilai[]" class="form-control" id="<?= $key->id_kriteria ?>" required>
+											<select name="id_sub_kriteria[]" class="form-control" id="<?= $key->id_kriteria ?>" required>
 												<option value="">--Pilih--</option>
 												<?php foreach ($sub_kriteria as $subs_kriteria): ?>
 												<option value="<?= $subs_kriteria['id_sub_kriteria'] ?>"><?= $subs_kriteria['deskripsi'] ?> </option>
@@ -101,11 +101,11 @@
 										<input type="text" name="id_kriteria[]" value="<?= $key->id_kriteria ?>" hidden>
 										<div class="form-group">
 											<label class="font-weight-bold" for="<?= $key->id_kriteria ?>"><?= $key->keterangan ?></label>
-											<select name="nilai[]" class="form-control" id="<?= $key->id_kriteria ?>" required>
+											<select name="id_sub_kriteria[]" class="form-control" id="<?= $key->id_kriteria ?>" required>
 												<option value="">--Pilih--</option>
 												<?php foreach ($sub_kriteria as $subs_kriteria): ?>
 												<?php $s_option = $this->Penilaian_model->data_penilaian($keys->id_alternatif,$subs_kriteria['id_kriteria']); ?>
-												<option value="<?= $subs_kriteria['id_sub_kriteria'] ?>" <?php if($subs_kriteria['id_sub_kriteria']==$s_option['nilai']){echo "selected";} ?>><?= $subs_kriteria['deskripsi'] ?> </option>
+												<option value="<?= $subs_kriteria['id_sub_kriteria'] ?>" <?php if($subs_kriteria['id_sub_kriteria']==$s_option['id_sub_kriteria']){echo "selected";} ?>><?= $subs_kriteria['deskripsi'] ?> </option>
 												<?php endforeach ?>
 											</select>
 										</div>

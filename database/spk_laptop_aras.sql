@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2024 at 07:51 AM
+-- Generation Time: Sep 11, 2024 at 01:05 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -115,14 +115,14 @@ CREATE TABLE `penilaian` (
   `id_penilaian` int(11) NOT NULL,
   `id_alternatif` int(11) NOT NULL,
   `id_kriteria` int(11) NOT NULL,
-  `nilai` int(100) NOT NULL
+  `id_sub_kriteria` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `penilaian`
 --
 
-INSERT INTO `penilaian` (`id_penilaian`, `id_alternatif`, `id_kriteria`, `nilai`) VALUES
+INSERT INTO `penilaian` (`id_penilaian`, `id_alternatif`, `id_kriteria`, `id_sub_kriteria`) VALUES
 (1, 1, 1, 2),
 (2, 1, 2, 18),
 (3, 1, 3, 25),
@@ -354,7 +354,7 @@ ALTER TABLE `penilaian`
   ADD PRIMARY KEY (`id_penilaian`),
   ADD KEY `id_alternatif` (`id_alternatif`),
   ADD KEY `id_kriteria` (`id_kriteria`),
-  ADD KEY `nilai` (`nilai`);
+  ADD KEY `id_sub_kriteria` (`id_sub_kriteria`);
 
 --
 -- Indexes for table `sub_kriteria`
@@ -438,7 +438,7 @@ ALTER TABLE `hasil`
 ALTER TABLE `penilaian`
   ADD CONSTRAINT `penilaian_ibfk_1` FOREIGN KEY (`id_alternatif`) REFERENCES `alternatif` (`id_alternatif`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `penilaian_ibfk_2` FOREIGN KEY (`id_kriteria`) REFERENCES `kriteria` (`id_kriteria`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `penilaian_ibfk_3` FOREIGN KEY (`nilai`) REFERENCES `sub_kriteria` (`id_sub_kriteria`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `penilaian_ibfk_3` FOREIGN KEY (`id_sub_kriteria`) REFERENCES `sub_kriteria` (`id_sub_kriteria`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `sub_kriteria`
