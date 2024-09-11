@@ -107,9 +107,21 @@
                 'password' => md5($this->input->post('password'))
             );
 
-            $this->User_model->update($id_user, $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
-			redirect('User');
+            // Validasi update data  (https://stackoverflow.com/questions/27621250/is-unique-in-codeigniter-for-edit-function) Ellix4u's solution
+            $id = $this->uri->segment(3);
+            $this->form_validation->set_rules('username', 'Username', 'required|edit_unique[user.username.id_user.'.$id.']');
+            if ($this->form_validation->run() != false) {
+                $this->User_model->update($id_user, $data);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
+                redirect('User');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username tersebut sudah diambil. Coba yang lain.</div>');
+                redirect('User');
+            }
+
+            // $this->User_model->update($id_user, $data);
+            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
+			// redirect('User');
         }
     
         public function destroy($id_user)
