@@ -37,21 +37,45 @@
 					<input autocomplete="off" type="text" name="nama" value="<?php echo $User->nama ?>" required class="form-control"/>
 				</div>
 				
+				<!-- [TIDAK DIPAKAI] Cek username session sekarang -->
+				<?php $cek_user = $this->session->username; ?>
 				<div class="form-group col-md-6">
 					<label class="font-weight-bold">Level</label>
-					 <select class="form-control" name ="privilege" required> 
-					<?php
-						foreach($user_level as $k) {
-							$s='';
-							if($k->id_user_level == $User->id_user_level){
-								$s='selected';
-							}
-					?>
-						<option value="<?php echo $k->id_user_level ?>" <?php echo $s ?>>
-							<?php echo $k->user_level ?>
-						</option>
+
+					<!-- [TIDAK DIPAKAI] Disable select User Level untuk username session sekarang -->
+					<?php if ($cek_user == $User->username) { ?>
+						<select class="form-control" name ="privilege" required disabled> 
+						<?php
+							foreach($user_level as $k) {
+								$s='';
+								if($k->id_user_level == $User->id_user_level){
+									$s='selected';
+								}
+						?>
+							<option value="<?php echo $k->id_user_level ?>" <?php echo $s ?>>
+								<?php echo $k->user_level ?>
+							</option>
+						<?php } ?>
+						</select>
+						<input type="hidden" name="privilege" value="<?php echo $User->id_user_level ?>" />
 					<?php } ?>
-					</select>
+
+					<!-- [TIDAK DIPAKAI] Enable select User Level untuk username bukan session sekarang -->
+					<?php if ($cek_user != $User->username) { ?>
+						<select class="form-control" name ="privilege" required> 
+						<?php
+							foreach($user_level as $k) {
+								$s='';
+								if($k->id_user_level == $User->id_user_level){
+									$s='selected';
+								}
+						?>
+							<option value="<?php echo $k->id_user_level ?>" <?php echo $s ?>>
+								<?php echo $k->user_level ?>
+							</option>
+						<?php } ?>
+						</select>
+					<?php } ?>
 				</div>
 			</div>
 		</div>

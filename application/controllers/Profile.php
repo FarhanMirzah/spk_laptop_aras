@@ -39,6 +39,8 @@
             if ($this->form_validation->run() != false) {
                 $this->Profile_model->update($id_user, $data);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
+                // Jika ganti profile session sekarang, update username session ke username yang di inputkan 
+                $this->session->set_userdata('username',$data['username']);
                 redirect('Profile');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username tersebut sudah diambil. Coba yang lain.</div>');
