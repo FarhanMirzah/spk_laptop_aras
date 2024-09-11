@@ -45,11 +45,16 @@
 						}
 						?>
 						</td>
+						<!-- Hilangkan tombol Hapus untuk username session sekarang (1/2) -->
+						<?php $cek_tombol = $this->session->username; ?>
 						<td>
 							<div class="btn-group" role="group">
 								<a data-toggle="tooltip" data-placement="bottom" title="Detail Data" href="<?=base_url('User/show/'.$value->id_user)?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
 								<a data-toggle="tooltip" data-placement="bottom" title="Edit Data" href="<?=base_url('User/edit/'.$value->id_user)?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+								<!-- Hilangkan tombol Hapus untuk username session sekarang (2/2) -->
+								<?php if ($cek_tombol != $value->username) { ?>
 								<a  data-toggle="tooltip" data-placement="bottom" title="Hapus Data" href="<?=base_url('User/destroy/'.$value->id_user)?>" onclick="return confirm ('Apakah anda yakin untuk meghapus data ini')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+								<?php } ?>
 							</div>
 						</td>
 					</tr>
