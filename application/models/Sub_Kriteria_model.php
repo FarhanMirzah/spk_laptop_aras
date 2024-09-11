@@ -28,7 +28,7 @@
             $ubah = array(
                 'id_kriteria' => $data['id_kriteria'],
                 'deskripsi' => $data['deskripsi'],
-                'nilai'  => $data['nilai']
+                'nilai_sub_kriteria'  => $data['nilai_sub_kriteria']
             );
 
             $this->db->where('id_sub_kriteria', $id_sub_kriteria);
@@ -54,7 +54,7 @@
 
         public function data_sub_kriteria($id_kriteria)
 		{
-			$query = $this->db->query("SELECT * FROM sub_kriteria WHERE id_kriteria='$id_kriteria'  ORDER BY nilai DESC;");
+			$query = $this->db->query("SELECT * FROM sub_kriteria WHERE id_kriteria='$id_kriteria'  ORDER BY nilai_sub_kriteria DESC;");
 			return $query->result_array();
 		}
     }

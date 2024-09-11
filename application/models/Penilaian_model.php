@@ -44,7 +44,7 @@
 		}
 		public function data_sub_kriteria($id_kriteria)
 		{
-			$query = $this->db->query("SELECT * FROM sub_kriteria WHERE id_kriteria='$id_kriteria' ORDER BY nilai DESC;");
+			$query = $this->db->query("SELECT * FROM sub_kriteria WHERE id_kriteria='$id_kriteria' ORDER BY nilai_sub_kriteria DESC;");
 			return $query->result_array();
 		}
     

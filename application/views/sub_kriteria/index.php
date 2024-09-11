@@ -47,8 +47,8 @@
 							<input autocomplete="off" type="text" id="deskripsi" class="form-control" name="deskripsi" required>
 						</div>
 						<div class="form-group">
-							<label for="nilai" class="font-weight-bold">Nilai</label>
-							<input autocomplete="off" type="text" id="nilai" name="nilai" class="form-control" required>
+							<label for="nilai_sub_kriteria" class="font-weight-bold">Nilai</label>
+							<input autocomplete="off" type="text" id="nilai_sub_kriteria" name="nilai_sub_kriteria" class="form-control" required>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -80,7 +80,7 @@
 					<tr align="center">
 						<td><?=$no ?></td>
 						<td align="left"><?= $key['deskripsi'] ?></td>
-						<td><?= $key['nilai'] ?></td>
+						<td><?= $key['nilai_sub_kriteria'] ?></td>
 						<td>
 							<div class="btn-group" role="group">
 								<a data-toggle="modal" title="Edit Data" href="#editsk<?= $key['id_sub_kriteria'] ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
@@ -106,8 +106,8 @@
 											<input type="text" id="deskripsi" autocomplete="off" class="form-control" value="<?= $key['deskripsi'] ?>" name="deskripsi" required>
 										</div>
 										<div class="form-group">
-											<label for="nilai" class="font-weight-bold">Nilai</label>
-											<input type="text" autocomplete="off" id="nilai" name="nilai" class="form-control" value="<?= $key['nilai'] ?>" required>
+											<label for="nilai_sub_kriteria" class="font-weight-bold">Nilai</label>
+											<input type="text" autocomplete="off" id="nilai_sub_kriteria" name="nilai_sub_kriteria" class="form-control" value="<?= $key['nilai_sub_kriteria'] ?>" required>
 										</div>
 									</div>
 									<div class="modal-footer">

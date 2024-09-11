@@ -40,12 +40,12 @@
                 $data = [
                     'id_kriteria' => $this->input->post('id_kriteria'),
                     'deskripsi' => $this->input->post('deskripsi'),
-                    'nilai' => $this->input->post('nilai')
+                    'nilai_sub_kriteria' => $this->input->post('nilai_sub_kriteria')
                 ];
                 
                 $this->form_validation->set_rules('id_kriteria', 'ID Kriteria', 'required');
                 $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|is_unique[sub_kriteria.deskripsi]');
-                $this->form_validation->set_rules('nilai', 'Nilai', 'required');
+                $this->form_validation->set_rules('nilai_sub_kriteria', 'Nilai', 'required');
 
                 if ($this->form_validation->run() != false) {
                     $result = $this->Sub_Kriteria_model->insert($data);
@@ -69,7 +69,7 @@
             $data = array(
                 'id_kriteria' => $this->input->post('id_kriteria'),
 				'deskripsi' => $this->input->post('deskripsi'),
-				'nilai' => $this->input->post('nilai')
+				'nilai_sub_kriteria' => $this->input->post('nilai_sub_kriteria')
             );
 
             $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|is_unique[sub_kriteria.deskripsi]');

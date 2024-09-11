@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2024 at 04:22 PM
+-- Generation Time: Sep 11, 2024 at 04:35 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -214,14 +214,14 @@ CREATE TABLE `sub_kriteria` (
   `id_sub_kriteria` int(11) NOT NULL,
   `id_kriteria` int(11) NOT NULL,
   `deskripsi` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
-  `nilai` float NOT NULL
+  `nilai_sub_kriteria` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sub_kriteria`
 --
 
-INSERT INTO `sub_kriteria` (`id_sub_kriteria`, `id_kriteria`, `deskripsi`, `nilai`) VALUES
+INSERT INTO `sub_kriteria` (`id_sub_kriteria`, `id_kriteria`, `deskripsi`, `nilai_sub_kriteria`) VALUES
 (1, 1, '< Rp5.000.000', 100),
 (2, 1, 'Rp5.000.000 - Rp7.499.000', 90),
 (3, 1, 'Rp7.500.000 - Rp9.999.000', 80),

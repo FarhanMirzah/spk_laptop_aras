@@ -9,7 +9,7 @@ foreach($alternatifs as $alternatif):
 		$id_kriteria = $kriteria->id_kriteria;
 		
 		$data_pencocokan = $this->Perhitungan_model->data_nilai($id_alternatif,$id_kriteria);
-		$nilai_k = $data_pencocokan['nilai'];
+		$nilai_k = $data_pencocokan['nilai_sub_kriteria'];
 		
 		// Perhitungan bagian Pembentukan Matriks Keputusan (X) (A0 ke atas)
 		$matriks_x[$id_kriteria][$id_alternatif] = $nilai_k;
