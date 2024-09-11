@@ -42,9 +42,11 @@
         public function store()
         {
                 $data = [
+                    'kode_alternatif' => $this->input->post('kode_alternatif'),
                     'nama' => $this->input->post('nama')
                 ];
                 
+                $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|is_unique[alternatif.kode_alternatif]');  
                 $this->form_validation->set_rules('nama', 'Nama', 'required|is_unique[alternatif.nama]');               
     
                 if ($this->form_validation->run() != false) {
@@ -76,8 +78,10 @@
         {
             $id_alternatif = $this->input->post('id_alternatif');
             $data = array(
+                'kode_alternatif' => $this->input->post('kode_alternatif'),
                 'nama' => $this->input->post('nama')
             );
+            $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|is_unique[alternatif.kode_alternatif]');  
             $this->form_validation->set_rules('nama', 'Nama', 'required|is_unique[alternatif.nama]');
 
             if ($this->form_validation->run() != false) {

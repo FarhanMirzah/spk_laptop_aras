@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 28, 2024 at 01:16 PM
+-- Generation Time: Sep 11, 2024 at 07:51 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alternatif` (
   `id_alternatif` int(11) NOT NULL,
+  `kode_alternatif` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
   `nama` varchar(255) CHARACTER SET utf8mb4 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -36,17 +37,17 @@ CREATE TABLE `alternatif` (
 -- Dumping data for table `alternatif`
 --
 
-INSERT INTO `alternatif` (`id_alternatif`, `nama`) VALUES
-(1, 'ASUS M415DAO-FHD321'),
-(2, 'ASUS A416MAO-FHD425'),
-(3, 'ASUS A1400EA-FHD321'),
-(4, 'ASUS A1400EA-VIPS751'),
-(5, 'ASUS K3405VA-OLEDS951'),
-(6, 'ASUS FX506HC-I535B6T-O11'),
-(7, 'ASUS T3300KA-OLED621'),
-(8, 'ASUS UX3402ZA-OLEDS551'),
-(9, 'ASUS M3401QC-OLED556'),
-(10, 'ASUS N7401ZE-OLEDS715');
+INSERT INTO `alternatif` (`id_alternatif`, `kode_alternatif`, `nama`) VALUES
+(1, 'A1', 'ASUS M415DAO-FHD321'),
+(2, 'A2', 'ASUS A416MAO-FHD425'),
+(3, 'A3', 'ASUS A1400EA-FHD321'),
+(4, 'A4', 'ASUS A1400EA-VIPS751'),
+(5, 'A5', 'ASUS K3405VA-OLEDS951'),
+(6, 'A6', 'ASUS FX506HC-I535B6T-O11'),
+(7, 'A7', 'ASUS T3300KA-OLED621'),
+(8, 'A8', 'ASUS UX3402ZA-OLEDS551'),
+(9, 'A9', 'ASUS M3401QC-OLED556'),
+(10, 'A10', 'ASUS N7401ZE-OLEDS715');
 
 -- --------------------------------------------------------
 

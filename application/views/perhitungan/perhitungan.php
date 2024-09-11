@@ -161,7 +161,7 @@ endforeach;
 				</thead>
 				<tbody>
 					<tr align="center">
-						<td>A<sub>0</sub></td>
+						<td>A0</td>
 						<?php foreach ($kriterias as $kriteria): ?>
 						<td>
 						<?php 
@@ -175,7 +175,7 @@ endforeach;
 						$no=1;
 						foreach ($alternatifs as $alternatif): ?>
 					<tr align="center">
-						<td>A<sub><?= $no; ?></sub></td>
+						<td><?= $alternatif->kode_alternatif; ?></td>
 						<?php
 						foreach ($kriterias as $kriteria):
 							$id_alternatif = $alternatif->id_alternatif;
@@ -215,7 +215,7 @@ endforeach;
 				</thead>
 				<tbody>
 					<tr align="center">
-						<td>A<sub>0</sub></td>
+						<td>A0</td>
 						<?php foreach ($kriterias as $kriteria): ?>
 						<td>
 						<?php 
@@ -231,7 +231,7 @@ endforeach;
 						$no=1;
 						foreach ($alternatifs as $alternatif): ?>
 					<tr align="center">
-						<td>A<sub><?= $no; ?></sub></td>
+						<td><?= $alternatif->kode_alternatif; ?></td>
 						<?php
 						foreach ($kriterias as $kriteria):
 							$id_alternatif = $alternatif->id_alternatif;
@@ -286,7 +286,7 @@ endforeach;
 				</thead>
 				<tbody>
 					<tr align="center">
-						<td>A<sub>0</sub></td>
+						<td>A0</td>
 						<?php foreach ($kriterias as $kriteria): ?>
 						<td>
 						<?php 
@@ -302,7 +302,7 @@ endforeach;
 						$no=1;
 						foreach ($alternatifs as $alternatif): ?>
 					<tr align="center">
-						<td>A<sub><?= $no; ?></sub></td>
+						<td><?= $alternatif->kode_alternatif; ?></td>
 						<?php
 						foreach ($kriterias as $kriteria):
 							$id_alternatif = $alternatif->id_alternatif;
@@ -376,7 +376,7 @@ endforeach;
 				</thead>
 				<tbody>
 					<tr align="center">
-						<td>A<sub>0</sub></td>
+						<td>A0</td>
 						<?php foreach ($kriterias as $kriteria): ?>
 						<td>
 						<?php 
@@ -392,7 +392,7 @@ endforeach;
 						$no=1;
 						foreach ($alternatifs as $alternatif): ?>
 					<tr align="center">
-						<td>A<sub><?= $no; ?></sub></td>
+						<td><?= $alternatif->kode_alternatif; ?></td>
 						<?php
 						foreach ($kriterias as $kriteria):
 							$id_alternatif = $alternatif->id_alternatif;
@@ -433,7 +433,7 @@ endforeach;
 				</thead>
 				<tbody>
 					<tr align="center">
-						<td>A<sub>0</sub></td>
+						<td>A0</td>
 						<!-- Pembulatan bagian Nilai S (A0 saja) (4 angka belakang koma) -->
 						<td><?= round($total_rb0,4);?></td>
 						<!-- <td><?= $total_rb0;?></td> -->
@@ -446,7 +446,7 @@ endforeach;
 						$id_alternatif = $alternatif->id_alternatif;
 						?>
 					<tr align="center">
-						<td>A<sub><?= $no; ?></sub></td>
+						<td><?= $alternatif->kode_alternatif; ?></td>
 						<?php
 							echo '<td>';
 							// Pembulatan bagian Nilai S (A1 ke atas) (4 angka belakang koma)

@@ -19,6 +19,11 @@
 		<div class="card-body">
 			<div class="row">
 				<div class="form-group col-md-12">
+					<label class="font-weight-bold">Kode Alternatif</label>
+					<input autocomplete="off" type="text" name="kode_alternatif" required class="form-control"/>
+				</div>
+
+				<div class="form-group col-md-12">
 					<label class="font-weight-bold">Nama Alternatif</label>
 					<input autocomplete="off" type="text" name="nama" required class="form-control"/>
 				</div>

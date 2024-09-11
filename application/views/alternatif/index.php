@@ -32,7 +32,7 @@
 					?>
 					<tr align="center">
 						<td><?=$no ?></td>
-						<td>A<?=$no ?></td>
+						<td><?=$keys->kode_alternatif ?></td>
 						<td align="left"><?php echo $keys->nama ?></td>
 						<td>
 							<div class="btn-group" role="group">
@@ -54,7 +54,7 @@
 								</div>
 								<?= form_open('Alternatif/detail_alternatif') ?>
 									<div class="modal-body">
-										<h5 class="modal-title" id="myModalLabel"><b>(A<?= $keys->id_alternatif ?>)</b> <?= $keys->nama ?></h5>
+										<h5 class="modal-title" id="myModalLabel"><b>(<?= $keys->kode_alternatif ?>)</b> <?= $keys->nama ?></h5>
 										<?php foreach ($kriteria as $key): ?>
 										<?php 
 										$sub_kriteria = $this->Alternatif_model->data_sub_kriteria($key->id_kriteria);

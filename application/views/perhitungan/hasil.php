@@ -28,7 +28,7 @@
 						$no=1;
 						foreach ($hasil as $keys): ?>
 					<tr align="center">
-						<td>A<?= $keys->id_alternatif ?></td>
+						<td><?= $keys->kode_alternatif ?></td>
 						<td align="left"><?= $keys->nama ?></td>
 						<td><?= $keys->nilai ?></td>
 						<td><?= $no; ?></td>

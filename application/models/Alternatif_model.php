@@ -26,6 +26,7 @@
         public function update($id_alternatif, $data = [])
         {
             $ubah = array(
+                'kode_alternatif'  => $data['kode_alternatif'],
                 'nama'  => $data['nama']
             );
 
