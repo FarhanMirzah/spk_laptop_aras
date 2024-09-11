@@ -72,7 +72,9 @@
 				'nilai_sub_kriteria' => $this->input->post('nilai_sub_kriteria')
             );
 
-            $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|is_unique[sub_kriteria.deskripsi]');
+            // Validasi update data  (https://stackoverflow.com/questions/27621250/is-unique-in-codeigniter-for-edit-function) Ellix4u's solution
+            $id = $this->uri->segment(3);
+            $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|edit_unique[sub_kriteria.deskripsi.id_sub_kriteria.'.$id.']');
             if ($this->form_validation->run() != false) {
                 $this->Sub_Kriteria_model->update($id_sub_kriteria, $data);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
