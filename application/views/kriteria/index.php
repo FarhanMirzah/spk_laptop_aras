@@ -3,7 +3,9 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-cube"></i> Data Kriteria</h1>
 
-    <a href="<?= base_url('Kriteria/create'); ?>" class="btn btn-success"> <i class="fa fa-plus"></i> Tambah Data </a>
+	<?php if($this->session->userdata('id_user_level') == '1'): ?>
+    	<a href="<?= base_url('Kriteria/create'); ?>" class="btn btn-success"> <i class="fa fa-plus"></i> Tambah Data </a>
+	<?php endif; ?>
 </div>
 
 <?= $this->session->flashdata('message'); ?>
@@ -24,7 +26,9 @@
 						<th>Nama Kriteria</th>
 						<th>Bobot</th>
 						<th>Jenis</th>
-						<th width="15%">Aksi</th>
+						<?php if($this->session->userdata('id_user_level') == '1'): ?>
+							<th width="15%">Aksi</th>
+						<?php endif; ?>
 					</tr>
 				</thead>
 				<tbody>
@@ -38,12 +42,14 @@
 						<td><?php echo $value->keterangan ?></td>
 						<td><?php echo $value->bobot ?></td>
 						<td><?php echo $value->jenis ?></td>
-						<td>
-							<div class="btn-group" role="group">
-								<a data-toggle="tooltip" data-placement="bottom" title="Edit Data" href="<?=base_url('Kriteria/edit/'.$value->id_kriteria)?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-								<a  data-toggle="tooltip" data-placement="bottom" title="Hapus Data" href="<?=base_url('Kriteria/destroy/'.$value->id_kriteria)?>" onclick="return confirm ('Apakah anda yakin untuk meghapus data ini')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-							</div>
-						</td>
+						<?php if($this->session->userdata('id_user_level') == '1'): ?>
+							<td>
+								<div class="btn-group" role="group">
+									<a data-toggle="tooltip" data-placement="bottom" title="Edit Data" href="<?=base_url('Kriteria/edit/'.$value->id_kriteria)?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+									<a  data-toggle="tooltip" data-placement="bottom" title="Hapus Data" href="<?=base_url('Kriteria/destroy/'.$value->id_kriteria)?>" onclick="return confirm ('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+								</div>
+							</td>
+						<?php endif; ?>
 					</tr>
 					<?php
 						$no++;

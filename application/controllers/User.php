@@ -62,7 +62,7 @@
 					redirect('User');
 				}
 			} else {
-				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal disimpan!</div>');
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username tersebut sudah diambil. Coba yang lain.</div>');
 				redirect('User/create');
 				
 			}
@@ -116,7 +116,7 @@
                 redirect('User');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username tersebut sudah diambil. Coba yang lain.</div>');
-                redirect('User');
+                redirect('User/edit/'.$id_user);
             }
 
             // $this->User_model->update($id_user, $data);
@@ -126,9 +126,29 @@
     
         public function destroy($id_user)
         {
-            $this->User_model->delete($id_user);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
-			redirect('User');
+            if ($this->session->userdata('id_user_level') == "1") {
+                if ($this->session->userdata('id_user') == $id_user) {
+                    ?>
+                        <script type="text/javascript">
+                            alert('Anda tidak bisa menghapus user Anda sendiri!');
+                            window.location='<?php echo base_url("Login/home"); ?>'
+                        </script>
+                    <?php
+                }
+                if ($this->session->userdata('id_user') != $id_user) {
+                    $this->User_model->delete($id_user);
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
+                    redirect('User');
+                }
+            }
+            if ($this->session->userdata('id_user_level') != "1") {
+                ?>
+                    <script type="text/javascript">
+                        alert('Anda tidak berhak mengakses halaman ini!');
+                        window.location='<?php echo base_url("Login/home"); ?>'
+                    </script>
+                <?php
+            }
         }
     
     }

@@ -10,15 +10,6 @@
             $this->load->library('pagination');
             $this->load->library('form_validation');
             $this->load->model('Sub_Kriteria_model');
-
-            if ($this->session->userdata('id_user_level') != "1") {
-            ?>
-				<script type="text/javascript">
-                    alert('Anda tidak berhak mengakses halaman ini!');
-                    window.location='<?php echo base_url("Login/home"); ?>'
-                </script>
-            <?php
-			}
         }
 
         public function index()
@@ -90,9 +81,19 @@
     
         public function destroy($id_sub_kriteria)
         {
-            $this->Sub_Kriteria_model->delete($id_sub_kriteria);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
-			redirect('Sub_kriteria');
+            if ($this->session->userdata('id_user_level') == "1") {
+                $this->Sub_Kriteria_model->delete($id_sub_kriteria);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
+                redirect('Sub_kriteria');
+            }
+            if ($this->session->userdata('id_user_level') != "1") {
+                ?>
+                    <script type="text/javascript">
+                        alert('Anda tidak berhak mengakses halaman ini!');
+                        window.location='<?php echo base_url("Login/home"); ?>'
+                    </script>
+                <?php
+            }
         }
     
     }

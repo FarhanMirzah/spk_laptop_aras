@@ -1,9 +1,11 @@
 <?php $this->load->view('layouts/header_admin'); ?>
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-users"></i> Data Alternatif</h1>
+    <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-list"></i> Data Alternatif</h1>
 
-    <a href="<?= base_url('Alternatif/create'); ?>" class="btn btn-success"> <i class="fa fa-plus"></i> Tambah Data </a>
+	<?php if($this->session->userdata('id_user_level') == '1'): ?>
+    	<a href="<?= base_url('Alternatif/create'); ?>" class="btn btn-success"> <i class="fa fa-plus"></i> Tambah Data </a>
+	<?php endif; ?>
 </div>
 
 <?= $this->session->flashdata('message'); ?>
@@ -37,8 +39,10 @@
 						<td>
 							<div class="btn-group" role="group">
 								<a data-toggle="modal" title="Detail Data" href="#detail<?= $keys->id_alternatif ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-								<a data-toggle="tooltip" data-placement="bottom" title="Edit Data" href="<?=base_url('Alternatif/edit/'.$keys->id_alternatif)?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-								<a  data-toggle="tooltip" data-placement="bottom" title="Hapus Data" href="<?=base_url('Alternatif/destroy/'.$keys->id_alternatif)?>" onclick="return confirm ('Apakah anda yakin untuk meghapus data ini')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+								<?php if($this->session->userdata('id_user_level') == '1'): ?>
+									<a data-toggle="tooltip" data-placement="bottom" title="Edit Data" href="<?=base_url('Alternatif/edit/'.$keys->id_alternatif)?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+									<a data-toggle="tooltip" data-placement="bottom" title="Hapus Data" href="<?=base_url('Alternatif/destroy/'.$keys->id_alternatif)?>" onclick="return confirm ('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+								<?php endif; ?>
 							</div>
 						</td>
 					</tr>
@@ -49,7 +53,7 @@
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h5 class="modal-title" id="myModalLabel"><i class="fa fa-edit"></i> Detail Alternatif</h5>
+									<h5 class="modal-title" id="myModalLabel"><i class="fa fa-eye"></i> Detail Alternatif</h5>
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 								</div>
 								<?= form_open('Alternatif/detail_alternatif') ?>

@@ -27,8 +27,9 @@
     <div class="card-header py-3">
         <div class="d-sm-flex align-items-center justify-content-between">
 			<h6 class="m-0 font-weight-bold text-info"><i class="fa fa-table"></i> <?= $key->keterangan." (".$key->kode_kriteria.")" ?></h6>
-			
-			<a href="#tambah<?= $key->id_kriteria ?>" data-toggle="modal" class="btn btn-sm btn-success"> <i class="fa fa-plus"></i> Tambah Data </a>
+			<?php if($this->session->userdata('id_user_level') == '1'): ?>
+				<a href="#tambah<?= $key->id_kriteria ?>" data-toggle="modal" class="btn btn-sm btn-success"> <i class="fa fa-plus"></i> Tambah Data </a>
+			<?php endif; ?>
 		</div>
     </div>
 	
@@ -68,7 +69,9 @@
 						<th width="5%">No</th>
 						<th>Nama Sub Kriteria</th>
 						<th>Nilai</th>
-						<th width="15%">Aksi</th>
+						<?php if($this->session->userdata('id_user_level') == '1'): ?>
+							<th width="15%">Aksi</th>
+						<?php endif; ?>
 					</tr>
 				</thead>
 				<tbody>
@@ -81,12 +84,14 @@
 						<td><?=$no ?></td>
 						<td align="left"><?= $key['deskripsi'] ?></td>
 						<td><?= $key['nilai_sub_kriteria'] ?></td>
-						<td>
-							<div class="btn-group" role="group">
-								<a data-toggle="modal" title="Edit Data" href="#editsk<?= $key['id_sub_kriteria'] ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-								<a  data-toggle="tooltip" data-placement="bottom" title="Hapus Data" href="<?= base_url('Sub_kriteria/destroy/'.$key['id_sub_kriteria']) ?>" onclick="return confirm ('Apakah anda yakin untuk meghapus data ini')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-							</div>
-						</td>
+						<?php if($this->session->userdata('id_user_level') == '1'): ?>
+							<td>
+								<div class="btn-group" role="group">
+									<a data-toggle="modal" title="Edit Data" href="#editsk<?= $key['id_sub_kriteria'] ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+									<a  data-toggle="tooltip" data-placement="bottom" title="Hapus Data" href="<?= base_url('Sub_kriteria/destroy/'.$key['id_sub_kriteria']) ?>" onclick="return confirm ('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+								</div>
+							</td>
+						<?php endif; ?>
 					</tr>
 
 					<!-- Modal -->

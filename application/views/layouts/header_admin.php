@@ -64,7 +64,6 @@ if($this->session->status !== ('Logged'))
         Master Data
       </div>
 
-	  <?php if($this->session->userdata('id_user_level') == '1'): ?>
 	  <li class="nav-item <?php if($page=='Kriteria'){echo 'active';}?>">
         <a class="nav-link" href="<?= base_url('Kriteria'); ?>">
           <i class="fas fa-fw fa-cube"></i>
@@ -79,15 +78,17 @@ if($this->session->status !== ('Logged'))
 	  
 	  <li class="nav-item <?php if($page=='Alternatif'){echo 'active';}?>">
         <a class="nav-link" href="<?= base_url('Alternatif'); ?>">
-          <i class="fas fa-fw fa-users"></i>
+          <i class="fas fa-fw fa-list"></i>
           <span>Data Alternatif</span></a>
       </li>
 	  
+    <?php if($this->session->userdata('id_user_level') == '1'): ?>
 	  <li class="nav-item <?php if($page=='Penilaian'){echo 'active';}?>">
         <a class="nav-link" href="<?= base_url('Penilaian'); ?>">
           <i class="fas fa-fw fa-edit"></i>
           <span>Data Penilaian</span></a>
       </li>
+    <?php endif; ?>
 	  
 	  <li class="nav-item <?php if($page=='Perhitungan'){echo 'active';}?>">
         <a class="nav-link" href="<?= base_url('Perhitungan'); ?>">
@@ -100,15 +101,6 @@ if($this->session->status !== ('Logged'))
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Data Hasil Akhir</span></a>
       </li>
-	  <?php endif; ?>
-	  
-	  <?php if($this->session->userdata('id_user_level') == '2'): ?>
-	  <li class="nav-item <?php if($page=='Hasil'){echo 'active';}?>">
-        <a class="nav-link" href="<?= base_url('Perhitungan/hasil'); ?>">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Data Hasil Akhir</span></a>
-      </li>	
-	  <?php endif; ?>
 	  
 	  <!-- Divider -->
       <hr class="sidebar-divider">

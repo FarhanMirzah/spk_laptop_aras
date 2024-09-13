@@ -10,15 +10,6 @@
             $this->load->library('pagination');
             $this->load->library('form_validation');
             $this->load->model('Alternatif_model');
-
-            if ($this->session->userdata('id_user_level') != "1") {
-            ?>
-				<script type="text/javascript">
-                    alert('Anda tidak berhak mengakses halaman ini!');
-                    window.location='<?php echo base_url("Login/home"); ?>'
-                </script>
-            <?php
-			}
         }
 
         public function index()
@@ -34,6 +25,14 @@
         //menampilkan view create
         public function create()
         {
+            if ($this->session->userdata('id_user_level') != "1") {
+                ?>
+                    <script type="text/javascript">
+                        alert('Anda tidak berhak mengakses halaman ini!');
+                        window.location='<?php echo base_url("Login/home"); ?>'
+                    </script>
+                <?php
+            }
             $data['page'] = "Alternatif";
             $this->load->view('alternatif/create',$data);
         }
@@ -66,6 +65,14 @@
 
         public function edit($id_alternatif)
         {
+            if ($this->session->userdata('id_user_level') != "1") {
+                ?>
+                    <script type="text/javascript">
+                        alert('Anda tidak berhak mengakses halaman ini!');
+                        window.location='<?php echo base_url("Login/home"); ?>'
+                    </script>
+                <?php
+            }
             $alternatif = $this->Alternatif_model->show($id_alternatif);
             $data = [
                 'page' => "Alternatif",
@@ -76,38 +83,59 @@
     
         public function update($id_alternatif)
         {
-            $id_alternatif = $this->input->post('id_alternatif');
-            $data = array(
-                'kode_alternatif' => $this->input->post('kode_alternatif'),
-                'nama_alternatif' => $this->input->post('nama_alternatif')
-            );
-
-            // Validasi update data  (https://stackoverflow.com/questions/27621250/is-unique-in-codeigniter-for-edit-function) Ellix4u's solution
-            $id = $this->uri->segment(3);
-            $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|edit_unique[alternatif.kode_alternatif.id_alternatif.'.$id.']');
-            $this->form_validation->set_rules('nama_alternatif', 'Nama', 'required|edit_unique[alternatif.nama_alternatif.id_alternatif.'.$id.']');
-            // $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|is_unique[alternatif.kode_alternatif]');  
-            // $this->form_validation->set_rules('nama_alternatif', 'Nama', 'required|is_unique[alternatif.nama_alternatif]');
-
-            if ($this->form_validation->run() != false) {
-                $this->Alternatif_model->update($id_alternatif, $data);
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
-                redirect('Alternatif');
-            } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal diupdate!</div>');
-                redirect('Alternatif');
-                
+            if ($this->session->userdata('id_user_level') == "1") {
+                $id_alternatif = $this->input->post('id_alternatif');
+                $data = array(
+                    'kode_alternatif' => $this->input->post('kode_alternatif'),
+                    'nama_alternatif' => $this->input->post('nama_alternatif')
+                );
+    
+                // Validasi update data  (https://stackoverflow.com/questions/27621250/is-unique-in-codeigniter-for-edit-function) Ellix4u's solution
+                $id = $this->uri->segment(3);
+                $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|edit_unique[alternatif.kode_alternatif.id_alternatif.'.$id.']');
+                $this->form_validation->set_rules('nama_alternatif', 'Nama', 'required|edit_unique[alternatif.nama_alternatif.id_alternatif.'.$id.']');
+                // $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|is_unique[alternatif.kode_alternatif]');  
+                // $this->form_validation->set_rules('nama_alternatif', 'Nama', 'required|is_unique[alternatif.nama_alternatif]');
+    
+                if ($this->form_validation->run() != false) {
+                    $this->Alternatif_model->update($id_alternatif, $data);
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
+                    redirect('Alternatif');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal diupdate!</div>');
+                    redirect('Alternatif/edit/'.$id_alternatif);
+                    
+                }
+                // $this->Alternatif_model->update($id_alternatif, $data);
+                // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
+                // redirect('Alternatif');
             }
-            // $this->Alternatif_model->update($id_alternatif, $data);
-			// $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
-            // redirect('Alternatif');
+
+            if ($this->session->userdata('id_user_level') != "1") {
+                ?>
+                    <script type="text/javascript">
+                        alert('Anda tidak berhak mengakses halaman ini!');
+                        window.location='<?php echo base_url("Login/home"); ?>'
+                    </script>
+                <?php
+            }
         }
     
         public function destroy($id_alternatif)
         {
-            $this->Alternatif_model->delete($id_alternatif);
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
-            redirect('Alternatif');
+            if ($this->session->userdata('id_user_level') == "1") {
+                $this->Alternatif_model->delete($id_alternatif);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
+                redirect('Alternatif');
+            }
+            if ($this->session->userdata('id_user_level') != "1") {
+                ?>
+                    <script type="text/javascript">
+                        alert('Anda tidak berhak mengakses halaman ini!');
+                        window.location='<?php echo base_url("Login/home"); ?>'
+                    </script>
+                <?php
+            }
         }
     
     }

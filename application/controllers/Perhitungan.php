@@ -13,16 +13,7 @@
         }
 
         public function index()
-        {
-            if ($this->session->userdata('id_user_level') != "1") {
-            ?>
-				<script type="text/javascript">
-                    alert('Anda tidak berhak mengakses halaman ini!');
-                    window.location='<?php echo base_url("Login/home"); ?>'
-                </script>
-            <?php
-			}
-			
+        {	
 			$data = [
                 'page' => "Perhitungan",
                 'kriterias'=> $this->Perhitungan_model->get_kriteria(),

@@ -8,6 +8,8 @@
 	</a>
 </div>
 
+<?= $this->session->flashdata('message'); ?>
+
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-info"><i class="fas fa-fw fa-edit"></i> Edit Data Kriteria</h6>
