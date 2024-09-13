@@ -105,7 +105,13 @@
 												<option value="">--Pilih--</option>
 												<?php foreach ($sub_kriteria as $subs_kriteria): ?>
 												<?php $s_option = $this->Penilaian_model->data_penilaian($keys->id_alternatif,$subs_kriteria['id_kriteria']); ?>
-												<option value="<?= $subs_kriteria['id_sub_kriteria'] ?>" <?php if($subs_kriteria['id_sub_kriteria']==$s_option['id_sub_kriteria']){echo "selected";} ?>><?= $subs_kriteria['deskripsi'] ?> </option>
+													<!-- Untuk perbaiki error array NULL jika mengedit penilaian alternatif yang dibuat sebelum membuat suatu sub-kriteria baru -->
+													<?php if($s_option != NULL): ?>
+														<option value="<?= $subs_kriteria['id_sub_kriteria'] ?>" <?php if($subs_kriteria['id_sub_kriteria']==$s_option['id_sub_kriteria']){echo "selected";} ?>><?= $subs_kriteria['deskripsi'] ?> </option>
+													<?php endif ?>
+													<?php if($s_option == NULL): ?>
+														<option value="<?= $subs_kriteria['id_sub_kriteria'] ?>"><?= $subs_kriteria['deskripsi'] ?> </option>
+													<?php endif ?>
 												<?php endforeach ?>
 											</select>
 										</div>
