@@ -83,6 +83,10 @@
 										</div>
 										<?php endif ?>
 										<?php endforeach ?>
+
+										<?php if ($this->session->userdata('id_user_level') != "1"): ?>
+											Jika ada <b>Data Penilaian</b> yang belum di input. Silahkan login kembali dengan level <b>Administrator</b> untuk menginput.
+										<?php endif ?>
 									</div>
 								</form>
 							</div>

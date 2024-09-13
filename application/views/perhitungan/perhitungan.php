@@ -1,14 +1,30 @@
 <?php
 $this->load->view('layouts/header_admin');
+
+// Variabel hentikan_kode
+$hentikan_kode = NULL;
+
 //Matrix Keputusan (X)
 $matriks_x = array();
+
+// Jika salah satu NULL -> skip perhitungan dan hentikan kode
+if ($alternatifs == NULL || $kriterias == NULL){
+	$hentikan_kode = 1;
+	goto skip_perhitungan;
+}
+
 foreach($alternatifs as $alternatif):
 	foreach($kriterias as $kriteria):
 		
 		$id_alternatif = $alternatif->id_alternatif;
 		$id_kriteria = $kriteria->id_kriteria;
-		
+
 		$data_pencocokan = $this->Perhitungan_model->data_nilai($id_alternatif,$id_kriteria);
+		// Jika NULL -> skip perhitungan dan hentikan kode
+		if ($data_pencocokan == NULL){
+			$hentikan_kode = 1;
+			goto skip_perhitungan;
+		}
 		$nilai_k = $data_pencocokan['nilai_sub_kriteria'];
 		
 		// Perhitungan bagian Pembentukan Matriks Keputusan (X) (A0 ke atas)
@@ -135,12 +151,43 @@ foreach($kriterias as $kriteria):
 	// Perhitungan bagian Nilai S (A0 saja)
 	$total_rb0 += $rb;
 endforeach;
+// Tujuan goto
+skip_perhitungan:
 ?>
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-calculator"></i> Data Perhitungan</h1>
 </div>
 
+<?= $this->session->flashdata('message'); ?>
+
+<!-- Jika skip_perhitungan -->
+<?php if ($hentikan_kode != NULL): ?>
+	<div class="card shadow mb-4">
+		<!-- /.card-header -->
+		<div class="card-header py-3">
+			<h6 class="m-0 font-weight-bold text-info"><i class="fa fa-table"></i> Data Perhitungan</h6>
+		</div>
+
+		<div class="card-body">
+			<div class="alert alert-danger">
+				<?php if ($this->session->userdata('id_user_level') == "1"): ?>
+					Masih ada <b>Data Sub Kriteria</b> atau <b>Data Penilaian</b> yang belum di isi.
+				<?php endif ?>
+				<?php if ($this->session->userdata('id_user_level') != "1"): ?>
+					Masih ada <b>Data Sub Kriteria</b> atau <b>Data Penilaian</b> yang belum di isi. Silahkan login kembali dengan level <b>Administrator</b> untuk memperbaiki.
+				<?php endif ?>
+			<?php $this->Perhitungan_model->hapus_hasil(); ?>
+			</div>
+		</div>
+	</div>
+	<!-- Load Footer (untuk Profile / Logout di atas kanan) -->
+	<?php
+		$this->load->view('layouts/footer_admin');
+	?>
+	<!-- Hentikan kode -->
+	<?php exit; ?>
+<?php endif ?>
 
 <div class="card shadow mb-4">
     <!-- /.card-header -->
