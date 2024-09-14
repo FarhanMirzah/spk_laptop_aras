@@ -49,7 +49,7 @@
 						</div>
 						<div class="form-group">
 							<label for="nilai_sub_kriteria" class="font-weight-bold">Nilai</label>
-							<input autocomplete="off" type="text" id="nilai_sub_kriteria" name="nilai_sub_kriteria" class="form-control" required>
+							<input autocomplete="off" type="number" id="nilai_sub_kriteria" name="nilai_sub_kriteria" min="1" max="100" class="form-control" required>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -112,7 +112,7 @@
 										</div>
 										<div class="form-group">
 											<label for="nilai_sub_kriteria" class="font-weight-bold">Nilai</label>
-											<input type="text" autocomplete="off" id="nilai_sub_kriteria" name="nilai_sub_kriteria" class="form-control" value="<?= $key['nilai_sub_kriteria'] ?>" required>
+											<input type="number" autocomplete="off" id="nilai_sub_kriteria" name="nilai_sub_kriteria" min="1" max="100" class="form-control" value="<?= $key['nilai_sub_kriteria'] ?>" required>
 										</div>
 									</div>
 									<div class="modal-footer">

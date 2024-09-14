@@ -31,7 +31,7 @@
 				
 				<div class="form-group col-md-6">
 					<label class="font-weight-bold">Bobot Kriteria</label>
-					<input autocomplete="off" type="number" name="bobot" step="0.01" value="<?php echo $kriteria->bobot ?>" required class="form-control"/>
+					<input autocomplete="off" type="number" name="bobot" step="0.01" min="0.01" max="1" value="<?php echo $kriteria->bobot ?>" required class="form-control"/>
 				</div>
 				
 				<div class="form-group col-md-6">
