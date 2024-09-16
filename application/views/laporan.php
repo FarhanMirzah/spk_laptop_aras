@@ -16,6 +16,7 @@
 </style>
 <body>
 <h4>Hasil Akhir Perankingan pada <?= date('j F Y (G:i A)')?></h4>
+<h4>Jumlah alternatif: <?= count($hasil);?></h4>
 <table border="1" width="100%">
 	<thead>
 		<tr align="center">
