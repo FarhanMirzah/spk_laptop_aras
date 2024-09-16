@@ -76,7 +76,7 @@
 													<h6>
 														<?php if($subs_kriteria['id_sub_kriteria']==$s_option['id_sub_kriteria']){
 															$pilihan = $subs_kriteria['deskripsi'];
-															echo "<h6>$pilihan</h6";
+															echo "<h6>$pilihan</h6>";
 														} ?> 
 													</h6>
 												<?php endif ?>
@@ -90,6 +90,7 @@
 										<?php endforeach ?>
 
 										<?php if ($this->session->userdata('id_user_level') != "1"): ?>
+											<hr>
 											Jika ada <b>Data Penilaian</b> yang belum di input. Silahkan login kembali dengan level <b>Administrator</b> untuk menginput.
 										<?php endif ?>
 									</div>
