@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2024 at 04:43 PM
+-- Generation Time: Sep 16, 2024 at 10:24 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -66,16 +66,16 @@ CREATE TABLE `hasil` (
 --
 
 INSERT INTO `hasil` (`id_hasil`, `id_alternatif`, `nilai_k`) VALUES
-(1, 1, 0.4217),
-(2, 2, 0.3404),
-(3, 3, 0.3841),
-(4, 4, 0.5716),
-(5, 5, 0.7398),
-(6, 6, 0.696),
-(7, 7, 0.3926),
-(8, 8, 0.662),
-(9, 9, 0.6575),
-(10, 10, 0.9053);
+(1, 1, 0.4884),
+(2, 2, 0.4244),
+(3, 3, 0.4884),
+(4, 4, 0.6818),
+(5, 5, 0.8524),
+(6, 6, 0.5897),
+(7, 7, 0.5415),
+(8, 8, 0.7617),
+(9, 9, 0.5864),
+(10, 10, 0.8263);
 
 -- --------------------------------------------------------
 
@@ -132,7 +132,7 @@ INSERT INTO `penilaian` (`id_penilaian`, `id_alternatif`, `id_kriteria`, `id_sub
 (7, 1, 7, 48),
 (8, 1, 8, 54),
 (9, 2, 1, 1),
-(10, 2, 2, 19),
+(10, 2, 2, 21),
 (11, 2, 3, 25),
 (12, 2, 4, 29),
 (13, 2, 5, 36),
@@ -240,47 +240,48 @@ INSERT INTO `sub_kriteria` (`id_sub_kriteria`, `id_kriteria`, `deskripsi`, `nila
 (16, 2, 'AMD Ryzen 5', 60),
 (17, 2, 'Intel Core i3', 40),
 (18, 2, 'AMD Ryzen 3', 40),
-(19, 2, 'Intel Celeron', 20),
+(19, 2, 'Intel Processor N', 30),
 (20, 2, 'Intel Pentium', 20),
-(21, 3, '64 GB atau lebih', 100),
-(22, 3, '32 GB', 80),
-(23, 3, '16 GB', 60),
-(24, 3, '8 GB', 40),
-(25, 3, '4 GB', 20),
-(26, 4, '> 1 TB SSD', 100),
-(27, 4, '1 TB SSD', 80),
-(28, 4, '512 GB SSD', 60),
-(29, 4, '256 GB SSD', 40),
-(30, 4, '< 256 GB SSD', 20),
-(31, 5, '4K (3840x2400)', 100),
-(32, 5, '2.8K (2800x1800)', 80),
-(33, 5, 'WQXGA (2560x1600)', 60),
-(34, 5, 'WQHD (2560x1440)', 60),
-(35, 5, 'WUXGA (1920x1200)', 40),
-(36, 5, 'FHD (1920x1080)', 40),
-(37, 5, 'HD+ (1600x900)', 30),
-(38, 5, 'HD (1366x768)', 20),
-(39, 6, 'Dedicated NVIDIA GeForce RTX', 100),
-(40, 6, 'Dedicated AMD Radeon RX', 75),
-(41, 6, 'Dedicated Intel Arc', 75),
-(42, 6, 'Integrated Intel Iris Xe Graphics', 50),
-(43, 6, 'Integrated AMD Radeon Graphics', 50),
-(44, 6, 'Integrated Intel UHD Graphics', 25),
-(45, 7, '85 - 100 Wh', 100),
-(46, 7, '69 - 84 Wh', 80),
-(47, 7, '53 - 68 Wh', 60),
-(48, 7, '37 - 52 Wh', 40),
-(49, 7, '36 Wh atau kurang', 20),
-(50, 8, '< 1.00 kg', 100),
-(51, 8, '1.00 - 1.15 kg', 90),
-(52, 8, '1.16 - 1.30 kg', 80),
-(53, 8, '1.31 - 1.45 kg', 70),
-(54, 8, '1.46 - 1.60 kg', 60),
-(55, 8, '1.61 - 1.75 kg', 50),
-(56, 8, '1.76 - 1.90 kg', 40),
-(57, 8, '1.91 - 2.05 kg', 30),
-(58, 8, '2.06 - 2.20 kg', 20),
-(59, 8, '> 2.20 kg', 10);
+(21, 2, 'Intel Celeron', 10),
+(22, 3, '64 GB atau lebih', 100),
+(23, 3, '32 GB', 80),
+(24, 3, '16 GB', 60),
+(25, 3, '8 GB', 40),
+(26, 3, '4 GB', 20),
+(27, 4, '> 1 TB SSD', 100),
+(28, 4, '1 TB SSD', 80),
+(29, 4, '512 GB SSD', 60),
+(30, 4, '256 GB SSD', 40),
+(31, 4, '< 256 GB SSD', 20),
+(32, 5, '4K (3840x2400)', 100),
+(33, 5, '2.8K (2800x1800)', 80),
+(34, 5, 'WQXGA (2560x1600)', 60),
+(35, 5, 'WQHD (2560x1440)', 60),
+(36, 5, 'WUXGA (1920x1200)', 40),
+(37, 5, 'FHD (1920x1080)', 40),
+(38, 5, 'HD+ (1600x900)', 30),
+(39, 5, 'HD (1366x768)', 20),
+(40, 6, 'Dedicated NVIDIA GeForce RTX', 100),
+(41, 6, 'Dedicated AMD Radeon RX', 75),
+(42, 6, 'Dedicated Intel Arc', 75),
+(43, 6, 'Integrated Intel Iris Xe Graphics', 50),
+(44, 6, 'Integrated AMD Radeon Graphics', 50),
+(45, 6, 'Integrated Intel UHD Graphics', 25),
+(46, 7, '85 - 100 Wh', 100),
+(47, 7, '69 - 84 Wh', 80),
+(48, 7, '53 - 68 Wh', 60),
+(49, 7, '37 - 52 Wh', 40),
+(50, 7, '36 Wh atau kurang', 20),
+(51, 8, '< 1.00 kg', 100),
+(52, 8, '1.00 - 1.15 kg', 90),
+(53, 8, '1.16 - 1.30 kg', 80),
+(54, 8, '1.31 - 1.45 kg', 70),
+(55, 8, '1.46 - 1.60 kg', 60),
+(56, 8, '1.61 - 1.75 kg', 50),
+(57, 8, '1.76 - 1.90 kg', 40),
+(58, 8, '1.91 - 2.05 kg', 30),
+(59, 8, '2.06 - 2.20 kg', 20),
+(60, 8, '> 2.20 kg', 10);
 
 -- --------------------------------------------------------
 
@@ -408,7 +409,7 @@ ALTER TABLE `penilaian`
 -- AUTO_INCREMENT for table `sub_kriteria`
 --
 ALTER TABLE `sub_kriteria`
-  MODIFY `id_sub_kriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id_sub_kriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `user`
