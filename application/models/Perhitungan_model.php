@@ -39,5 +39,17 @@
             $query = $this->db->query("TRUNCATE TABLE hasil;");
 			return $query;
         }
+
+        // Semua kode di bawah Untuk Detail Alternatif - Hasil Akhir
+        public function data_penilaian($id_alternatif,$id_kriteria)
+        {
+            $query = $this->db->query("SELECT * FROM penilaian WHERE id_alternatif='$id_alternatif' AND id_kriteria='$id_kriteria';");
+            return $query->row_array();
+        }
+		public function data_sub_kriteria($id_kriteria)
+		{
+			$query = $this->db->query("SELECT * FROM sub_kriteria WHERE id_kriteria='$id_kriteria' ORDER BY nilai_sub_kriteria DESC;");
+			return $query->result_array();
+		}
     }
     

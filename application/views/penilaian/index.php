@@ -53,6 +53,7 @@
 								<?= form_open('Penilaian/tambah_penilaian') ?>
 									<div class="modal-body">
 										<h5 class="modal-title" id="myModalLabel"><b>(<?= $keys->kode_alternatif ?>)</b> <?= $keys->nama_alternatif ?></h5>
+										<hr>
 										<?php foreach ($kriteria as $key): ?>
 										<?php 
 										$sub_kriteria = $this->Penilaian_model->data_sub_kriteria($key->id_kriteria);
@@ -92,6 +93,7 @@
 								<?= form_open('Penilaian/update_penilaian') ?>
 									<div class="modal-body">
 										<h5 class="modal-title" id="myModalLabel"><b>(<?= $keys->kode_alternatif ?>)</b> <?= $keys->nama_alternatif ?></h5>
+										<hr>
 										<?php foreach ($kriteria as $key): ?>
 										<?php 
 										$sub_kriteria = $this->Penilaian_model->data_sub_kriteria($key->id_kriteria);

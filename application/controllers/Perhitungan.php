@@ -27,6 +27,8 @@
         {
             $data = [
                 'page' => "Hasil",
+                'kriteria'=> $this->Perhitungan_model->get_kriteria(),
+				'alternatif'=> $this->Perhitungan_model->get_alternatif(),
 				'hasil'=> $this->Perhitungan_model->get_hasil()
             ];
 			
