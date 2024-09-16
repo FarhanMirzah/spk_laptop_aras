@@ -10,28 +10,59 @@
     table, th, td {
         border: 1px solid black;
     }
+	td {
+		page-break-inside: avoid;
+	}
 </style>
 <body>
-<h4>Hasil Akhir Perankingan</h4>
+<h4>Hasil Akhir Perankingan pada <?= date('j F Y (G:i A)')?></h4>
 <table border="1" width="100%">
 	<thead>
 		<tr align="center">
+			<th>Ranking</th>
 			<th>Kode</th>
-			<th>Alternatif</th>
-			<th>Nilai K</th>
-			<th width="15%">Ranking</th>
+			<th>Detail</th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php
 			$no=1;
+			$jumlah_ranking = count($hasil);
 			foreach ($hasil as $keys): ?>
-		<tr align="center">
-			<td><?= $keys->kode_alternatif ?></td>
-			<td align="left"><?= $keys->nama_alternatif ?></td>
-			<td><?= $keys->nilai_k ?></td>
-			<td><?= $no; ?></td>
-		</tr>
+			<tr align="center">
+				<td><?= $no; ?></td>
+				<td><?= $keys->kode_alternatif ?></td>
+				<td align="left">	
+					<b>Nama Alternatif:</b> <?= $keys->nama_alternatif ?>
+					<br>
+					<b>Nilai K:</b> <?= $keys->nilai_k ?>
+					<p>
+
+					<?php foreach ($kriteria as $key): ?>
+					<?php 
+						$sub_kriteria = $this->Perhitungan_model->data_sub_kriteria($key->id_kriteria);
+					?>
+					
+					<!-- Detail Alternatif - Hasil Akhir -->
+					<div class="form-group">
+						<label class="font-weight-bold" for="<?= $key->id_kriteria ?>"><b><?= $key->keterangan ?>:</b></label>
+						<?php foreach ($sub_kriteria as $subs_kriteria): ?>
+							<?php $s_option = $this->Perhitungan_model->data_penilaian($keys->id_alternatif,$subs_kriteria['id_kriteria']); ?>
+							<?php if ($s_option!=NULL): ?>
+								<?php if($subs_kriteria['id_sub_kriteria']==$s_option['id_sub_kriteria']){
+									$pilihan = $subs_kriteria['deskripsi'];
+									echo "$pilihan";
+								} ?> 
+							<?php endif ?>
+						<?php endforeach ?>	
+								
+						<?php if ($s_option==NULL): ?>
+							<h6>--Data Penilaian belum di Input--</h6>
+						<?php endif ?>
+					</div>
+					<?php endforeach ?>
+				</td>
+			</tr>
 		<?php
 			$no++;
 			endforeach ?>

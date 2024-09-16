@@ -14,13 +14,13 @@
 
     <div class="card-body">
 		<div class="table-responsive">
-			<table class="table table-bordered" width="100%" cellspacing="0">
+			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 				<thead class="bg-info text-white">
 					<tr align="center">
-						<th>Kode</th>
+						<th width="5%">Ranking</th>
+						<th width="5%">Kode</th>
 						<th>Alternatif</th>
-						<th>Nilai K</th>
-						<th width="15%">Ranking</th>
+						<th width="10%">Nilai K</th>
 						<th width="10%">Aksi</th>
 					</tr>
 				</thead>
@@ -30,10 +30,10 @@
 						$jumlah_ranking = count($hasil);
 						foreach ($hasil as $keys): ?>
 					<tr align="center">
+						<td><?= $no; ?></td>
 						<td><?= $keys->kode_alternatif ?></td>
 						<td align="left"><?= $keys->nama_alternatif ?></td>
 						<td><?= $keys->nilai_k ?></td>
-						<td><?= $no; ?></td>
 						<td>
 							<div class="btn-group" role="group">
 								<a data-toggle="modal" title="Detail Data" href="#detail<?= $keys->id_alternatif ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
