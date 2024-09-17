@@ -55,7 +55,7 @@
 						redirect('Alternatif');
                     }
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal disimpan!</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal disimpan! Kode atau Nama Alternatif sudah ada di database.</div>');
                     redirect('Alternatif/create');
                     
                 }
@@ -102,7 +102,7 @@
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
                     redirect('Alternatif');
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal diupdate!</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal diupdate! Kode atau Nama Alternatif sudah ada di database.</div>');
                     redirect('Alternatif/edit/'.$id_alternatif);
                     
                 }

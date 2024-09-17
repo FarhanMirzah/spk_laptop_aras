@@ -45,7 +45,7 @@
 						redirect('Sub_kriteria');
                     }
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal disimpan!</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal disimpan! Nama Sub Kriteria sudah ada di database.</div>');
                     redirect('Sub_kriteria');
                     
                 }
@@ -71,7 +71,7 @@
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
                 redirect('Sub_kriteria');
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal diupdate!</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal diupdate! Nama Sub Kriteria sudah ada di database.</div>');
                 redirect('Sub_kriteria');
             }
             // $this->Sub_Kriteria_model->update($id_sub_kriteria, $data);
