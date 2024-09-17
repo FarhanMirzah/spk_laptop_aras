@@ -99,14 +99,14 @@
                 $this->form_validation->set_rules('kode_kriteria', 'Kode Kriteria', 'required|edit_unique[kriteria.kode_kriteria.id_kriteria.'.$id.']');
                 if ($this->form_validation->run() != false) {
                     $this->Kriteria_model->update($id_kriteria, $data);
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!</div>');
                     redirect('Kriteria');
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal diupdate! Kode atau Nama Kriteria sudah ada di database.</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal di update! Kode atau Nama Kriteria sudah ada di database.</div>');
                     redirect('Kriteria/edit/'.$id_kriteria);
                 }
                 // $this->Kriteria_model->update($id_kriteria, $data);
-                // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
+                // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!</div>');
                 // redirect('Kriteria');
             }
             

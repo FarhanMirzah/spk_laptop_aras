@@ -112,7 +112,7 @@
             $this->form_validation->set_rules('username', 'Username', 'required|edit_unique[user.username.id_user.'.$id.']');
             if ($this->form_validation->run() != false) {
                 $this->User_model->update($id_user, $data);
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!</div>');
                 redirect('User');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username tersebut sudah diambil. Coba yang lain.</div>');
@@ -120,7 +120,7 @@
             }
 
             // $this->User_model->update($id_user, $data);
-            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
+            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!</div>');
 			// redirect('User');
         }
     

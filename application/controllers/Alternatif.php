@@ -99,15 +99,15 @@
     
                 if ($this->form_validation->run() != false) {
                     $this->Alternatif_model->update($id_alternatif, $data);
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!</div>');
                     redirect('Alternatif');
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal diupdate! Kode atau Nama Alternatif sudah ada di database.</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal di update! Kode atau Nama Alternatif sudah ada di database.</div>');
                     redirect('Alternatif/edit/'.$id_alternatif);
                     
                 }
                 // $this->Alternatif_model->update($id_alternatif, $data);
-                // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
+                // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!</div>');
                 // redirect('Alternatif');
             }
 

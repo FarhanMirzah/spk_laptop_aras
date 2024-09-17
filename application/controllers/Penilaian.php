@@ -65,7 +65,7 @@
 				}
 				$i++;
 			}
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!</div>');
 			redirect('Penilaian');
 		}
     }
