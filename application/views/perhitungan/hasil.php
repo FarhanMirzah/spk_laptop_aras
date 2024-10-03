@@ -6,6 +6,34 @@
 	<a href="<?= base_url('Laporan'); ?>" class="btn btn-primary"> <i class="fa fa-print"></i> Cetak Data </a>
 </div>
 
+<!-- Fungsi Filter [WIP], sebaiknya dijadikan sidebar -->
+<div class="form-group col-md-12">
+	<h4 class="font-weight-bold">Filter</h4>
+	<form method="post">
+		<div class="form-check">
+			<?php foreach ($kriteria as $key): ?>
+			<?php 
+				$sub_kriteria = $this->Perhitungan_model->data_sub_kriteria($key->id_kriteria);
+				$f_unique=[];
+			?>
+			<?php if ($sub_kriteria!=NULL): ?>
+			<input type="text" name="id_kriteria[]" value="<?= $key->id_kriteria ?>" hidden>
+			<div class="form-group">
+				<label class="font-weight-bold" for="<?= $key->id_kriteria ?>"><?= $key->keterangan ?></label>
+				<?php foreach ($sub_kriteria as $subs_kriteria): ?>
+					<br>
+					<input class="form-check-input" type="checkbox" name="id_sub_kriteria[]" value="<?= $subs_kriteria['id_sub_kriteria'] ?>" id="<?= $subs_kriteria['id_sub_kriteria'] ?>">
+					<label class="form-check-label" for="<?= $subs_kriteria['id_sub_kriteria'] ?>"><?= $subs_kriteria['deskripsi'] ?></label>
+				<?php endforeach ?>
+			</div>
+			<?php endif ?>
+			<?php endforeach ?>
+			<button type="submit" name="submit" class="btn btn-secondary"><i class="fa fa-filter"></i> Filter</button>
+		</div>
+	</form>
+</div>
+	
+<!-- Tabel sebelum di filter -->
 <div class="card shadow mb-4">
     <!-- /.card-header -->
     <div class="card-header py-3">
@@ -91,6 +119,73 @@
 						</div>
 					</div>
 
+					<?php
+						$no++;
+						endforeach ?>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<!-- [WIP] Tabel untuk hasil sudah di filter -->
+<div class="card shadow mb-4">
+	<!-- /.card-header -->
+	<div class="card-header py-3">
+		<h6 class="m-0 font-weight-bold text-info"><i class="fa fa-table"></i> Hasil Akhir Perankingan (Filtered)</h6>
+		<h6> Jika ada error, isi cheklist di atas dan tekan tombol filter terlebih dahulu</h6>
+		<?php
+			if(isset($_POST['submit'])){
+				$arr=$_POST['id_sub_kriteria'];
+				echo "id_sub_kriteria yang di checklist: ";
+				echo implode(", ",$arr ?? []);
+			}
+		?>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<thead class="bg-info text-white">
+					<tr align="center">
+						<th width="5%">Ranking</th>
+						<th width="5%">Kode</th>
+						<th>Alternatif</th>
+						<th width="10%">Nilai K</th>
+						<th width="10%">Aksi</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+						$no=1;
+						$jumlah_ranking = count($hasil);
+						foreach ($hasil as $keys): ?>
+						<?php foreach ($kriteria as $key): ?>
+							<!-- [WIP] Filter Alternatif berdasarkan Sub Kriteria (perlu dirapikan, tapi sekarang sudah bekerja) -->
+							<?php 
+								$data_pencocokan = $this->Perhitungan_model->data_nilai($keys->id_alternatif,$key->id_kriteria);
+							?>
+							<?php if (in_array($data_pencocokan['id_sub_kriteria'], $arr)): ?>
+								<?php 
+									$f_test = array(10,5,6,8,9,4,1,3,2);
+									$f_alternatif[] = (int)$data_pencocokan['id_alternatif'];
+									$f_unique = array_unique($f_alternatif);
+								?>
+							<?php endif ?>
+						<?php endforeach ?>
+
+						<?php if (in_array($keys->id_alternatif, $f_unique)): ?>
+							<tr align="center">
+								<td><?= $no; ?></td>
+								<td><?= $keys->kode_alternatif ?></td>
+								<td align="left"><?= $keys->nama_alternatif ?></td>
+								<td><?= $keys->nilai_k ?></td>
+								<td>
+									<div class="btn-group" role="group">
+										<a data-toggle="modal" title="Detail Data" href="#detail<?= $keys->id_alternatif ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+									</div>
+								</td>
+							</tr>
+						<?php endif ?>	
 					<?php
 						$no++;
 						endforeach ?>
