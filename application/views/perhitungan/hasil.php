@@ -173,8 +173,29 @@
 						</tr>
 					</thead>
 					<tbody>
+						<!-- Kode untuk menampilkan total alternatif yang ditampilkan pada Ranking (filtered) -->
+						<?php
+							$jumlah_ranking = count($hasil);
+							foreach ($hasil as $keys): ?>
+							<?php foreach ($kriteria as $key): ?>
+								<!-- [WIP] Filter Alternatif berdasarkan Sub Kriteria (perlu dirapikan, tapi sekarang sudah bekerja) -->
+								<?php 
+									$data_pencocokan = $this->Perhitungan_model->data_nilai($keys->id_alternatif,$key->id_kriteria);
+								?>
+								<?php if (in_array($data_pencocokan['id_sub_kriteria'], $arr)): ?>
+									<?php 
+										$f_alternatif[] = (int)$data_pencocokan['id_alternatif'];
+										$f_unique = array_unique($f_alternatif);
+									?>
+								<?php endif ?>
+							<?php endforeach ?>
+						<?php endforeach ?>
+						<?php $jumlah_filtered = count($f_unique); ?>
+
+						<!-- Kode menampilkan tabel -->
 						<?php
 							$no=1;
+							$no_filtered=1;
 							$jumlah_ranking = count($hasil);
 							foreach ($hasil as $keys): ?>
 							<?php foreach ($kriteria as $key): ?>
@@ -192,7 +213,7 @@
 
 							<?php if (in_array($keys->id_alternatif, $f_unique)): ?>
 								<tr align="center">
-									<td><?= $no; ?></td>
+									<td><?= $no_filtered; ?></td>
 									<td><?= $keys->kode_alternatif ?></td>
 									<td align="left"><?= $keys->nama_alternatif ?></td>
 									<td><?= $keys->nilai_k ?></td>
@@ -216,7 +237,8 @@
 												<div class="modal-body">
 													<h5 class="modal-title" id="myModalLabel"><b>(<?= $keys->kode_alternatif ?>)</b> <?= $keys->nama_alternatif ?></h5>
 													<h6><b>Nilai K:</b> <?= $keys->nilai_k ?></h6>
-													<h6><b>Ranking:</b> <?= $no ?> dari <?= $jumlah_ranking ?></h6>
+													<h6><b>Ranking (filtered):</b> <?= $no_filtered ?> dari <?= $jumlah_filtered ?></h6>
+													<h6><b>Ranking (all):</b> <?= $no ?> dari <?= $jumlah_ranking ?></h6>
 													<hr>
 													<?php foreach ($kriteria as $key): ?>
 													<?php 
@@ -252,7 +274,7 @@
 										</div>
 									</div>
 								</div>
-							<?php endif ?>	
+							<?php $no_filtered++; endif ?>	
 						<?php
 							$no++;
 							endforeach ?>
