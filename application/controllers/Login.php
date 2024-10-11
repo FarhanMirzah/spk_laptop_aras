@@ -24,8 +24,35 @@ class Login extends CI_Controller {
     {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
-        $passwordx = md5($password);
-        $set = $this->Login_model->login($username, $passwordx);
+        // Kode lama
+        // $passwordx = md5($password);
+        // $set = $this->Login_model->login($username, $passwordx);
+        $set = $this->Login_model->login($username, $password);
+        if($set){ 
+            $log = [
+                'id_user' => $set->id_user,
+                'username' => $set->username,
+                'id_user_level' => $set->id_user_level,
+                'status' => 'Logged'
+            ];
+            $this->session->set_userdata($log);            
+            redirect('Login/home');
+          
+        }else{
+            $this->session->set_flashdata('message', 'Username atau Password Salah');
+            redirect('Login');
+        }
+        
+    }
+
+    public function masuk_user()
+    {
+        $username = "user";
+        $password = "user";
+        // Kode lama
+        // $passwordx = md5($password);
+        // $set = $this->Login_model->login($username, $passwordx);
+        $set = $this->Login_model->login($username, $password);
         if($set){ 
             $log = [
                 'id_user' => $set->id_user,

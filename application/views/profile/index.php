@@ -27,7 +27,7 @@
 				
 				<div class="form-group col-md-6">
 					<label class="font-weight-bold">Password</label>
-					<input autocomplete="off" type="password" name="password" required class="form-control"/>
+					<input autocomplete="off" type="text" name="password" value="<?php echo $profile->password ?>" required class="form-control"/>
 				</div>
 				
 				<div class="form-group col-md-6">

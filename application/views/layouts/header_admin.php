@@ -131,13 +131,14 @@ if($this->session->status !== ('Logged'))
       </div>
     <?php endif; ?>
 
-	  <?php if($this->session->userdata('id_user_level') == '1'): ?>
+    <!-- Disable akses Data User untuk streamline program -->
+	  <!-- <?php if($this->session->userdata('id_user_level') == '1'): ?>
 	  <li class="nav-item <?php if($page=='User'){echo 'active';}?>">
         <a class="nav-link" href="<?= base_url('User'); ?>">
           <i class="fas fa-fw fa-users-cog"></i>
           <span>Data User</span></a>
       </li>
-	  <?php endif; ?>
+	  <?php endif; ?> -->
 
     <?php if($this->session->userdata('id_user_level') == '1'): ?>
 	  <li class="nav-item <?php if($page=='Profile'){echo 'active';}?>">

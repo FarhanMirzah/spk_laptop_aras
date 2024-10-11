@@ -39,7 +39,9 @@
 				'nama' => $this->input->post('nama'),
                 'email' => $this->input->post('email'),
                 'username' => $this->input->post('username'),
-                'password' => md5($this->input->post('password'))
+                'password' => $this->input->post('password')
+                // Kode lama
+                // 'password' => md5($this->input->post('password'))
             );
 
             // Validasi update data  (https://stackoverflow.com/questions/27621250/is-unique-in-codeigniter-for-edit-function) Ellix4u's solution

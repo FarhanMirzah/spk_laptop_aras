@@ -11,7 +11,7 @@
             $this->load->library('form_validation');
             $this->load->model('User_model');
 
-            if ($this->session->userdata('id_user_level') != "1") {
+            if ($this->session->userdata('id_user_level') == "1" || $this->session->userdata('id_user_level') != "1") {
             ?>
 				<script type="text/javascript">
                     alert('Anda tidak berhak mengakses halaman ini!');
@@ -47,7 +47,9 @@
 				'nama' => $this->input->post('nama'),
 				'email' => $this->input->post('email'),
 				'username' => $this->input->post('username'),
-				'password' => md5($this->input->post('password'))
+                'password' => $this->input->post('password')
+                // Kode lama
+				// 'password' => md5($this->input->post('password'))
 			];
 			
 			$this->form_validation->set_rules('email', 'email', 'required');
@@ -104,7 +106,9 @@
 				'nama' => $this->input->post('nama'),
                 'email' => $this->input->post('email'),
                 'username' => $this->input->post('username'),
-                'password' => md5($this->input->post('password'))
+                'password' => $this->input->post('password')
+                // Kode lama
+                // 'password' => md5($this->input->post('password'))
             );
 
             // Validasi update data  (https://stackoverflow.com/questions/27621250/is-unique-in-codeigniter-for-edit-function) Ellix4u's solution
