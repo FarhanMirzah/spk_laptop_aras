@@ -59,29 +59,44 @@ if($this->session->status !== ('Logged'))
 	  <!-- Divider -->
       <hr class="sidebar-divider">
 
-      <!-- Heading -->
+    <!-- Heading untuk Admin -->
+    <?php if($this->session->userdata('id_user_level') == '1'): ?>
       <div class="sidebar-heading">
         Master Data
       </div>
+    <?php endif; ?>
 
+    <!-- Heading untuk User -->
+    <?php if($this->session->userdata('id_user_level') != '1'): ?>
+      <div class="sidebar-heading">
+        Data
+      </div>
+    <?php endif; ?>
+
+    <?php if($this->session->userdata('id_user_level') == '1'): ?>
 	  <li class="nav-item <?php if($page=='Kriteria'){echo 'active';}?>">
         <a class="nav-link" href="<?= base_url('Kriteria'); ?>">
           <i class="fas fa-fw fa-cube"></i>
           <span>Data Kriteria</span></a>
       </li>
+    <?php endif; ?>
 	  
+    <?php if($this->session->userdata('id_user_level') == '1'): ?>
 	  <li class="nav-item <?php if($page=='Sub Kriteria'){echo 'active';}?>">
         <a class="nav-link" href="<?= base_url('Sub_kriteria'); ?>">
           <i class="fas fa-fw fa-cubes"></i>
           <span>Data Sub Kriteria</span></a>
       </li>
-	  
+    <?php endif; ?>
+
+    <?php if($this->session->userdata('id_user_level') == '1'): ?>
 	  <li class="nav-item <?php if($page=='Alternatif'){echo 'active';}?>">
         <a class="nav-link" href="<?= base_url('Alternatif'); ?>">
           <i class="fas fa-fw fa-list"></i>
           <span>Data Alternatif</span></a>
       </li>
-	  
+	  <?php endif; ?>
+
     <?php if($this->session->userdata('id_user_level') == '1'): ?>
 	  <li class="nav-item <?php if($page=='Penilaian'){echo 'active';}?>">
         <a class="nav-link" href="<?= base_url('Penilaian'); ?>">
@@ -90,12 +105,14 @@ if($this->session->status !== ('Logged'))
       </li>
     <?php endif; ?>
 	  
+    <?php if($this->session->userdata('id_user_level') == '1'): ?>
 	  <li class="nav-item <?php if($page=='Perhitungan'){echo 'active';}?>">
         <a class="nav-link" href="<?= base_url('Perhitungan'); ?>">
           <i class="fas fa-fw fa-calculator"></i>
           <span>Data Perhitungan</span></a>
       </li>
-	  
+	  <?php endif; ?>
+
 	  <li class="nav-item <?php if($page=='Hasil'){echo 'active';}?>">
         <a class="nav-link" href="<?= base_url('Perhitungan/hasil'); ?>">
           <i class="fas fa-fw fa-chart-area"></i>
@@ -103,12 +120,16 @@ if($this->session->status !== ('Logged'))
       </li>
 	  
 	  <!-- Divider -->
+    <?php if($this->session->userdata('id_user_level') == '1'): ?>
       <hr class="sidebar-divider">
-	  
+	  <?php endif; ?>
+
 	  <!-- Heading -->
+    <?php if($this->session->userdata('id_user_level') == '1'): ?>
       <div class="sidebar-heading">
         Master User
       </div>
+    <?php endif; ?>
 
 	  <?php if($this->session->userdata('id_user_level') == '1'): ?>
 	  <li class="nav-item <?php if($page=='User'){echo 'active';}?>">
@@ -118,11 +139,13 @@ if($this->session->status !== ('Logged'))
       </li>
 	  <?php endif; ?>
 
+    <?php if($this->session->userdata('id_user_level') == '1'): ?>
 	  <li class="nav-item <?php if($page=='Profile'){echo 'active';}?>">
         <a class="nav-link" href="<?= base_url('Profile'); ?>">
           <i class="fas fa-fw fa-user"></i>
           <span>Data Profile</span></a>
       </li>
+    <?php endif; ?>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -162,12 +185,14 @@ if($this->session->status !== ('Logged'))
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="<?= base_url('Profile'); ?>">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-				<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <?php if($this->session->userdata('id_user_level') == '1'): ?>
+                  <a class="dropdown-item" href="<?= base_url('Profile'); ?>">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Profile
+                  </a>
+                  <div class="dropdown-divider"></div>
+                <?php endif; ?>
+				        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>

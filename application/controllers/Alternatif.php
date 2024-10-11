@@ -10,6 +10,15 @@
             $this->load->library('pagination');
             $this->load->library('form_validation');
             $this->load->model('Alternatif_model');
+
+            if ($this->session->userdata('id_user_level') != "1") {
+            ?>
+                <script type="text/javascript">
+                    alert('Anda tidak berhak mengakses halaman ini!');
+                    window.location='<?php echo base_url("Login/home"); ?>'
+                </script>
+            <?php
+            }
         }
 
         public function index()
@@ -25,14 +34,6 @@
         //menampilkan view create
         public function create()
         {
-            if ($this->session->userdata('id_user_level') != "1") {
-                ?>
-                    <script type="text/javascript">
-                        alert('Anda tidak berhak mengakses halaman ini!');
-                        window.location='<?php echo base_url("Login/home"); ?>'
-                    </script>
-                <?php
-            }
             $data['page'] = "Alternatif";
             $this->load->view('alternatif/create',$data);
         }
@@ -65,14 +66,6 @@
 
         public function edit($id_alternatif)
         {
-            if ($this->session->userdata('id_user_level') != "1") {
-                ?>
-                    <script type="text/javascript">
-                        alert('Anda tidak berhak mengakses halaman ini!');
-                        window.location='<?php echo base_url("Login/home"); ?>'
-                    </script>
-                <?php
-            }
             $alternatif = $this->Alternatif_model->show($id_alternatif);
             $data = [
                 'page' => "Alternatif",
@@ -110,15 +103,6 @@
                 // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!</div>');
                 // redirect('Alternatif');
             }
-
-            if ($this->session->userdata('id_user_level') != "1") {
-                ?>
-                    <script type="text/javascript">
-                        alert('Anda tidak berhak mengakses halaman ini!');
-                        window.location='<?php echo base_url("Login/home"); ?>'
-                    </script>
-                <?php
-            }
         }
     
         public function destroy($id_alternatif)
@@ -127,14 +111,6 @@
                 $this->Alternatif_model->delete($id_alternatif);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
                 redirect('Alternatif');
-            }
-            if ($this->session->userdata('id_user_level') != "1") {
-                ?>
-                    <script type="text/javascript">
-                        alert('Anda tidak berhak mengakses halaman ini!');
-                        window.location='<?php echo base_url("Login/home"); ?>'
-                    </script>
-                <?php
             }
         }
     

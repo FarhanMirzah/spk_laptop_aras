@@ -10,6 +10,15 @@
             $this->load->library('pagination');
             $this->load->library('form_validation');
             $this->load->model('Kriteria_model');
+
+            if ($this->session->userdata('id_user_level') != "1") {
+            ?>
+                <script type="text/javascript">
+                    alert('Anda tidak berhak mengakses halaman ini!');
+                    window.location='<?php echo base_url("Login/home"); ?>'
+                </script>
+            <?php
+            }
         }
 
         public function index()
@@ -22,14 +31,6 @@
         //menampilkan view create
         public function create()
         {
-            if ($this->session->userdata('id_user_level') != "1") {
-                ?>
-                    <script type="text/javascript">
-                        alert('Anda tidak berhak mengakses halaman ini!');
-                        window.location='<?php echo base_url("Login/home"); ?>'
-                    </script>
-                <?php
-            }
 			$data['page'] = "Kriteria";
             $this->load->view('kriteria/create', $data);
         }
@@ -68,14 +69,6 @@
 
         public function edit($id_kriteria)
         {
-            if ($this->session->userdata('id_user_level') != "1") {
-                ?>
-                    <script type="text/javascript">
-                        alert('Anda tidak berhak mengakses halaman ini!');
-                        window.location='<?php echo base_url("Login/home"); ?>'
-                    </script>
-                <?php
-            }
             $data['page'] = "Kriteria";
 			$data['kriteria'] = $this->Kriteria_model->show($id_kriteria);
             $this->load->view('kriteria/edit', $data);
@@ -109,15 +102,6 @@
                 // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!</div>');
                 // redirect('Kriteria');
             }
-            
-            if ($this->session->userdata('id_user_level') != "1") {
-                ?>
-                    <script type="text/javascript">
-                        alert('Anda tidak berhak mengakses halaman ini!');
-                        window.location='<?php echo base_url("Login/home"); ?>'
-                    </script>
-                <?php
-            }
         }
     
         public function destroy($id_kriteria)
@@ -126,14 +110,6 @@
                 $this->Kriteria_model->delete($id_kriteria);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
                 redirect('Kriteria');
-            }
-            if ($this->session->userdata('id_user_level') != "1") {
-                ?>
-                    <script type="text/javascript">
-                        alert('Anda tidak berhak mengakses halaman ini!');
-                        window.location='<?php echo base_url("Login/home"); ?>'
-                    </script>
-                <?php
             }
         }
     

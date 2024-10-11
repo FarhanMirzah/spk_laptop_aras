@@ -15,6 +15,7 @@
 	}
 </style>
 <body>
+<?php date_default_timezone_set('Asia/Jakarta'); ?>
 <h4>Hasil Akhir Perankingan pada <?= date('j F Y (G:i A)')?></h4>
 <h4>Jumlah alternatif: <?= count($hasil);?></h4>
 <table border="1" width="100%">
