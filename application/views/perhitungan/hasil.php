@@ -6,7 +6,9 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-chart-area"></i> Data Hasil Akhir</h1>
 	
-	<a href="<?= base_url('Laporan'); ?>" class="btn btn-primary"> <i class="fa fa-print"></i> Cetak Data </a>
+	<?php if($this->session->userdata('id_user_level') == '1'): ?>
+		<a href="<?= base_url('Laporan'); ?>" class="btn btn-primary"> <i class="fa fa-print"></i> Cetak Data </a>
+	<?php endif ?>
 </div>
 
 <!-- Fungsi Filter [WIP], sebaiknya dijadikan sidebar -->
@@ -33,25 +35,38 @@
 				<?php if ($sub_kriteria!=NULL): ?>
 					<input type="text" name="id_kriteria[]" value="<?= $key->id_kriteria ?>" hidden>
 					<div class="form-group">
-						<label class="font-weight-bold text-info" for="<?= $key->id_kriteria ?>"><?= $key->keterangan ?></label>
+						<div href="#filter_id_kriteria<?= $key->id_kriteria ?>" data-toggle="collapse">
+							<label class="font-weight-bold text-info"><?= $key->keterangan ?></label>
+							<a><i style="color: #36b9cc" class="fa fa-plus float-right pr-2"></i></a>
+						</div>
 						<?php foreach ($sub_kriteria as $subs_kriteria): ?>
-							<br>
 							<!-- Kode untuk checklist jika tidak ada filter (kosong) -->
 							<?php if(!isset($_POST['id_sub_kriteria'])): ?>
-								<input class="form-check-input" type="checkbox" name="id_sub_kriteria[]" value="<?= $subs_kriteria['id_sub_kriteria'] ?>" id="<?= $subs_kriteria['id_sub_kriteria'] ?>">
-								<label class="form-check-label" for="<?= $subs_kriteria['id_sub_kriteria'] ?>"><?= $subs_kriteria['deskripsi'] ?></label>
+								<!-- Kode untuk collapse filter hasil akhir yang di tidak checklist -->
+								<div id="filter_id_kriteria<?= $key->id_kriteria ?>" class="collapse">
+									<input class="form-check-input" type="checkbox" name="id_sub_kriteria[]" value="<?= $subs_kriteria['id_sub_kriteria'] ?>" id="<?= $subs_kriteria['id_sub_kriteria'] ?>">
+									<label class="form-check-label" for="<?= $subs_kriteria['id_sub_kriteria'] ?>"><?= $subs_kriteria['deskripsi'] ?></label>
+								</div>
 							<?php endif ?>
 
 							<!-- Kode untuk checklist yang dipilih tetap checked setelah filter (label jadi bold dan warna biru) -->
 							<?php if(isset($_POST['id_sub_kriteria'])): ?>
-								<input class="form-check-input" type="checkbox" name="id_sub_kriteria[]" value="<?= $subs_kriteria['id_sub_kriteria'] ?>" id="<?= $subs_kriteria['id_sub_kriteria'] ?>" <?php if(in_array($subs_kriteria['id_sub_kriteria'], $_POST['id_sub_kriteria'])){echo "checked";} ?>>
-								<?php if(!in_array($subs_kriteria['id_sub_kriteria'], $_POST['id_sub_kriteria'])): ?>
-									<label class="form-check-label" for="<?= $subs_kriteria['id_sub_kriteria'] ?>"><?= $subs_kriteria['deskripsi'] ?></label>
-								<?php endif ?>
+								<!-- Kode untuk collapse filter hasil akhir yang di checklist -->
+								<?php 
+									$id_sub_kriteria = join(',', $_POST['id_sub_kriteria']);
+									$id_kriteria = $this->Perhitungan_model->get_id_kriteria($id_sub_kriteria);
+									$id_kriteria_unique = array_unique(array_column($id_kriteria, 'id_kriteria'));
+								?>
+								<div id="filter_id_kriteria<?= $key->id_kriteria ?>" class="collapse<?php if(in_array($subs_kriteria['id_kriteria'], $id_kriteria_unique)){echo ".show";} ?>">
+									<input class="form-check-input" type="checkbox" name="id_sub_kriteria[]" value="<?= $subs_kriteria['id_sub_kriteria'] ?>" id="<?= $subs_kriteria['id_sub_kriteria'] ?>" <?php if(in_array($subs_kriteria['id_sub_kriteria'], $_POST['id_sub_kriteria'])){echo "checked";} ?>>
+									<?php if(!in_array($subs_kriteria['id_sub_kriteria'], $_POST['id_sub_kriteria'])): ?>
+										<label class="form-check-label" for="<?= $subs_kriteria['id_sub_kriteria'] ?>"><?= $subs_kriteria['deskripsi'] ?></label>
+									<?php endif ?>
 
-								<?php if(in_array($subs_kriteria['id_sub_kriteria'], $_POST['id_sub_kriteria'])): ?>
-									<label class="form-check-label text-primary font-weight-bold" for="<?= $subs_kriteria['id_sub_kriteria'] ?>"><?= $subs_kriteria['deskripsi'] ?></label>
-								<?php endif ?>
+									<?php if(in_array($subs_kriteria['id_sub_kriteria'], $_POST['id_sub_kriteria'])): ?>
+										<label class="form-check-label text-primary font-weight-bold" for="<?= $subs_kriteria['id_sub_kriteria'] ?>"><?= $subs_kriteria['deskripsi'] ?></label>
+									<?php endif ?>
+								</div>
 							<?php endif ?>
 						<?php endforeach ?>
 						<hr class="sidebar-divider">

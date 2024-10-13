@@ -51,5 +51,12 @@
 			$query = $this->db->query("SELECT * FROM sub_kriteria WHERE id_kriteria='$id_kriteria' ORDER BY nilai_sub_kriteria DESC;");
 			return $query->result_array();
 		}
+
+        // Kode untuk collapse filter hasil akhir
+        public function get_id_kriteria($id_sub_kriteria)
+		{
+			$query = $this->db->query("SELECT id_kriteria FROM sub_kriteria WHERE id_sub_kriteria IN ($id_sub_kriteria);");
+			return $query->result_array();
+		}
     }
     
