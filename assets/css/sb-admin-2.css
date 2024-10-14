@@ -11225,6 +11225,7 @@ body.sidebar-toggled footer.sticky-footer {
 /* Sidebar Filter di Hasil Akhir */
 /* https://stackoverflow.com/questions/28094187/css-align-div-elements-from-center-to-left */
 .hasil-akhir-filter {
+  vertical-align: top;
   width: 18%;
   border-right: 2px solid #d1d3e2;
   display: inline-block;
@@ -11232,5 +11233,4 @@ body.sidebar-toggled footer.sticky-footer {
 .hasil-akhir-content {
   width: 70%;
   display: inline-block;
-  position: absolute;
 }
