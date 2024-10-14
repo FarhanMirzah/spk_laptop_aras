@@ -47,11 +47,18 @@ class Login extends CI_Controller {
 
     public function masuk_user()
     {
-        $username = "user";
-        $password = "user";
-        // Kode lama
+        $id_user_level = 2;
+        $username = implode(',', $this->Login_model->get_username_user($id_user_level));
+        $password = implode(',', $this->Login_model->get_password_user($id_user_level));
+
+        // Kode lama 1
+        // $username = "user";
+        // $password = "user";
+
+        // Kode lama 2
         // $passwordx = md5($password);
         // $set = $this->Login_model->login($username, $passwordx);
+        
         $set = $this->Login_model->login($username, $password);
         if($set){ 
             $log = [

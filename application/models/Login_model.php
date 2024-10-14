@@ -17,5 +17,17 @@
             $this->db->where('password', $passwordx);
             return $this->db->get()->row();
         }
-    
+
+        // Kode untuk masuk sebagai user (tanpa login)
+        public function get_username_user($id_user_level)
+        {
+            $query = $this->db->query("SELECT username FROM user WHERE id_user_level = $id_user_level;");
+            return $query->row_array();
+        }
+
+        public function get_password_user($id_user_level)
+        {
+            $query = $this->db->query("SELECT password FROM user WHERE id_user_level = $id_user_level;");
+            return $query->row_array();
+        }
     }
