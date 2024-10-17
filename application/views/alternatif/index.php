@@ -59,6 +59,7 @@
 								<?= form_open('Alternatif/detail_alternatif') ?>
 									<div class="modal-body">
 										<h5 class="modal-title" id="myModalLabel"><b>(<?= $keys->kode_alternatif ?>)</b> <?= $keys->nama_alternatif ?></h5>
+										<img src="./uploads/<?= $keys->gambar_alternatif ?>" alt="<?= $keys->nama_alternatif ?>" style="max-width: 450px; max-height: 275px">
 										<hr>
 										<?php foreach ($kriteria as $key): ?>
 										<?php 

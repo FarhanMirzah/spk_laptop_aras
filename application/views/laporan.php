@@ -24,6 +24,7 @@
 			<th>Ranking</th>
 			<th>Kode</th>
 			<th>Detail</th>
+			<th>Gambar</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -64,6 +65,7 @@
 					</div>
 					<?php endforeach ?>
 				</td>
+				<td><img src="./uploads/<?= $keys->gambar_alternatif ?>" alt="<?= $keys->nama_alternatif ?>" style="max-width: 200px; max-height: 125px"></td>
 			</tr>
 		<?php
 			$no++;

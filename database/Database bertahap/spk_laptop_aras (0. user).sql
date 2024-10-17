@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2024 at 03:10 PM
+-- Generation Time: Oct 17, 2024 at 11:16 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -29,9 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alternatif` (
   `id_alternatif` int(11) NOT NULL,
-  `kode_alternatif` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
-  `nama_alternatif` varchar(255) CHARACTER SET utf8mb4 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `kode_alternatif` varchar(100) NOT NULL,
+  `nama_alternatif` varchar(255) NOT NULL,
+  `gambar_alternatif` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -43,7 +44,7 @@ CREATE TABLE `hasil` (
   `id_hasil` int(11) NOT NULL,
   `id_alternatif` int(11) NOT NULL,
   `nilai_k` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -53,11 +54,11 @@ CREATE TABLE `hasil` (
 
 CREATE TABLE `kriteria` (
   `id_kriteria` int(11) NOT NULL,
-  `keterangan` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
-  `kode_kriteria` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+  `keterangan` varchar(100) NOT NULL,
+  `kode_kriteria` varchar(100) NOT NULL,
   `bobot` float NOT NULL,
-  `jenis` varchar(100) CHARACTER SET utf8mb4 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `jenis` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -70,7 +71,7 @@ CREATE TABLE `penilaian` (
   `id_alternatif` int(11) NOT NULL,
   `id_kriteria` int(11) NOT NULL,
   `id_sub_kriteria` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -81,9 +82,9 @@ CREATE TABLE `penilaian` (
 CREATE TABLE `sub_kriteria` (
   `id_sub_kriteria` int(11) NOT NULL,
   `id_kriteria` int(11) NOT NULL,
-  `deskripsi` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `deskripsi` varchar(255) NOT NULL,
   `nilai_sub_kriteria` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -94,11 +95,11 @@ CREATE TABLE `sub_kriteria` (
 CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
   `id_user_level` int(11) NOT NULL,
-  `nama` varchar(200) CHARACTER SET utf8mb4 NOT NULL,
-  `email` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
-  `username` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
-  `password` varchar(100) CHARACTER SET utf8mb4 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `nama` varchar(200) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
@@ -116,8 +117,8 @@ INSERT INTO `user` (`id_user`, `id_user_level`, `nama`, `email`, `username`, `pa
 
 CREATE TABLE `user_level` (
   `id_user_level` int(11) NOT NULL,
-  `user_level` varchar(100) CHARACTER SET utf8mb4 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `user_level` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user_level`

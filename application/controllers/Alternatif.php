@@ -38,30 +38,43 @@
             $this->load->view('alternatif/create',$data);
         }
 
-        //menambahkan data ke database
+        // menambahkan data ke database
         public function store()
         {
-                $data = [
-                    'kode_alternatif' => $this->input->post('kode_alternatif'),
-                    'nama_alternatif' => $this->input->post('nama_alternatif')
-                ];
-                
-                $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|is_unique[alternatif.kode_alternatif]');  
-                $this->form_validation->set_rules('nama_alternatif', 'Nama', 'required|is_unique[alternatif.nama_alternatif]');               
-    
-                if ($this->form_validation->run() != false) {
-                    $result = $this->Alternatif_model->insert($data);
-                    if ($result) {
-                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan!</div>');
-						redirect('Alternatif');
-                    }
-                } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal disimpan! Kode atau Nama Alternatif sudah ada di database.</div>');
-                    redirect('Alternatif/create');
-                    
-                }
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'xbm|tif|jfif|ico|tiff|gif|svg|jpeg|svgz|jpg|webp|png|bmp|pjp|apng|pjpeg|avif';
+            $this->load->library('upload', $config);
             
+            $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|is_unique[alternatif.kode_alternatif]');  
+            $this->form_validation->set_rules('nama_alternatif', 'Nama', 'required|is_unique[alternatif.nama_alternatif]');               
 
+            if ($this->form_validation->run() != false) {
+                // WIP Upload Gambar (To do: Tampilkan error kalau mengupload file selain yang allowed_types)
+                if (!$this->upload->do_upload('userfile')) {
+                    $data = [
+                        'kode_alternatif' => $this->input->post('kode_alternatif'),
+                        'nama_alternatif' => $this->input->post('nama_alternatif')
+                    ];
+                    $result = $this->Alternatif_model->insert($data);
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan!</div>');
+                    redirect('Alternatif');
+                }
+                else {
+                    $data = array('upload_data' => $this->upload->data());
+                    $data = [
+                        'kode_alternatif' => $this->input->post('kode_alternatif'),
+                        'nama_alternatif' => $this->input->post('nama_alternatif'),
+                        'gambar_alternatif' => $this->upload->data("file_name")
+                    ];
+                    $result = $this->Alternatif_model->insert($data);
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan!</div>');
+                    redirect('Alternatif');
+                }
+            }
+            else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal disimpan! Kode atau Nama Alternatif sudah ada di database.</div>');
+                redirect('Alternatif/create');
+            }
         }
 
         public function edit($id_alternatif)
@@ -77,31 +90,48 @@
         public function update($id_alternatif)
         {
             if ($this->session->userdata('id_user_level') == "1") {
+                $config['upload_path'] = './uploads/';
+                $config['allowed_types'] = 'xbm|tif|jfif|ico|tiff|gif|svg|jpeg|svgz|jpg|webp|png|bmp|pjp|apng|pjpeg|avif';
+                $this->load->library('upload', $config);
+                
                 $id_alternatif = $this->input->post('id_alternatif');
-                $data = array(
-                    'kode_alternatif' => $this->input->post('kode_alternatif'),
-                    'nama_alternatif' => $this->input->post('nama_alternatif')
-                );
     
                 // Validasi update data  (https://stackoverflow.com/questions/27621250/is-unique-in-codeigniter-for-edit-function) Ellix4u's solution
                 $id = $this->uri->segment(3);
                 $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|edit_unique[alternatif.kode_alternatif.id_alternatif.'.$id.']');
                 $this->form_validation->set_rules('nama_alternatif', 'Nama', 'required|edit_unique[alternatif.nama_alternatif.id_alternatif.'.$id.']');
-                // $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|is_unique[alternatif.kode_alternatif]');  
-                // $this->form_validation->set_rules('nama_alternatif', 'Nama', 'required|is_unique[alternatif.nama_alternatif]');
     
+
                 if ($this->form_validation->run() != false) {
-                    $this->Alternatif_model->update($id_alternatif, $data);
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!</div>');
-                    redirect('Alternatif');
-                } else {
+                    // WIP Upload Gambar (To do: Tampilkan error kalau mengupload file selain yang allowed_types)
+                    if (!$this->upload->do_upload('userfile')) {
+                        $gambar_alternatif = implode(',', (array_column($this->Alternatif_model->get_gambar_alternatif($id_alternatif), 'gambar_alternatif')));
+
+                        $data = array(
+                            'kode_alternatif' => $this->input->post('kode_alternatif'),
+                            'nama_alternatif' => $this->input->post('nama_alternatif'),
+                            'gambar_alternatif' => $gambar_alternatif
+                        );
+                        $this->Alternatif_model->update($id_alternatif, $data);
+                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!</div>');
+                        redirect('Alternatif');
+                    }
+                    else {
+                        $data = array('upload_data' => $this->upload->data());
+                        $data = [
+                            'kode_alternatif' => $this->input->post('kode_alternatif'),
+                            'nama_alternatif' => $this->input->post('nama_alternatif'),
+                            'gambar_alternatif' => $this->upload->data("file_name")
+                        ];
+                        $this->Alternatif_model->update($id_alternatif, $data);
+                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!</div>');
+                        redirect('Alternatif');
+                    }
+                }
+                else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal di update! Kode atau Nama Alternatif sudah ada di database.</div>');
                     redirect('Alternatif/edit/'.$id_alternatif);
-                    
                 }
-                // $this->Alternatif_model->update($id_alternatif, $data);
-                // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!</div>');
-                // redirect('Alternatif');
             }
         }
     

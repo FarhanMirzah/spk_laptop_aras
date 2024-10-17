@@ -27,7 +27,8 @@
         {
             $ubah = array(
                 'kode_alternatif'  => $data['kode_alternatif'],
-                'nama_alternatif'  => $data['nama_alternatif']
+                'nama_alternatif'  => $data['nama_alternatif'],
+                'gambar_alternatif'  => $data['gambar_alternatif']
             );
 
             $this->db->where('id_alternatif', $id_alternatif);
@@ -61,6 +62,13 @@
 		public function data_sub_kriteria($id_kriteria)
 		{
 			$query = $this->db->query("SELECT * FROM sub_kriteria WHERE id_kriteria='$id_kriteria' ORDER BY nilai_sub_kriteria DESC;");
+			return $query->result_array();
+		}
+
+        // Kode untuk mendapatkan filename / gambar_alternatif
+        public function get_gambar_alternatif($id_alternatif)
+		{
+			$query = $this->db->query("SELECT gambar_alternatif FROM alternatif WHERE id_alternatif=$id_alternatif;");
 			return $query->result_array();
 		}
     }

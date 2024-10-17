@@ -15,7 +15,7 @@
         <h6 class="m-0 font-weight-bold text-info"><i class="fas fa-fw fa-edit"></i> Edit Data Alternatif</h6>
     </div>
 	
-	<?php echo form_open('Alternatif/update/'.$alternatif->id_alternatif); ?>
+	<?php echo form_open_multipart('Alternatif/update/'.$alternatif->id_alternatif); ?>
 		<div class="card-body">
 			<div class="row">
 				<?php echo form_hidden('id_alternatif', $alternatif->id_alternatif) ?>
@@ -27,6 +27,13 @@
 					<input autocomplete="off" type="text" name="nama_alternatif" value="<?php echo $alternatif->nama_alternatif ?>" required class="form-control"/>
 				</div>
 			</div>
+			<h6 class="font-weight-bold">Gambar Alternatif sekarang (<?= $alternatif->gambar_alternatif ?>)</h6>
+			<img src="../../uploads/<?= $alternatif->gambar_alternatif ?>" alt="<?= $alternatif->nama_alternatif ?>" style="max-width: 450px; max-height: 275px">
+			<br>
+			<br>
+
+			<label class="font-weight-bold">Gambar Alternatif baru</label>
+			<input type="file" name="userfile" id="userfile" class="form-control" accept="image/*"/>
 		</div>
 		<div class="card-footer text-right">
             <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>

@@ -15,7 +15,7 @@
         <h6 class="m-0 font-weight-bold text-info"><i class="fas fa-fw fa-plus"></i> Tambah Data Alternatif</h6>
     </div>
 	
-	<?php echo form_open('Alternatif/store'); ?>
+	<?php echo form_open_multipart('Alternatif/store'); ?>
 		<div class="card-body">
 			<div class="row">
 				<div class="form-group col-md-12">
@@ -27,10 +27,15 @@
 					<label class="font-weight-bold">Nama Alternatif</label>
 					<input autocomplete="off" type="text" name="nama_alternatif" required class="form-control"/>
 				</div>
+
+				<div class="form-group col-md-12">
+					<label class="font-weight-bold">Gambar Alternatif</label>
+					<input type="file" name="userfile" id="userfile" class="form-control" accept="image/*"/>
+				</div>
 			</div>
 		</div>
 		<div class="card-footer text-right">
-            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-save" name="submit" value="upload"></i> Simpan</button>
             <button type="reset" class="btn btn-info"><i class="fa fa-sync-alt"></i> Reset</button>
         </div>
 	<?php echo form_close() ?>

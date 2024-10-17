@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2024 at 05:30 PM
+-- Generation Time: Oct 17, 2024 at 11:23 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -29,25 +29,26 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alternatif` (
   `id_alternatif` int(11) NOT NULL,
-  `kode_alternatif` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
-  `nama_alternatif` varchar(255) CHARACTER SET utf8mb4 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `kode_alternatif` varchar(100) NOT NULL,
+  `nama_alternatif` varchar(255) NOT NULL,
+  `gambar_alternatif` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `alternatif`
 --
 
-INSERT INTO `alternatif` (`id_alternatif`, `kode_alternatif`, `nama_alternatif`) VALUES
-(1, 'A1', 'ASUS M415DAO-FHD321'),
-(2, 'A2', 'ASUS A416MAO-FHD425'),
-(3, 'A3', 'ASUS A1400EA-FHD321'),
-(4, 'A4', 'ASUS A1400EA-VIPS751'),
-(5, 'A5', 'ASUS K3405VA-OLEDS951'),
-(6, 'A6', 'ASUS FX506HC-I535B6T-O11'),
-(7, 'A7', 'ASUS T3300KA-OLED621'),
-(8, 'A8', 'ASUS UX3402ZA-OLEDS551'),
-(9, 'A9', 'ASUS M3401QC-OLED556'),
-(10, 'A10', 'ASUS N7401ZE-OLEDS715');
+INSERT INTO `alternatif` (`id_alternatif`, `kode_alternatif`, `nama_alternatif`, `gambar_alternatif`) VALUES
+(1, 'A1', 'ASUS M415DAO-FHD321', ''),
+(2, 'A2', 'ASUS A416MAO-FHD425', ''),
+(3, 'A3', 'ASUS A1400EA-FHD321', ''),
+(4, 'A4', 'ASUS A1400EA-VIPS751', ''),
+(5, 'A5', 'ASUS K3405VA-OLEDS951', ''),
+(6, 'A6', 'ASUS FX506HC-I535B6T-O11', ''),
+(7, 'A7', 'ASUS T3300KA-OLED621', ''),
+(8, 'A8', 'ASUS UX3402ZA-OLEDS551', ''),
+(9, 'A9', 'ASUS M3401QC-OLED556', ''),
+(10, 'A10', 'ASUS N7401ZE-OLEDS715', '');
 
 -- --------------------------------------------------------
 
@@ -59,7 +60,7 @@ CREATE TABLE `hasil` (
   `id_hasil` int(11) NOT NULL,
   `id_alternatif` int(11) NOT NULL,
   `nilai_k` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hasil`
@@ -85,11 +86,11 @@ INSERT INTO `hasil` (`id_hasil`, `id_alternatif`, `nilai_k`) VALUES
 
 CREATE TABLE `kriteria` (
   `id_kriteria` int(11) NOT NULL,
-  `keterangan` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
-  `kode_kriteria` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+  `keterangan` varchar(100) NOT NULL,
+  `kode_kriteria` varchar(100) NOT NULL,
   `bobot` float NOT NULL,
-  `jenis` varchar(100) CHARACTER SET utf8mb4 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `jenis` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kriteria`
@@ -116,7 +117,7 @@ CREATE TABLE `penilaian` (
   `id_alternatif` int(11) NOT NULL,
   `id_kriteria` int(11) NOT NULL,
   `id_sub_kriteria` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `penilaian`
@@ -213,9 +214,9 @@ INSERT INTO `penilaian` (`id_penilaian`, `id_alternatif`, `id_kriteria`, `id_sub
 CREATE TABLE `sub_kriteria` (
   `id_sub_kriteria` int(11) NOT NULL,
   `id_kriteria` int(11) NOT NULL,
-  `deskripsi` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `deskripsi` varchar(255) NOT NULL,
   `nilai_sub_kriteria` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `sub_kriteria`
@@ -292,11 +293,11 @@ INSERT INTO `sub_kriteria` (`id_sub_kriteria`, `id_kriteria`, `deskripsi`, `nila
 CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
   `id_user_level` int(11) NOT NULL,
-  `nama` varchar(200) CHARACTER SET utf8mb4 NOT NULL,
-  `email` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
-  `username` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
-  `password` varchar(100) CHARACTER SET utf8mb4 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `nama` varchar(200) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
@@ -314,8 +315,8 @@ INSERT INTO `user` (`id_user`, `id_user_level`, `nama`, `email`, `username`, `pa
 
 CREATE TABLE `user_level` (
   `id_user_level` int(11) NOT NULL,
-  `user_level` varchar(100) CHARACTER SET utf8mb4 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `user_level` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user_level`
