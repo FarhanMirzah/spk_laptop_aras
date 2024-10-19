@@ -65,7 +65,12 @@
 					</div>
 					<?php endforeach ?>
 				</td>
-				<td><img src="./uploads/<?= $keys->gambar_alternatif ?>" alt="<?= $keys->nama_alternatif ?>" style="max-width: 200px; max-height: 125px"></td>
+				<?php if($keys->gambar_alternatif != NULL): ?>
+					<td><img src="./uploads/<?= $keys->gambar_alternatif ?>" alt="<?= $keys->gambar_alternatif ?>" onerror="this.src='./assets/img/default.jpg'" style="max-width: 200px; max-height: 125px"></td>
+				<?php endif ?>
+				<?php if($keys->gambar_alternatif == NULL): ?>
+					<td>Tidak ada gambar</td>
+				<?php endif ?>
 			</tr>
 		<?php
 			$no++;

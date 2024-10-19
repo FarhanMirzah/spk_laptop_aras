@@ -27,11 +27,12 @@
 					<input autocomplete="off" type="text" name="nama_alternatif" value="<?php echo $alternatif->nama_alternatif ?>" required class="form-control"/>
 				</div>
 			</div>
-			<h6 class="font-weight-bold">Gambar Alternatif sekarang (<?= $alternatif->gambar_alternatif ?>)</h6>
-			<img src="../../uploads/<?= $alternatif->gambar_alternatif ?>" alt="<?= $alternatif->nama_alternatif ?>" style="max-width: 450px; max-height: 275px">
-			<br>
-			<br>
-
+			<?php if($alternatif->gambar_alternatif != NULL): ?>
+				<h6 class="font-weight-bold">Gambar Alternatif sekarang (<?= $alternatif->gambar_alternatif ?>)</h6>
+				<img src="../../uploads/<?= $alternatif->gambar_alternatif ?>" alt="<?= $alternatif->gambar_alternatif ?>" onerror="this.src='../../assets/img/default.jpg'" style="max-width: 450px; max-height: 275px">
+				<br>
+				<br>
+			<?php endif ?>
 			<label class="font-weight-bold">Gambar Alternatif baru</label>
 			<input type="file" name="userfile" id="userfile" class="form-control" accept="image/*"/>
 		</div>

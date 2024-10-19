@@ -126,7 +126,9 @@
 									<?= form_open('Perhitungan/detail_alternatif') ?>
 										<div class="modal-body">
 											<h5 class="modal-title" id="myModalLabel"><b>(<?= $keys->kode_alternatif ?>)</b> <?= $keys->nama_alternatif ?></h5>
-											<img src="../uploads/<?= $keys->gambar_alternatif ?>" alt="<?= $keys->nama_alternatif ?>" style="max-width: 450px; max-height: 275px">
+											<?php if($keys->gambar_alternatif != NULL): ?>
+												<img src="../uploads/<?= $keys->gambar_alternatif ?>" alt="<?= $keys->gambar_alternatif ?>" onerror="this.src='../assets/img/default.jpg'" style="max-width: 450px; max-height: 275px">
+											<?php endif ?>
 											<h6><b>Nilai K:</b> <?= $keys->nilai_k ?></h6>
 											<h6><b>Ranking:</b> <?= $no ?> dari <?= $jumlah_ranking ?></h6>
 											<hr>
@@ -259,7 +261,9 @@
 											<?= form_open('Perhitungan/detail_alternatif') ?>
 												<div class="modal-body">
 													<h5 class="modal-title" id="myModalLabel"><b>(<?= $keys->kode_alternatif ?>)</b> <?= $keys->nama_alternatif ?></h5>
-													<img src="../uploads/<?= $keys->gambar_alternatif ?>" alt="<?= $keys->nama_alternatif ?>" style="max-width: 450px; max-height: 275px">
+													<?php if($keys->gambar_alternatif != NULL): ?>
+														<img src="../uploads/<?= $keys->gambar_alternatif ?>" alt="<?= $keys->gambar_alternatif ?>" onerror="this.src='../assets/img/default.jpg'" style="max-width: 450px; max-height: 275px">
+													<?php endif ?>
 													<h6><b>Nilai K:</b> <?= $keys->nilai_k ?></h6>
 													<h6><b>Ranking (filtered):</b> <?= $no_filtered ?> dari <?= $jumlah_filtered ?></h6>
 													<h6><b>Ranking (all):</b> <?= $no ?> dari <?= $jumlah_ranking ?></h6>
