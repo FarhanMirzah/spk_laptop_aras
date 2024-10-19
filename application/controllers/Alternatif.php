@@ -119,31 +119,48 @@
                 $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|edit_unique[alternatif.kode_alternatif.id_alternatif.'.$id.']');
                 $this->form_validation->set_rules('nama_alternatif', 'Nama', 'required|edit_unique[alternatif.nama_alternatif.id_alternatif.'.$id.']');
     
-
                 if ($this->form_validation->run() != false) {
-                    // WIP Upload Gambar (To do: Tampilkan error kalau mengupload file selain yang allowed_types)
+                    // Upload Gambar (di edit Alternatif)
                     if (!$this->upload->do_upload('userfile')) {
+                        if ($this->upload->data('file_name') == NULL){
+                            goto skip_file_type_edit_alternatif;
+                        }
+                        if ($this->upload->data('file_type') != 'image'){
+                            goto skip_upload_edit_alternatif;
+                        }
+                        if ($this->upload->data('file_type') == 'image'){
+                            goto go_upload_edit_alternatif;
+                        }
+                        skip_file_type_edit_alternatif:
                         $gambar_alternatif = implode(',', (array_column($this->Alternatif_model->get_gambar_alternatif($id_alternatif), 'gambar_alternatif')));
-
                         $data = array(
                             'kode_alternatif' => $this->input->post('kode_alternatif'),
                             'nama_alternatif' => $this->input->post('nama_alternatif'),
                             'gambar_alternatif' => $gambar_alternatif
                         );
+
                         $this->Alternatif_model->update($id_alternatif, $data);
-                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!</div>');
+                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update! (tanpa update gambar)</div>');
                         redirect('Alternatif');
                     }
                     else {
-                        $data = array('upload_data' => $this->upload->data());
-                        $data = [
-                            'kode_alternatif' => $this->input->post('kode_alternatif'),
-                            'nama_alternatif' => $this->input->post('nama_alternatif'),
-                            'gambar_alternatif' => $this->upload->data("file_name")
-                        ];
-                        $this->Alternatif_model->update($id_alternatif, $data);
-                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!</div>');
-                        redirect('Alternatif');
+                        if ($this->upload->data('file_type') == 'image'){
+                            skip_upload_edit_alternatif:
+                            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal di update! File yang di upload harus berupa gambar.</div>');
+                            redirect('Alternatif/edit/'.$id_alternatif);
+                        }
+                        else {
+                            go_upload_edit_alternatif:
+                            $data = array('upload_data' => $this->upload->data());
+                            $data = [
+                                'kode_alternatif' => $this->input->post('kode_alternatif'),
+                                'nama_alternatif' => $this->input->post('nama_alternatif'),
+                                'gambar_alternatif' => $this->upload->data("file_name")
+                            ];
+                            $this->Alternatif_model->update($id_alternatif, $data);
+                            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update! (dengan update gambar)</div>');
+                            redirect('Alternatif');
+                        }
                     }
                 }
                 else {
