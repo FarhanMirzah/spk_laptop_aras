@@ -71,6 +71,17 @@
 			$query = $this->db->query("SELECT gambar_alternatif FROM alternatif WHERE id_alternatif=$id_alternatif;");
 			return $query->result_array();
 		}
+
+        // Kode untuk menghapus gambar alternatif
+        public function hapus_gambar($id_alternatif, $data = [])
+        {
+            $hapus = array(
+                'gambar_alternatif'  => NULL
+            );
+
+            $this->db->where('id_alternatif', $id_alternatif);
+            $this->db->update('alternatif', $hapus);
+        }
     }
     
     

@@ -37,8 +37,11 @@
 			<input type="file" name="userfile" id="userfile" class="form-control" accept="image/*"/>
 		</div>
 		<div class="card-footer text-right">
-            <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
+            <button type="submit" name="action" value="update" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
             <button type="reset" class="btn btn-info"><i class="fa fa-sync-alt"></i> Reset</button>
+			<?php if($alternatif->gambar_alternatif != NULL): ?>
+				<button type="submit" name="action" value="hapus" class="btn btn-danger" onclick="return confirm ('Apakah anda yakin untuk menghapus gambar Alternatif ini?')"><i class="fa fa-trash"></i> Hapus Gambar</button>
+			<?php endif ?>
         </div>
 	<?php echo form_close() ?>
 </div>
