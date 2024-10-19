@@ -49,26 +49,44 @@
             $this->form_validation->set_rules('nama_alternatif', 'Nama', 'required|is_unique[alternatif.nama_alternatif]');               
 
             if ($this->form_validation->run() != false) {
-                // WIP Upload Gambar (To do: Tampilkan error kalau mengupload file selain yang allowed_types)
+                // Upload Gambar (di create Alternatif)
                 if (!$this->upload->do_upload('userfile')) {
+                    if ($this->upload->data('file_name') == NULL){
+                        goto skip_file_type_create_alternatif;
+                    }
+                    if ($this->upload->data('file_type') != 'image'){
+                        goto skip_upload_create_alternatif;
+                    }
+                    if ($this->upload->data('file_type') == 'image'){
+                        goto go_upload_create_alternatif;
+                    }
+                    skip_file_type_create_alternatif:
                     $data = [
                         'kode_alternatif' => $this->input->post('kode_alternatif'),
                         'nama_alternatif' => $this->input->post('nama_alternatif')
                     ];
                     $result = $this->Alternatif_model->insert($data);
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan!</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan! (tanpa gambar)</div>');
                     redirect('Alternatif');
                 }
                 else {
-                    $data = array('upload_data' => $this->upload->data());
-                    $data = [
-                        'kode_alternatif' => $this->input->post('kode_alternatif'),
-                        'nama_alternatif' => $this->input->post('nama_alternatif'),
-                        'gambar_alternatif' => $this->upload->data("file_name")
-                    ];
-                    $result = $this->Alternatif_model->insert($data);
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan!</div>');
-                    redirect('Alternatif');
+                    if ($this->upload->data('file_type') == 'image'){
+                        skip_upload_create_alternatif:
+                        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal disimpan! File yang di upload harus berupa gambar.</div>');
+                        redirect('Alternatif/create');
+                    }
+                    else {
+                        go_upload_create_alternatif:
+                        $data = array('upload_data' => $this->upload->data());
+                        $data = [
+                            'kode_alternatif' => $this->input->post('kode_alternatif'),
+                            'nama_alternatif' => $this->input->post('nama_alternatif'),
+                            'gambar_alternatif' => $this->upload->data("file_name")
+                        ];
+                        $result = $this->Alternatif_model->insert($data);
+                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan! (dengan gambar)</div>');
+                        redirect('Alternatif');
+                    }
                 }
             }
             else {
