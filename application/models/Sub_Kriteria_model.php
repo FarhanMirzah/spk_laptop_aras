@@ -57,6 +57,13 @@
 			$query = $this->db->query("SELECT * FROM sub_kriteria WHERE id_kriteria='$id_kriteria'  ORDER BY nilai_sub_kriteria DESC;");
 			return $query->result_array();
 		}
+
+        // Kode untuk mendapatkan deskripsi sub kriteria
+        public function get_deskripsi($id_sub_kriteria)
+        {
+            $query = $this->db->query("SELECT deskripsi FROM sub_kriteria WHERE id_sub_kriteria=$id_sub_kriteria;");
+            return $query->result_array();
+        }
     }
     
     /* End of file Kategori_model.php */

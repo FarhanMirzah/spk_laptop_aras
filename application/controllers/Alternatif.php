@@ -183,8 +183,9 @@
         public function destroy($id_alternatif)
         {
             if ($this->session->userdata('id_user_level') == "1") {
+                $kode_alternatif = implode(',', (array_column($this->Alternatif_model->get_kode_alternatif($id_alternatif), 'kode_alternatif')));
                 $this->Alternatif_model->delete($id_alternatif);
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Alternatif dengan kode '.$kode_alternatif.' berhasil dihapus!</div>');
                 redirect('Alternatif');
             }
         }

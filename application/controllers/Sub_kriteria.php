@@ -91,8 +91,9 @@
         public function destroy($id_sub_kriteria)
         {
             if ($this->session->userdata('id_user_level') == "1") {
+                $deskripsi = implode(',', (array_column($this->Sub_Kriteria_model->get_deskripsi($id_sub_kriteria), 'deskripsi')));
                 $this->Sub_Kriteria_model->delete($id_sub_kriteria);
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Sub Kriteria "'.$deskripsi.'" berhasil dihapus!</div>');
                 redirect('Sub_kriteria');
             }
         }

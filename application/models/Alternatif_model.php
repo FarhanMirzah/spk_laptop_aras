@@ -82,6 +82,13 @@
             $this->db->where('id_alternatif', $id_alternatif);
             $this->db->update('alternatif', $hapus);
         }
+
+        // Kode untuk mendapatkan kode_alternatif
+        public function get_kode_alternatif($id_alternatif)
+        {
+            $query = $this->db->query("SELECT kode_alternatif FROM alternatif WHERE id_alternatif=$id_alternatif;");
+            return $query->result_array();
+        }
     }
     
     

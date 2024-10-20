@@ -47,7 +47,13 @@
 			$query = $this->db->query("SELECT * FROM sub_kriteria WHERE id_kriteria='$id_kriteria' ORDER BY nilai_sub_kriteria DESC;");
 			return $query->result_array();
 		}
-    
+
+        // Kode untuk mendapatkan kode_alternatif
+        public function get_kode_alternatif($id_alternatif)
+		{
+			$query = $this->db->query("SELECT kode_alternatif FROM alternatif WHERE id_alternatif='$id_alternatif';");
+			return $query->result_array();
+		}
     }
     
     

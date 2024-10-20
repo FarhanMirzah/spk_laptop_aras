@@ -107,8 +107,9 @@
         public function destroy($id_kriteria)
         {
             if ($this->session->userdata('id_user_level') == "1") {
+                $kode_kriteria = implode(',', (array_column($this->Kriteria_model->get_kode_kriteria($id_kriteria), 'kode_kriteria')));
                 $this->Kriteria_model->delete($id_kriteria);
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kriteria dengan kode '.$kode_kriteria.' berhasil dihapus!</div>');
                 redirect('Kriteria');
             }
         }
