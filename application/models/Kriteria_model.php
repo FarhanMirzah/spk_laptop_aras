@@ -43,9 +43,9 @@
         }
 
         // Kode untuk mendapatkan kode_kriteria
-        public function get_kode_kriteria($id_kriteria)
+        public function get_kode_keterangan_kriteria($id_kriteria)
         {
-            $query = $this->db->query("SELECT kode_kriteria FROM kriteria WHERE id_kriteria=$id_kriteria;");
+            $query = $this->db->query("SELECT kode_kriteria, keterangan FROM kriteria WHERE id_kriteria=$id_kriteria;");
             return $query->result_array();
         }
     }

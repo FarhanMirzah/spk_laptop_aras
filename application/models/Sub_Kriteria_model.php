@@ -64,6 +64,20 @@
             $query = $this->db->query("SELECT deskripsi FROM sub_kriteria WHERE id_sub_kriteria=$id_sub_kriteria;");
             return $query->result_array();
         }
+
+        // Kode untuk mendapatkan id_kriteria
+        public function get_id_kriteria($id_sub_kriteria)
+        {
+            $query = $this->db->query("SELECT id_kriteria FROM sub_kriteria WHERE id_sub_kriteria=$id_sub_kriteria;");
+            return $query->result_array();
+        }
+
+        // Kode untuk mendapatkan id_kriteria
+        public function get_keterangan_kode_kriteria($id_kriteria)
+        {
+            $query = $this->db->query("SELECT keterangan, kode_kriteria FROM kriteria WHERE id_kriteria=$id_kriteria;");
+            return $query->result_array();
+        }
     }
     
     /* End of file Kategori_model.php */

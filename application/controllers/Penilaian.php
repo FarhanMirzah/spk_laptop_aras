@@ -43,8 +43,9 @@
                 $this->Penilaian_model->tambah_penilaian($id_alternatif,$id_kriteria[$i],$key);
                 $i++;
             }
-            $kode_alternatif = implode(',', (array_column($this->Penilaian_model->get_kode_alternatif($id_alternatif), 'kode_alternatif')));
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Alternatif dengan kode '.$kode_alternatif.' berhasil disimpan!</div>');
+            $kode_alternatif = implode(',', (array_column($this->Penilaian_model->get_kode_nama_alternatif($id_alternatif), 'kode_alternatif')));
+            $nama_alternatif = implode(',', (array_column($this->Penilaian_model->get_kode_nama_alternatif($id_alternatif), 'nama_alternatif')));
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Alternatif '.$nama_alternatif.' ('.$kode_alternatif.') berhasil disimpan!</div>');
             redirect('Penilaian');
         }
 
@@ -66,8 +67,9 @@
 				}
 				$i++;
 			}
-            $kode_alternatif = implode(',', (array_column($this->Penilaian_model->get_kode_alternatif($id_alternatif), 'kode_alternatif')));
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Alternatif dengan kode '.$kode_alternatif.' berhasil di update!</div>');
+            $kode_alternatif = implode(',', (array_column($this->Penilaian_model->get_kode_nama_alternatif($id_alternatif), 'kode_alternatif')));
+            $nama_alternatif = implode(',', (array_column($this->Penilaian_model->get_kode_nama_alternatif($id_alternatif), 'nama_alternatif')));
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penilaian Alternatif '.$nama_alternatif.' ('.$kode_alternatif.') berhasil di update!</div>');
 			redirect('Penilaian');
 		}
     }

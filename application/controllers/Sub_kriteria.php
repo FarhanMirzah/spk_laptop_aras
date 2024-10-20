@@ -50,7 +50,10 @@
                 if ($this->form_validation->run() != false) {
                     $result = $this->Sub_Kriteria_model->insert($data);
                     if ($result) {
-                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Sub Kriteria "'.$this->input->post('deskripsi').'" berhasil disimpan!</div>');
+                        $keterangan = implode(',', (array_column($this->Sub_Kriteria_model->get_keterangan_kode_kriteria($this->input->post('id_kriteria')), 'keterangan')));
+                        $kode_kriteria = implode(',', (array_column($this->Sub_Kriteria_model->get_keterangan_kode_kriteria($this->input->post('id_kriteria')), 'kode_kriteria')));
+
+                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Sub Kriteria "'.$this->input->post('deskripsi').'" dari Kriteria '.$keterangan.' ('.$kode_kriteria.') berhasil disimpan!</div>');
 						redirect('Sub_kriteria');
                     }
                 } else {
@@ -77,7 +80,10 @@
             $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|edit_unique[sub_kriteria.deskripsi.id_sub_kriteria.'.$id.']');
             if ($this->form_validation->run() != false) {
                 $this->Sub_Kriteria_model->update($id_sub_kriteria, $data);
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Sub Kriteria "'.$this->input->post('deskripsi').'" berhasil di update!</div>');
+                $keterangan = implode(',', (array_column($this->Sub_Kriteria_model->get_keterangan_kode_kriteria($this->input->post('id_kriteria')), 'keterangan')));
+                $kode_kriteria = implode(',', (array_column($this->Sub_Kriteria_model->get_keterangan_kode_kriteria($this->input->post('id_kriteria')), 'kode_kriteria')));
+
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Sub Kriteria "'.$this->input->post('deskripsi').'" dari Kriteria '.$keterangan.' ('.$kode_kriteria.') berhasil di update!</div>');
                 redirect('Sub_kriteria');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal di update! Nama Sub Kriteria sudah ada di database.</div>');
@@ -92,8 +98,12 @@
         {
             if ($this->session->userdata('id_user_level') == "1") {
                 $deskripsi = implode(',', (array_column($this->Sub_Kriteria_model->get_deskripsi($id_sub_kriteria), 'deskripsi')));
+                $id_kriteria = implode(',', (array_column($this->Sub_Kriteria_model->get_id_kriteria($id_sub_kriteria), 'id_kriteria')));
+                $keterangan = implode(',', (array_column($this->Sub_Kriteria_model->get_keterangan_kode_kriteria($id_kriteria), 'keterangan')));
+                $kode_kriteria = implode(',', (array_column($this->Sub_Kriteria_model->get_keterangan_kode_kriteria($id_kriteria), 'kode_kriteria')));
+
                 $this->Sub_Kriteria_model->delete($id_sub_kriteria);
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Sub Kriteria "'.$deskripsi.'" berhasil dihapus!</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Sub Kriteria "'.$deskripsi.'" dari Kriteria '.$keterangan.' ('.$kode_kriteria.') berhasil dihapus!</div>');
                 redirect('Sub_kriteria');
             }
         }

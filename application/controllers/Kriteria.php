@@ -55,7 +55,7 @@
                 if ($this->form_validation->run() != false) {
                     $result = $this->Kriteria_model->insert($data);
                     if ($result) {
-                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Kriteria dengan kode '.$this->input->post('kode_kriteria').' berhasil disimpan!</div>');
+                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kriteria '.$this->input->post('keterangan').' ('.$this->input->post('kode_kriteria').') berhasil disimpan!</div>');
 						redirect('Kriteria');
                     }
                 } else {
@@ -107,9 +107,11 @@
         public function destroy($id_kriteria)
         {
             if ($this->session->userdata('id_user_level') == "1") {
-                $kode_kriteria = implode(',', (array_column($this->Kriteria_model->get_kode_kriteria($id_kriteria), 'kode_kriteria')));
+                $kode_kriteria = implode(',', (array_column($this->Kriteria_model->get_kode_keterangan_kriteria($id_kriteria), 'kode_kriteria')));
+                $keterangan = implode(',', (array_column($this->Kriteria_model->get_kode_keterangan_kriteria($id_kriteria), 'keterangan')));
+
                 $this->Kriteria_model->delete($id_kriteria);
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kriteria dengan kode '.$kode_kriteria.' berhasil dihapus!</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kriteria '.$keterangan.' ('.$kode_kriteria.') berhasil dihapus!</div>');
                 redirect('Kriteria');
             }
         }

@@ -66,7 +66,7 @@
                         'nama_alternatif' => $this->input->post('nama_alternatif')
                     ];
                     $result = $this->Alternatif_model->insert($data);
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Alternatif dengan kode '.$this->input->post('kode_alternatif').' berhasil disimpan! (tanpa gambar)</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Alternatif '.$this->input->post('nama_alternatif').' ('.$this->input->post('kode_alternatif').') berhasil disimpan! (tanpa gambar)</div>');
                     redirect('Alternatif');
                 }
                 else {
@@ -84,7 +84,7 @@
                             'gambar_alternatif' => $this->upload->data("file_name")
                         ];
                         $result = $this->Alternatif_model->insert($data);
-                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Alternatif dengan kode '.$this->input->post('kode_alternatif').' berhasil disimpan! (dengan gambar)</div>');
+                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Alternatif '.$this->input->post('nama_alternatif').' ('.$this->input->post('kode_alternatif').') berhasil disimpan! (dengan gambar)</div>');
                         redirect('Alternatif');
                     }
                 }
@@ -183,9 +183,11 @@
         public function destroy($id_alternatif)
         {
             if ($this->session->userdata('id_user_level') == "1") {
-                $kode_alternatif = implode(',', (array_column($this->Alternatif_model->get_kode_alternatif($id_alternatif), 'kode_alternatif')));
+                $kode_alternatif = implode(',', (array_column($this->Alternatif_model->get_kode_nama_alternatif($id_alternatif), 'kode_alternatif')));
+                $nama_alternatif = implode(',', (array_column($this->Alternatif_model->get_kode_nama_alternatif($id_alternatif), 'nama_alternatif')));
+
                 $this->Alternatif_model->delete($id_alternatif);
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Alternatif dengan kode '.$kode_alternatif.' berhasil dihapus!</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Alternatif '.$nama_alternatif.' ('.$kode_alternatif.') berhasil dihapus!</div>');
                 redirect('Alternatif');
             }
         }
