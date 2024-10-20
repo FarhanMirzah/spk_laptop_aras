@@ -66,7 +66,7 @@
                         'nama_alternatif' => $this->input->post('nama_alternatif')
                     ];
                     $result = $this->Alternatif_model->insert($data);
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan! (tanpa gambar)</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Alternatif dengan kode '.$this->input->post('kode_alternatif').' berhasil disimpan! (tanpa gambar)</div>');
                     redirect('Alternatif');
                 }
                 else {
@@ -84,7 +84,7 @@
                             'gambar_alternatif' => $this->upload->data("file_name")
                         ];
                         $result = $this->Alternatif_model->insert($data);
-                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan! (dengan gambar)</div>');
+                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Alternatif dengan kode '.$this->input->post('kode_alternatif').' berhasil disimpan! (dengan gambar)</div>');
                         redirect('Alternatif');
                     }
                 }
@@ -143,7 +143,7 @@
 
                             $this->Alternatif_model->update($id_alternatif, $data);
                             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update! (tanpa update gambar)</div>');
-                            redirect('Alternatif');
+                            redirect('Alternatif/edit/'.$id_alternatif);
                         }
                         else {
                             if ($this->upload->data('file_type') == 'image'){
@@ -161,7 +161,7 @@
                                 ];
                                 $this->Alternatif_model->update($id_alternatif, $data);
                                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update! (dengan update gambar)</div>');
-                                redirect('Alternatif');
+                                redirect('Alternatif/edit/'.$id_alternatif);
                             }
                         }
                     }

@@ -55,7 +55,7 @@
                 if ($this->form_validation->run() != false) {
                     $result = $this->Kriteria_model->insert($data);
                     if ($result) {
-                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan!</div>');
+                        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Kriteria dengan kode '.$this->input->post('kode_kriteria').' berhasil disimpan!</div>');
 						redirect('Kriteria');
                     }
                 } else {
@@ -93,7 +93,7 @@
                 if ($this->form_validation->run() != false) {
                     $this->Kriteria_model->update($id_kriteria, $data);
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil di update!</div>');
-                    redirect('Kriteria');
+                    redirect('Kriteria/edit/'.$id_kriteria);
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal di update! Kode atau Nama Kriteria sudah ada di database.</div>');
                     redirect('Kriteria/edit/'.$id_kriteria);
