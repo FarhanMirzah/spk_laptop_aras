@@ -11226,11 +11226,11 @@ body.sidebar-toggled footer.sticky-footer {
 /* https://stackoverflow.com/questions/28094187/css-align-div-elements-from-center-to-left */
 .hasil-akhir-filter {
   vertical-align: top;
-  width: 18%;
+  width: 25%;
   border-right: 2px solid #d1d3e2;
   display: inline-block;
 }
 .hasil-akhir-content {
-  width: 81%;
+  width: 74%;
   display: inline-block;
 }
