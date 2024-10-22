@@ -6,9 +6,7 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-chart-area"></i> Data Hasil Akhir</h1>
 	
-	<?php if($this->session->userdata('id_user_level') == '1'): ?>
-		<a href="<?= base_url('Laporan'); ?>" class="btn btn-primary"> <i class="fa fa-print"></i> Cetak Data </a>
-	<?php endif ?>
+	<a href="<?= base_url('Laporan'); ?>" class="btn btn-primary"> <i class="fa fa-print"></i> Cetak Data </a>
 </div>
 
 <!-- Fungsi Filter [WIP], sebaiknya dijadikan sidebar -->
