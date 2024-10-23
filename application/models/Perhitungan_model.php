@@ -58,5 +58,12 @@
 			$query = $this->db->query("SELECT id_kriteria FROM sub_kriteria WHERE id_sub_kriteria IN ($id_sub_kriteria);");
 			return $query->result_array();
 		}
+
+        // Kode untuk mendapatkan id_kriteria di Cetak Hasil Akhir
+        public function get_id_kriteria_cetak($arr_str)
+        {
+            $query = $this->db->query("SELECT id_kriteria FROM sub_kriteria WHERE id_sub_kriteria IN ($arr_str);");
+            return $query->result_array();
+        }
     }
     

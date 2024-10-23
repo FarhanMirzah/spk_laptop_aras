@@ -24,6 +24,10 @@
 			$text = urldecode($_REQUEST['cluster']);
 			$mixed = json_decode($text);
 			$arr = $mixed;
+
+			// Kode untuk menampilkan filter yang aktif (1/3)
+			$arr_str = implode(',', $arr);
+			$id_kriteria_cetak = array_column($this->Perhitungan_model->get_id_kriteria_cetak($arr_str), 'id_kriteria');
 		}
 	?>
 	<?php if(!isset($arr)): ?>
@@ -104,7 +108,7 @@
 			$jumlah_ranking = count($hasil);
 			foreach ($hasil as $keys): ?>
 			<?php foreach ($kriteria as $key): ?>
-				<!-- [WIP] Filter Alternatif berdasarkan Sub Kriteria (perlu dirapikan, tapi sekarang sudah bekerja) -->
+				<!-- [WIP] Filter Alternatif berdasarkan Sub Kriteria -->
 				<?php 
 					$data_pencocokan = $this->Perhitungan_model->data_nilai($keys->id_alternatif,$key->id_kriteria);
 				?>
@@ -118,8 +122,44 @@
 		<?php endforeach ?>
 		<?php $jumlah_filtered = count($f_unique); ?>
 
-		<h4>Jumlah Alternatif (Total): <?= count($hasil);?></h4>
-		<h4>Jumlah Alternatif (Filtered): <?= $jumlah_filtered;?></h4>
+		<b>Jumlah Alternatif (Filtered): <?= $jumlah_filtered;?></b>
+		<br>
+		<b>Jumlah Alternatif (All): <?= count($hasil);?></b>
+		<br>
+		<br>
+		<b>Filter yang aktif</b>
+		
+		<?php foreach ($kriteria as $key): ?>
+			<?php 
+				$sub_kriteria = $this->Perhitungan_model->data_sub_kriteria($key->id_kriteria);
+				$f_unique=[];
+			?>
+			<?php if ($sub_kriteria!=NULL): ?>
+				<div class="form-group">
+					<!-- Kode untuk menampilkan filter yang aktif (2/3) -->
+					<?php if(in_array($key->id_kriteria, $id_kriteria_cetak)): ?>
+						<br>
+						<b><?= $key->keterangan ?>:</b>
+					<?php endif ?>
+
+					<?php foreach ($sub_kriteria as $subs_kriteria): ?>
+						<!-- Kode untuk menampilkan filter yang aktif (3/3) -->
+						<?php 
+							$id_sub_kriteria = join(',', $arr);
+							$id_kriteria = $this->Perhitungan_model->get_id_kriteria($id_sub_kriteria);
+							$id_kriteria_unique = array_unique(array_column($id_kriteria, 'id_kriteria'));
+						?>
+						<div>
+							<?php if(in_array($subs_kriteria['id_sub_kriteria'], $arr)): ?>
+								• <?= $subs_kriteria['deskripsi'] ?>
+							<?php endif ?>
+						</div>
+					<?php endforeach ?>
+				</div>
+			<?php endif ?>
+		<?php endforeach ?>
+		<br>
+
 		<table border="1" width="100%">
 			<thead>
 				<tr align="center">
