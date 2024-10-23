@@ -198,6 +198,11 @@
 								<br>
 								<b>Nilai K:</b> <?= $keys->nilai_k ?>
 								<p>
+									
+								<b>Ranking (filtered):</b> <?= $no_filtered ?> dari <?= $jumlah_filtered ?>
+								<br>
+								<b>Ranking (all):</b> <?= $no ?> dari <?= $jumlah_ranking ?>
+								<p>
 
 								<?php foreach ($kriteria as $key): ?>
 								<?php 
