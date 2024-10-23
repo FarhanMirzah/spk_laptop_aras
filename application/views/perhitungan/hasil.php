@@ -5,8 +5,6 @@
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-chart-area"></i> Data Hasil Akhir</h1>
-	
-	<a href="<?= base_url('Laporan'); ?>" class="btn btn-primary"> <i class="fa fa-print"></i> Cetak Data </a>
 </div>
 
 <!-- Fungsi Filter [WIP], sebaiknya dijadikan sidebar -->
@@ -79,6 +77,7 @@
 <?php if(!isset($_POST['id_sub_kriteria'])): ?>
 	<div class="hasil-akhir-content">
 		<!-- /.card-header -->
+		<a href="<?= base_url('Laporan'); ?>" class="btn btn-primary float-right"> <i class="fa fa-print"></i> Cetak Data </a>
 		<div class="card-header py-3">
 			<h6 class="m-0 font-weight-bold text-info"><i class="fa fa-table"></i> Hasil Akhir Perankingan</h6>
 		</div>
@@ -179,9 +178,17 @@
 <?php if(isset($_POST['id_sub_kriteria'])): ?>
 	<div class="hasil-akhir-content">
 		<!-- /.card-header -->
+		<?php 
+			$arr=$_POST['id_sub_kriteria'];
+			// Meneruskan array "arr" ke halaman Laporan (1/2)
+			// Jerald's solution (https://stackoverflow.com/questions/14979882/how-to-pass-array-to-another-page-by-using-anchor-in-php)
+			$text = json_encode($arr);
+			$request_text = urlencode($text);
+		?>
+		<!-- Meneruskan array "arr" ke halaman Laporan (2/2) -->
+		<a href="<?= base_url('Laporan'); ?>?cluster=<?php echo $request_text; ?>" class="btn btn-primary float-right"> <i class="fa fa-print"></i> Cetak Data (Filtered) </a>
 		<div class="card-header py-3">
 			<h6 class="m-0 font-weight-bold text-info"><i class="fa fa-table"></i> Hasil Akhir Perankingan (Filtered)</h6>
-			<?php $arr=$_POST['id_sub_kriteria']; ?>
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
