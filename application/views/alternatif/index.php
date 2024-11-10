@@ -110,5 +110,4 @@
 		</table>
 	</div>
 </div>
-
 <?php $this->load->view('layouts/footer_admin'); ?>

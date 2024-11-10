@@ -2,7 +2,6 @@
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-cube"></i> Data Kriteria</h1>
-
 	<?php if($this->session->userdata('id_user_level') == '1'): ?>
     	<a href="<?= base_url('Kriteria/create'); ?>" class="btn btn-success"> <i class="fa fa-plus"></i> Tambah Data </a>
 	<?php endif; ?>
@@ -15,7 +14,6 @@
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-info"><i class="fa fa-table"></i> Daftar Data Kriteria</h6>
     </div>
-
     <div class="card-body">
 		<div class="table-responsive">
 			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -57,9 +55,9 @@
 					?>
 				</tbody>
 			</table>
+			<h5> Kriteria jenis Benefit: Nilai Sub Kriteria yang lebih besar = lebih baik </h5>
+			<h5> Kriteria jenis Cost: Nilai Sub Kriteria yang lebih kecil = lebih baik </h5>
 		</div>
 	</div>
 </div>
-
-
 <?php $this->load->view('layouts/footer_admin'); ?>
