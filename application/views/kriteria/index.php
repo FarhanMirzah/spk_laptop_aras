@@ -55,8 +55,8 @@
 					?>
 				</tbody>
 			</table>
-			<h5> Kriteria jenis Benefit: Nilai Sub Kriteria yang lebih besar = lebih baik </h5>
-			<h5> Kriteria jenis Cost: Nilai Sub Kriteria yang lebih kecil = lebih baik </h5>
+			<h6> Kriteria jenis Benefit: Nilai Sub Kriteria yang lebih besar = lebih baik </h6>
+			<h6> Kriteria jenis Cost: Nilai Sub Kriteria yang lebih kecil = lebih baik </h6>
 		</div>
 	</div>
 </div>
