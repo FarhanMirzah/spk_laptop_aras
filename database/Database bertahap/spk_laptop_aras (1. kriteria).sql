@@ -31,6 +31,7 @@ CREATE TABLE `alternatif` (
   `id_alternatif` int(11) NOT NULL,
   `kode_alternatif` varchar(100) NOT NULL,
   `nama_alternatif` varchar(255) NOT NULL,
+  `kategori_alternatif` varchar(255) NOT NULL,
   `gambar_alternatif` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

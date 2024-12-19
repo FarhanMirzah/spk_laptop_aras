@@ -46,7 +46,8 @@
             $this->load->library('upload', $config);
             
             $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|is_unique[alternatif.kode_alternatif]');  
-            $this->form_validation->set_rules('nama_alternatif', 'Nama', 'required|is_unique[alternatif.nama_alternatif]');               
+            $this->form_validation->set_rules('nama_alternatif', 'Nama', 'required|is_unique[alternatif.nama_alternatif]');     
+            $this->form_validation->set_rules('kategori_alternatif', 'Kategori Alternatif', 'required');            
 
             if ($this->form_validation->run() != false) {
                 // Upload Gambar (di create Alternatif)
@@ -63,7 +64,8 @@
                     skip_file_type_create_alternatif:
                     $data = [
                         'kode_alternatif' => $this->input->post('kode_alternatif'),
-                        'nama_alternatif' => $this->input->post('nama_alternatif')
+                        'nama_alternatif' => $this->input->post('nama_alternatif'),
+                        'kategori_alternatif' => $this->input->post('kategori_alternatif')
                     ];
                     $result = $this->Alternatif_model->insert($data);
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Alternatif '.$this->input->post('nama_alternatif').' ('.$this->input->post('kode_alternatif').') berhasil disimpan! (tanpa gambar)</div>');
@@ -81,6 +83,7 @@
                         $data = [
                             'kode_alternatif' => $this->input->post('kode_alternatif'),
                             'nama_alternatif' => $this->input->post('nama_alternatif'),
+                            'kategori_alternatif' => $this->input->post('kategori_alternatif'),
                             'gambar_alternatif' => $this->upload->data("file_name")
                         ];
                         $result = $this->Alternatif_model->insert($data);
@@ -120,6 +123,7 @@
                     $id = $this->uri->segment(3);
                     $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required|edit_unique[alternatif.kode_alternatif.id_alternatif.'.$id.']');
                     $this->form_validation->set_rules('nama_alternatif', 'Nama', 'required|edit_unique[alternatif.nama_alternatif.id_alternatif.'.$id.']');
+                    $this->form_validation->set_rules('kategori_alternatif', 'Kategori Alternatif', 'required');
         
                     if ($this->form_validation->run() != false) {
                         // Upload Gambar (di edit Alternatif)
@@ -138,6 +142,7 @@
                             $data = array(
                                 'kode_alternatif' => $this->input->post('kode_alternatif'),
                                 'nama_alternatif' => $this->input->post('nama_alternatif'),
+                                'kategori_alternatif' => $this->input->post('kategori_alternatif'),
                                 'gambar_alternatif' => $gambar_alternatif
                             );
 
@@ -157,6 +162,7 @@
                                 $data = [
                                     'kode_alternatif' => $this->input->post('kode_alternatif'),
                                     'nama_alternatif' => $this->input->post('nama_alternatif'),
+                                    'kategori_alternatif' => $this->input->post('kategori_alternatif'),
                                     'gambar_alternatif' => $this->upload->data("file_name")
                                 ];
                                 $this->Alternatif_model->update($id_alternatif, $data);

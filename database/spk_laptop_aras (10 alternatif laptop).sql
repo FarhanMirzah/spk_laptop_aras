@@ -31,6 +31,7 @@ CREATE TABLE `alternatif` (
   `id_alternatif` int(11) NOT NULL,
   `kode_alternatif` varchar(100) NOT NULL,
   `nama_alternatif` varchar(255) NOT NULL,
+  `kategori_alternatif` varchar(255) NOT NULL,
   `gambar_alternatif` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -38,17 +39,17 @@ CREATE TABLE `alternatif` (
 -- Dumping data for table `alternatif`
 --
 
-INSERT INTO `alternatif` (`id_alternatif`, `kode_alternatif`, `nama_alternatif`, `gambar_alternatif`) VALUES
-(1, 'A1', 'ASUS M415DAO-FHD321', 'm415da-slate-grey-1.jpg'),
-(2, 'A2', 'ASUS A416MAO-FHD425', 'a416-fingerprint-transparent-silver.jpg'),
-(3, 'A3', 'ASUS A1400EA-FHD321', 'as2.jpg'),
-(4, 'A4', 'ASUS A1400EA-VIPS751', 'as2.jpg'),
-(5, 'A5', 'ASUS K3405VA-OLEDS951', '14x2.jpg'),
-(6, 'A6', 'ASUS FX506HC-I535B6T-O11', 'FA506QM-R736B6G-O-1.jpg'),
-(7, 'A7', 'ASUS T3300KA-OLED621', 'vivobook_13_slate_oled_t3300_product_photo_etail_2400x2400_39_1.jpg'),
-(8, 'A8', 'ASUS UX3402ZA-OLEDS551', 'az5.jpg'),
-(9, 'A9', 'ASUS M3401QC-OLED556', 'M3401QC-Cool-Silver-4.jpg'),
-(10, 'A10', 'ASUS N7401ZE-OLEDS715', 'vivobook_pro_14x_n7401_oled_product_photo_8k_0_x_black_13.jpg');
+INSERT INTO `alternatif` (`id_alternatif`, `kode_alternatif`, `nama_alternatif`, `kategori_alternatif`, `gambar_alternatif`) VALUES
+(1, 'A1', 'ASUS M415DAO-FHD321', 'Notebook', 'm415da-slate-grey-1.jpg'),
+(2, 'A2', 'ASUS A416MAO-FHD425', 'Notebook', 'a416-fingerprint-transparent-silver.jpg'),
+(3, 'A3', 'ASUS A1400EA-FHD321', 'Notebook', 'as2.jpg'),
+(4, 'A4', 'ASUS A1400EA-VIPS751', 'Notebook', 'as2.jpg'),
+(5, 'A5', 'ASUS K3405VA-OLEDS951', 'Notebook', '14x2.jpg'),
+(6, 'A6', 'ASUS FX506HC-I535B6T-O11', 'Laptop Gaming', 'FA506QM-R736B6G-O-1.jpg'),
+(7, 'A7', 'ASUS T3300KA-OLED621', 'Laptop 2-in-1', 'vivobook_13_slate_oled_t3300_product_photo_etail_2400x2400_39_1.jpg'),
+(8, 'A8', 'ASUS UX3402ZA-OLEDS551', 'Notebook', 'az5.jpg'),
+(9, 'A9', 'ASUS M3401QC-OLED556', 'Notebook', 'M3401QC-Cool-Silver-4.jpg'),
+(10, 'A10', 'ASUS N7401ZE-OLEDS715', 'Notebook', 'vivobook_pro_14x_n7401_oled_product_photo_8k_0_x_black_13.jpg');
 
 -- --------------------------------------------------------
 

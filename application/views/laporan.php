@@ -61,6 +61,8 @@
 						<td align="left">	
 							<b>Nama Alternatif:</b> <?= $keys->nama_alternatif ?>
 							<br>
+							<b>Kategori:</b> <?= $keys->kategori_alternatif ?>
+							<br>
 							<b>Nilai K:</b> <?= $keys->nilai_k ?>
 							<p>
 
@@ -195,6 +197,8 @@
 							<td><?= $keys->kode_alternatif ?></td>
 							<td align="left">	
 								<b>Nama Alternatif:</b> <?= $keys->nama_alternatif ?>
+								<br>
+								<b>Kategori:</b> <?= $keys->kategori_alternatif ?>
 								<br>
 								<b>Nilai K:</b> <?= $keys->nilai_k ?>
 								<p>

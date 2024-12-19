@@ -28,6 +28,7 @@
             $ubah = array(
                 'kode_alternatif'  => $data['kode_alternatif'],
                 'nama_alternatif'  => $data['nama_alternatif'],
+                'kategori_alternatif'  => $data['kategori_alternatif'],
                 'gambar_alternatif'  => $data['gambar_alternatif']
             );
 

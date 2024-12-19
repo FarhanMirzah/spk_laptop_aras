@@ -29,6 +29,16 @@
 				</div>
 
 				<div class="form-group col-md-12">
+					<label class="font-weight-bold" for="kategori_alternatif">Kategori Alternatif</label>
+					<select name="kategori_alternatif" id="kategori_alternatif" required class="form-control">
+						<option value="">--Pilih--</option>
+						<option value="Notebook">Notebook</option>
+						<option value="Laptop Gaming">Laptop Gaming</option>
+						<option value="Laptop 2-in-1">Laptop 2-in-1</option>
+					</select>
+				</div>
+
+				<div class="form-group col-md-12">
 					<label class="font-weight-bold">Gambar Alternatif</label>
 					<input type="file" name="userfile" id="userfile" class="form-control" accept="image/*"/>
 				</div>

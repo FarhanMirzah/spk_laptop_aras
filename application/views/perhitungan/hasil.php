@@ -90,6 +90,7 @@
 							<th width="5%">Ranking</th>
 							<th width="5%">Kode</th>
 							<th>Alternatif</th>
+							<th width="15%">Kategori</th>
 							<th width="10%">Nilai K</th>
 							<th width="10%">Aksi</th>
 						</tr>
@@ -103,6 +104,7 @@
 							<td><?= $no; ?></td>
 							<td><?= $keys->kode_alternatif ?></td>
 							<td align="left"><?= $keys->nama_alternatif ?></td>
+							<td><?=$keys->kategori_alternatif ?></td>
 							<td><?= $keys->nilai_k ?></td>
 							<td>
 								<div class="btn-group" role="group">
@@ -123,6 +125,7 @@
 									<?= form_open('Perhitungan/detail_alternatif') ?>
 										<div class="modal-body">
 											<h5 class="modal-title" id="myModalLabel"><b>(<?= $keys->kode_alternatif ?>)</b> <?= $keys->nama_alternatif ?></h5>
+											<h5 class="modal-title" id="myModalLabel"><b>Kategori: </b> <?= $keys->kategori_alternatif ?></h5>
 											<?php if($keys->gambar_alternatif != NULL): ?>
 												<img src="../uploads/<?= $keys->gambar_alternatif ?>" alt="<?= $keys->gambar_alternatif ?>" onerror="this.src='../assets/img/default.jpg'" style="max-width: 450px; max-height: 275px">
 											<?php endif ?>
@@ -198,6 +201,7 @@
 							<th width="5%">Ranking</th>
 							<th width="5%">Kode</th>
 							<th>Alternatif</th>
+							<th width="15%">Kategori</th>
 							<th width="10%">Nilai K</th>
 							<th width="10%">Aksi</th>
 						</tr>
@@ -246,6 +250,7 @@
 									<td><?= $no_filtered; ?></td>
 									<td><?= $keys->kode_alternatif ?></td>
 									<td align="left"><?= $keys->nama_alternatif ?></td>
+									<td><?=$keys->kategori_alternatif ?></td>
 									<td><?= $keys->nilai_k ?></td>
 									<td>
 										<div class="btn-group" role="group">
@@ -266,6 +271,7 @@
 											<?= form_open('Perhitungan/detail_alternatif') ?>
 												<div class="modal-body">
 													<h5 class="modal-title" id="myModalLabel"><b>(<?= $keys->kode_alternatif ?>)</b> <?= $keys->nama_alternatif ?></h5>
+													<h5 class="modal-title" id="myModalLabel"><b>Kategori: </b> <?= $keys->kategori_alternatif ?></h5>
 													<?php if($keys->gambar_alternatif != NULL): ?>
 														<img src="../uploads/<?= $keys->gambar_alternatif ?>" alt="<?= $keys->gambar_alternatif ?>" onerror="this.src='../assets/img/default.jpg'" style="max-width: 450px; max-height: 275px">
 													<?php endif ?>

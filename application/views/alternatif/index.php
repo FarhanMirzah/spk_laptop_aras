@@ -24,6 +24,7 @@
 						<th width="5%">No</th>
 						<th width="5%">Kode</th>
 						<th>Nama Alternatif</th>
+						<th width="15%">Kategori</th>
 						<th width="15%">Aksi</th>
 					</tr>
 				</thead>
@@ -36,6 +37,7 @@
 						<td><?=$no ?></td>
 						<td><?=$keys->kode_alternatif ?></td>
 						<td align="left"><?php echo $keys->nama_alternatif ?></td>
+						<td><?=$keys->kategori_alternatif ?></td>
 						<td>
 							<div class="btn-group" role="group">
 								<a data-toggle="modal" title="Detail Data" href="#detail<?= $keys->id_alternatif ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
@@ -59,6 +61,7 @@
 								<?= form_open('Alternatif/detail_alternatif') ?>
 									<div class="modal-body">
 										<h5 class="modal-title" id="myModalLabel"><b>(<?= $keys->kode_alternatif ?>)</b> <?= $keys->nama_alternatif ?></h5>
+										<h5 class="modal-title" id="myModalLabel"><b>Kategori: </b> <?= $keys->kategori_alternatif ?></h5>
 										<?php if($keys->gambar_alternatif != NULL): ?>
 											<img src="./uploads/<?= $keys->gambar_alternatif ?>" alt="<?= $keys->gambar_alternatif ?>" onerror="this.src='./assets/img/default.jpg'" style="max-width: 450px; max-height: 275px">
 										<?php endif ?>

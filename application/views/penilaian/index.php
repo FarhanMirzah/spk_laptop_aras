@@ -20,6 +20,7 @@
 						<th width="5%">No</th>
 						<th width="5%">Kode</th>
 						<th>Alternatif</th>
+						<th width="15%">Kategori</th>
 						<th width="15%">Aksi</th>
 					</tr>
 				</thead>
@@ -31,6 +32,7 @@
 						<td><?=$no ?></td>
 						<td><?=$keys->kode_alternatif ?></td>
 						<td align="left"><?= $keys->nama_alternatif ?></td>
+						<td><?=$keys->kategori_alternatif ?></td>
 						<?php $cek_tombol = $this->Penilaian_model->untuk_tombol($keys->id_alternatif); ?>
 
 						<td>
@@ -53,6 +55,7 @@
 								<?= form_open('Penilaian/tambah_penilaian') ?>
 									<div class="modal-body">
 										<h5 class="modal-title" id="myModalLabel"><b>(<?= $keys->kode_alternatif ?>)</b> <?= $keys->nama_alternatif ?></h5>
+										<h5 class="modal-title" id="myModalLabel"><b>Kategori: </b> <?= $keys->kategori_alternatif ?></h5>
 										<?php if($keys->gambar_alternatif != NULL): ?>
 											<img src="./uploads/<?= $keys->gambar_alternatif ?>" alt="<?= $keys->gambar_alternatif ?>" onerror="this.src='./assets/img/default.jpg'" style="max-width: 450px; max-height: 275px">
 										<?php endif ?>
@@ -96,6 +99,7 @@
 								<?= form_open('Penilaian/update_penilaian') ?>
 									<div class="modal-body">
 										<h5 class="modal-title" id="myModalLabel"><b>(<?= $keys->kode_alternatif ?>)</b> <?= $keys->nama_alternatif ?></h5>
+										<h5 class="modal-title" id="myModalLabel"><b>Kategori: </b> <?= $keys->kategori_alternatif ?></h5>
 										<?php if($keys->gambar_alternatif != NULL): ?>
 											<img src="./uploads/<?= $keys->gambar_alternatif ?>" alt="<?= $keys->gambar_alternatif ?>" onerror="this.src='./assets/img/default.jpg'" style="max-width: 450px; max-height: 275px">
 										<?php endif ?>

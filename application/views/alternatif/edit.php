@@ -25,6 +25,14 @@
 					<br>
 					<label class="font-weight-bold">Nama Alternatif</label>
 					<input autocomplete="off" type="text" name="nama_alternatif" value="<?php echo $alternatif->nama_alternatif ?>" required class="form-control"/>
+					<br>
+					<label class="font-weight-bold" for="kategori_alternatif">Kategori Alternatif</label>
+					<select name="kategori_alternatif" id="kategori_alternatif" required class="form-control">
+						<option value="">--Pilih--</option>
+						<option value="Notebook" <?php if($alternatif->kategori_alternatif == "Notebook"){ echo 'selected'; } ?>>Notebook</option>
+						<option value="Laptop Gaming" <?php if($alternatif->kategori_alternatif == "Laptop Gaming"){ echo 'selected'; } ?>>Laptop Gaming</option>
+						<option value="Laptop 2-in-1" <?php if($alternatif->kategori_alternatif == "Laptop 2-in-1"){ echo 'selected'; } ?>>Laptop 2-in-1</option>
+					</select>
 				</div>
 			</div>
 			<?php if($alternatif->gambar_alternatif != NULL): ?>
