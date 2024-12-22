@@ -79,7 +79,11 @@
 							<br>
 							<b>Kategori:</b> <?= $keys->kategori_alternatif ?>
 							<br>
-							<b>Nilai K:</b> <?= $keys->nilai_k ?>
+
+							<!-- Supaya Nilai K hanya tampil untuk Admin -->
+							<?php if($this->session->userdata('id_user_level') == '1'): ?>
+								<b>Nilai K:</b> <?= $keys->nilai_k ?>
+							<?php endif ?>
 							<p>
 
 							<?php foreach ($kriteria as $key): ?>
@@ -206,7 +210,11 @@
 								<br>
 								<b>Kategori:</b> <?= $keys->kategori_alternatif ?>
 								<br>
-								<b>Nilai K:</b> <?= $keys->nilai_k ?>
+
+								<!-- Supaya Nilai K hanya tampil untuk Admin -->
+								<?php if($this->session->userdata('id_user_level') == '1'): ?>
+									<b>Nilai K:</b> <?= $keys->nilai_k ?>
+								<?php endif ?>
 								<p>
 									
 								<b>Ranking (filtered):</b> <?= $no_filtered ?> dari <?= $jumlah_filtered ?>
@@ -349,7 +357,11 @@
 								<br>
 								<b>Kategori:</b> <?= $keys->kategori_alternatif ?>
 								<br>
-								<b>Nilai K:</b> <?= $keys->nilai_k ?>
+
+								<!-- Supaya Nilai K hanya tampil untuk Admin -->
+								<?php if($this->session->userdata('id_user_level') == '1'): ?>
+									<b>Nilai K:</b> <?= $keys->nilai_k ?>
+								<?php endif ?>
 								<p>
 									
 								<b>Ranking (filtered):</b> <?= $no_filtered ?> dari <?= $jumlah_filtered ?>
@@ -517,7 +529,11 @@
 								<br>
 								<b>Kategori:</b> <?= $keys->kategori_alternatif ?>
 								<br>
-								<b>Nilai K:</b> <?= $keys->nilai_k ?>
+
+								<!-- Supaya Nilai K hanya tampil untuk Admin -->
+								<?php if($this->session->userdata('id_user_level') == '1'): ?>
+									<b>Nilai K:</b> <?= $keys->nilai_k ?>
+								<?php endif ?>
 								<p>
 									
 								<b>Ranking (filtered):</b> <?= $no_filtered ?> dari <?= $jumlah_filtered ?>

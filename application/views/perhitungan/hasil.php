@@ -154,7 +154,12 @@
 							<th width="5%">Kode</th>
 							<th>Alternatif</th>
 							<th width="15%">Kategori</th>
-							<th width="10%">Nilai K</th>
+
+							<!-- Supaya Nilai K hanya tampil untuk Admin -->
+							<?php if($this->session->userdata('id_user_level') == '1'): ?>
+								<th width="10%">Nilai K</th>
+							<?php endif ?>
+
 							<th width="10%">Aksi</th>
 						</tr>
 					</thead>
@@ -168,7 +173,12 @@
 							<td><?= $keys->kode_alternatif ?></td>
 							<td align="left"><?= $keys->nama_alternatif ?></td>
 							<td><?=$keys->kategori_alternatif ?></td>
-							<td><?= $keys->nilai_k ?></td>
+
+							<!-- Supaya Nilai K hanya tampil untuk Admin -->
+							<?php if($this->session->userdata('id_user_level') == '1'): ?>
+								<td><?= $keys->nilai_k ?></td>
+							<?php endif ?>
+
 							<td>
 								<div class="btn-group" role="group">
 									<a data-toggle="modal" title="Detail Data" href="#detail<?= $keys->id_alternatif ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
@@ -192,7 +202,12 @@
 											<?php if($keys->gambar_alternatif != NULL): ?>
 												<img src="../uploads/<?= $keys->gambar_alternatif ?>" alt="<?= $keys->gambar_alternatif ?>" onerror="this.src='../assets/img/default.jpg'" style="max-width: 450px; max-height: 275px">
 											<?php endif ?>
-											<h6><b>Nilai K:</b> <?= $keys->nilai_k ?></h6>
+
+											<!-- Supaya Nilai K hanya tampil untuk Admin -->
+											<?php if($this->session->userdata('id_user_level') == '1'): ?>
+												<h6><b>Nilai K:</b> <?= $keys->nilai_k ?></h6>
+											<?php endif ?>
+
 											<h6><b>Ranking:</b> <?= $no ?> dari <?= $jumlah_ranking ?></h6>
 											<hr>
 											<?php foreach ($kriteria as $key): ?>
@@ -265,7 +280,12 @@
 							<th width="5%">Kode</th>
 							<th>Alternatif</th>
 							<th width="15%">Kategori</th>
-							<th width="10%">Nilai K</th>
+
+							<!-- Supaya Nilai K hanya tampil untuk Admin -->
+							<?php if($this->session->userdata('id_user_level') == '1'): ?>
+								<th width="10%">Nilai K</th>
+							<?php endif ?>
+
 							<th width="10%">Aksi</th>
 						</tr>
 					</thead>
@@ -301,7 +321,12 @@
 									<td><?= $keys->kode_alternatif ?></td>
 									<td align="left"><?= $keys->nama_alternatif ?></td>
 									<td><?=$keys->kategori_alternatif ?></td>
-									<td><?= $keys->nilai_k ?></td>
+
+									<!-- Supaya Nilai K hanya tampil untuk Admin -->
+									<?php if($this->session->userdata('id_user_level') == '1'): ?>
+										<td><?= $keys->nilai_k ?></td>
+									<?php endif ?>
+
 									<td>
 										<div class="btn-group" role="group">
 											<a data-toggle="modal" title="Detail Data" href="#detail<?= $keys->id_alternatif ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
@@ -325,7 +350,12 @@
 													<?php if($keys->gambar_alternatif != NULL): ?>
 														<img src="../uploads/<?= $keys->gambar_alternatif ?>" alt="<?= $keys->gambar_alternatif ?>" onerror="this.src='../assets/img/default.jpg'" style="max-width: 450px; max-height: 275px">
 													<?php endif ?>
-													<h6><b>Nilai K:</b> <?= $keys->nilai_k ?></h6>
+
+													<!-- Supaya Nilai K hanya tampil untuk Admin -->
+													<?php if($this->session->userdata('id_user_level') == '1'): ?>
+														<h6><b>Nilai K:</b> <?= $keys->nilai_k ?></h6>
+													<?php endif ?>
+
 													<h6><b>Ranking (filtered):</b> <?= $no_filtered ?> dari <?= $jumlah_filtered ?></h6>
 													<h6><b>Ranking (all):</b> <?= $no ?> dari <?= $jumlah_ranking ?></h6>
 													<hr>
@@ -399,7 +429,12 @@
 							<th width="5%">Kode</th>
 							<th>Alternatif</th>
 							<th width="15%">Kategori</th>
-							<th width="10%">Nilai K</th>
+
+							<!-- Supaya Nilai K hanya tampil untuk Admin -->
+							<?php if($this->session->userdata('id_user_level') == '1'): ?>
+								<th width="10%">Nilai K</th>
+							<?php endif ?>
+
 							<th width="10%">Aksi</th>
 						</tr>
 					</thead>
@@ -448,7 +483,12 @@
 									<td><?= $keys->kode_alternatif ?></td>
 									<td align="left"><?= $keys->nama_alternatif ?></td>
 									<td><?=$keys->kategori_alternatif ?></td>
-									<td><?= $keys->nilai_k ?></td>
+
+									<!-- Supaya Nilai K hanya tampil untuk Admin -->
+									<?php if($this->session->userdata('id_user_level') == '1'): ?>
+										<td><?= $keys->nilai_k ?></td>
+									<?php endif ?>
+
 									<td>
 										<div class="btn-group" role="group">
 											<a data-toggle="modal" title="Detail Data" href="#detail<?= $keys->id_alternatif ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
@@ -472,7 +512,12 @@
 													<?php if($keys->gambar_alternatif != NULL): ?>
 														<img src="../uploads/<?= $keys->gambar_alternatif ?>" alt="<?= $keys->gambar_alternatif ?>" onerror="this.src='../assets/img/default.jpg'" style="max-width: 450px; max-height: 275px">
 													<?php endif ?>
-													<h6><b>Nilai K:</b> <?= $keys->nilai_k ?></h6>
+
+													<!-- Supaya Nilai K hanya tampil untuk Admin -->
+													<?php if($this->session->userdata('id_user_level') == '1'): ?>
+														<h6><b>Nilai K:</b> <?= $keys->nilai_k ?></h6>
+													<?php endif ?>
+
 													<h6><b>Ranking (filtered):</b> <?= $no_filtered ?> dari <?= $jumlah_filtered ?></h6>
 													<h6><b>Ranking (all):</b> <?= $no ?> dari <?= $jumlah_ranking ?></h6>
 													<hr>
@@ -548,7 +593,12 @@
 							<th width="5%">Kode</th>
 							<th>Alternatif</th>
 							<th width="15%">Kategori</th>
-							<th width="10%">Nilai K</th>
+
+							<!-- Supaya Nilai K hanya tampil untuk Admin -->
+							<?php if($this->session->userdata('id_user_level') == '1'): ?>
+								<th width="10%">Nilai K</th>
+							<?php endif ?>
+
 							<th width="10%">Aksi</th>
 						</tr>
 					</thead>
@@ -603,7 +653,12 @@
 									<td><?= $keys->kode_alternatif ?></td>
 									<td align="left"><?= $keys->nama_alternatif ?></td>
 									<td><?=$keys->kategori_alternatif ?></td>
-									<td><?= $keys->nilai_k ?></td>
+
+									<!-- Supaya Nilai K hanya tampil untuk Admin -->
+									<?php if($this->session->userdata('id_user_level') == '1'): ?>
+										<td><?= $keys->nilai_k ?></td>
+									<?php endif ?>
+
 									<td>
 										<div class="btn-group" role="group">
 											<a data-toggle="modal" title="Detail Data" href="#detail<?= $keys->id_alternatif ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
@@ -627,7 +682,12 @@
 													<?php if($keys->gambar_alternatif != NULL): ?>
 														<img src="../uploads/<?= $keys->gambar_alternatif ?>" alt="<?= $keys->gambar_alternatif ?>" onerror="this.src='../assets/img/default.jpg'" style="max-width: 450px; max-height: 275px">
 													<?php endif ?>
-													<h6><b>Nilai K:</b> <?= $keys->nilai_k ?></h6>
+
+													<!-- Supaya Nilai K hanya tampil untuk Admin -->
+													<?php if($this->session->userdata('id_user_level') == '1'): ?>
+														<h6><b>Nilai K:</b> <?= $keys->nilai_k ?></h6>
+													<?php endif ?>
+													
 													<h6><b>Ranking (filtered):</b> <?= $no_filtered ?> dari <?= $jumlah_filtered ?></h6>
 													<h6><b>Ranking (all):</b> <?= $no ?> dari <?= $jumlah_ranking ?></h6>
 													<hr>
