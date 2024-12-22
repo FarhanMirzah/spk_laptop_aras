@@ -156,7 +156,7 @@ skip_perhitungan:
 ?>
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-calculator"></i> Data Perhitungan</h1>
+    <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-calculator"></i> Data Perhitungan (Metode ARAS)</h1>
 </div>
 
 <?= $this->session->flashdata('message'); ?>
@@ -189,6 +189,11 @@ skip_perhitungan:
 	<?php exit; ?>
 <?php endif ?>
 
+<b>Catatan:</b> 
+<br>
+• <b>Alternatif Optimum (A0)</b> bukan merupakan Alternatif yang di inputkan di database.
+<br>
+• A0 adalah Alternatif yang memiliki nilai <b>tertinggi</b> untuk setiap kriteria yang bertipe <b>benefit</b> dan nilai <b>terendah</b> untuk setiap kriteria yang bertipe <b>cost</b>.
 <div class="card shadow mb-4">
     <!-- /.card-header -->
     <div class="card-header py-3">
@@ -207,7 +212,7 @@ skip_perhitungan:
 					</tr>
 				</thead>
 				<tbody>
-					<tr align="center">
+					<tr align="center" class="bg-light">
 						<td>A0</td>
 						<?php foreach ($kriterias as $kriteria): ?>
 						<td>
@@ -261,7 +266,7 @@ skip_perhitungan:
 					</tr>
 				</thead>
 				<tbody>
-					<tr align="center">
+					<tr align="center" class="bg-light">
 						<td>A0</td>
 						<?php foreach ($kriterias as $kriteria): ?>
 						<td>
@@ -332,7 +337,7 @@ skip_perhitungan:
 					</tr>
 				</thead>
 				<tbody>
-					<tr align="center">
+					<tr align="center" class="bg-light">
 						<td>A0</td>
 						<?php foreach ($kriterias as $kriteria): ?>
 						<td>
@@ -422,7 +427,7 @@ skip_perhitungan:
 					</tr>
 				</thead>
 				<tbody>
-					<tr align="center">
+					<tr align="center" class="bg-light">
 						<td>A0</td>
 						<?php foreach ($kriterias as $kriteria): ?>
 						<td>
@@ -479,7 +484,7 @@ skip_perhitungan:
 					</tr>
 				</thead>
 				<tbody>
-					<tr align="center">
+					<tr align="center" class="bg-light">
 						<td>A0</td>
 						<!-- Pembulatan bagian Nilai S (A0 saja) (4 angka belakang koma) -->
 						<td><?= round($total_rb0,4);?></td>
@@ -519,6 +524,7 @@ skip_perhitungan:
 				</tbody>
 			</table>
 		</div>
+		<b>Nilai K</b> dari yang <b>terbesar</b> sampai <b>terkecil</b> akan digunakan untuk perangkingan semua Alternatif (kecuali A0) di halaman <b>Hasil Akhir</b>.
 	</div>
 </div>
 

@@ -135,8 +135,33 @@
             </div>
         </div>
     </div>
+
+    <h5><b>Alur Aplikasi:</b></h5>
+    <b>1.</b> Admin menambah data <b>Kriteria</b>.
+    <br>
+    <b>2.</b> Admin menambah data <b>Sub Kriteria</b> dari setiap Kriteria yang sudah di input sebelumnya.
+    <br>
+    <b>3.</b> Admin menambah data <b>Alternatif</b> (gambar alternatif atau laptop bersifat optional).
+    <br>
+    <b>4.</b> Admin menginput data <b>Penilaian</b> Sub Kriteria dari setiap Alternatif yang sudah di input sebelumnya. 
+    <br>
+    <b>5.</b> Admin melihat setiap tahap <b>Perhitungan</b> pada pemilihan Alternatif menggunakan metode ARAS.
+    <br>
+    <b>6.</b> Admin dan/atau User dapat melihat <b>Hasil Akhir</b> Perangkingan pemilihan Alternatif menggunakan metode ARAS.
+    <br>
+    <br>
+
+    <h5><b>Catatan:</b></h5>
+    • Hasil Akhir dapat di <b>filter</b> berdasarkan kategori kebutuhan dan sub kriteria. Hasil Akhir juga dapat di <b>cetak</b> menggunakan tombol Cetak Data.
+    <br>
+    • Di halaman <b>Profile</b>, Admin dapat melihat dan mengedit data profile Admin seperti <b>username</b> dan <b>password</b>.
+    <br>
+    • <b>User</b> hanya bisa mengakses halaman Hasil Akhir (namanya diubah menjadi <b>Pemilihan Laptop</b>). User tidak bisa melihat <b>Nilai K</b> yang didapatkan dari Perhitungan Metode ARAS.
+
 </div>
+
 <?php endif; ?>
+
 <?php if($this->session->userdata('id_user_level') != '1'): ?>
 <div class="mb-4">
     <!-- Page Heading -->
