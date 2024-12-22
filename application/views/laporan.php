@@ -3,6 +3,7 @@
 <head>
 	<title>SPK Laptop ARAS</title>
 </head>
+<!-- Kode supaya tabel dan list filter tidak terpotong di halaman -->
 <style>
     table {
         border-collapse: collapse;
@@ -11,6 +12,9 @@
         border: 1px solid black;
     }
 	td {
+		page-break-inside: avoid;
+	}
+	.form-group {
 		page-break-inside: avoid;
 	}
 </style>
@@ -38,6 +42,8 @@
 			}
 		}
 	?>
+	<img src="./assets/img/Logo-CV-Alia-Komputer.png" alt="Logo-CV-Alia-Komputer.png" onerror="this.src='./assets/img/default.jpg'" style="max-width: 125px; max-height: 125px; float: right;">
+	<h4>CV Alia Komputer - Sistem Pendukung Keputusan Pemilihan Laptop</h4>
 	<?php if(!isset($arr)): ?>
 		<h4>Hasil Akhir Perankingan pada <?= date('j F Y (G:i A)')?></h4>
 	<?php endif ?>
@@ -48,7 +54,9 @@
 
 	<!-- Cetak Hasil Akhir (tanpa filter) -->
 	<?php if(!isset($arr)): ?>
-		<h4>Jumlah Alternatif: <?= count($hasil);?></h4>
+		Jumlah Alternatif: <?= count($hasil);?>
+		<br>
+		<br>
 		<table border="1" width="100%">
 			<thead>
 				<tr align="center">
@@ -132,12 +140,12 @@
 		<?php endforeach ?>
 		<?php $jumlah_filtered = count($f_unique); ?>
 
-		<b>Jumlah Alternatif (Filtered): <?= $jumlah_filtered;?></b>
+		Jumlah Alternatif (Filtered): <?= $jumlah_filtered;?>
 		<br>
-		<b>Jumlah Alternatif (All): <?= count($hasil);?></b>
+		Jumlah Alternatif (All): <?= count($hasil);?>
 		<br>
 		<br>
-		<b>Filter yang aktif</b>
+		<b>[Filter yang aktif]</b>
 		
 		<div class="form-group">
 			<!-- Kode untuk menampilkan filter kategori yang aktif -->
@@ -265,12 +273,12 @@
 		<?php endforeach ?>
 		<?php $jumlah_filtered = count($f_unique); ?>
 
-		<b>Jumlah Alternatif (Filtered): <?= $jumlah_filtered;?></b>
+		Jumlah Alternatif (Filtered): <?= $jumlah_filtered;?>
 		<br>
-		<b>Jumlah Alternatif (All): <?= count($hasil);?></b>
+		Jumlah Alternatif (All): <?= count($hasil);?>
 		<br>
 		<br>
-		<b>Filter yang aktif</b>
+		<b>[Filter yang aktif]</b>
 		
 		<?php foreach ($kriteria as $key): ?>
 			<?php 
@@ -412,12 +420,12 @@
 		<?php endforeach ?>
 		<?php $jumlah_filtered = count($f_unique); ?>
 
-		<b>Jumlah Alternatif (Filtered): <?= $jumlah_filtered;?></b>
+		Jumlah Alternatif (Filtered): <?= $jumlah_filtered;?>
 		<br>
-		<b>Jumlah Alternatif (All): <?= count($hasil);?></b>
+		Jumlah Alternatif (All): <?= count($hasil);?>
 		<br>
 		<br>
-		<b>Filter yang aktif</b>
+		<b>[Filter yang aktif]</b>
 		
 		<!-- Kode untuk menampilkan filter kategori yang aktif -->
 		<br><br>

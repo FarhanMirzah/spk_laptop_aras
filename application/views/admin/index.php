@@ -147,7 +147,7 @@
     <!-- Content Row -->
     <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        Selamat datang <span class="text-uppercase"><b><?= $this->session->username; ?>!</b></span> Dengan level <b>User</b>, Anda bisa mengoperasikan sistem dengan wewenang tertentu melalui pilihan menu di bawah.
+        Selamat datang <span class="text-uppercase"><b><?= $this->session->username; ?>!</b></span> Silakan klik menu di bawah untuk memulai proses pemilihan laptop
     </div>
     <div class="row">
 		<div class="col-xl-4 col-md-6 mb-4">
@@ -155,7 +155,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="<?= base_url('Perhitungan/hasil'); ?>" class="text-secondary text-decoration-none">Data Hasil Akhir</a></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="<?= base_url('Perhitungan/hasil'); ?>" class="text-secondary text-decoration-none">Pemilihan Laptop</a></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-chart-area fa-2x text-gray-300"></i>
