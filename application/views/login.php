@@ -39,6 +39,9 @@
                             <p>
                                 Metode Additive Ratio Assessment (ARAS) merupakan salah satu metode pengambilan keputusan multikriteria berdasarkan pada konsep perangkingan menggunakan utility degree yaitu dengan membandingkan nilai indeks keseluruhan setiap alternatif terhadap nilai indeks keseluruhan alternatif optimal.
                             </p>
+                            <p>
+                                Aplikasi Sistem Pendukung Keputusan (SPK) Pemilihan Laptop ini dapat membantu pelanggan dalam memilih laptop yang sesuai dengan kebutuhan mereka.
+                            </p>
                         </div>
                     </div>
                 </div>
