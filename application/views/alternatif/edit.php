@@ -28,7 +28,7 @@
 					<br>
 					<label class="font-weight-bold" for="kategori_alternatif">Kategori Alternatif</label>
 					<select name="kategori_alternatif" id="kategori_alternatif" required class="form-control">
-						<option value="">--Pilih--</option>
+						<option value="">--Pilih Kategori--</option>
 						<option value="Notebook" <?php if($alternatif->kategori_alternatif == "Notebook"){ echo 'selected'; } ?>>Notebook</option>
 						<option value="Laptop Gaming" <?php if($alternatif->kategori_alternatif == "Laptop Gaming"){ echo 'selected'; } ?>>Laptop Gaming</option>
 						<option value="Laptop 2-in-1" <?php if($alternatif->kategori_alternatif == "Laptop 2-in-1"){ echo 'selected'; } ?>>Laptop 2-in-1</option>

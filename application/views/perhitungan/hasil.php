@@ -153,11 +153,11 @@
 							<th width="5%">Ranking</th>
 							<th width="5%">Kode</th>
 							<th>Alternatif</th>
-							<th width="15%">Kategori</th>
+							<th width="17%">Kategori</th>
 
 							<!-- Supaya Nilai K hanya tampil untuk Admin -->
 							<?php if($this->session->userdata('id_user_level') == '1'): ?>
-								<th width="10%">Nilai K</th>
+								<th width="12%">Nilai K</th>
 							<?php endif ?>
 
 							<th width="10%">Aksi</th>
@@ -279,11 +279,11 @@
 							<th width="5%">Ranking</th>
 							<th width="5%">Kode</th>
 							<th>Alternatif</th>
-							<th width="15%">Kategori</th>
+							<th width="17%">Kategori</th>
 
 							<!-- Supaya Nilai K hanya tampil untuk Admin -->
 							<?php if($this->session->userdata('id_user_level') == '1'): ?>
-								<th width="10%">Nilai K</th>
+								<th width="12%">Nilai K</th>
 							<?php endif ?>
 
 							<th width="10%">Aksi</th>
@@ -428,11 +428,11 @@
 							<th width="5%">Ranking</th>
 							<th width="5%">Kode</th>
 							<th>Alternatif</th>
-							<th width="15%">Kategori</th>
+							<th width="17%">Kategori</th>
 
 							<!-- Supaya Nilai K hanya tampil untuk Admin -->
 							<?php if($this->session->userdata('id_user_level') == '1'): ?>
-								<th width="10%">Nilai K</th>
+								<th width="12%">Nilai K</th>
 							<?php endif ?>
 
 							<th width="10%">Aksi</th>
@@ -566,7 +566,7 @@
 	</div>
 <?php endif ?>
 
-<!-- [WIP] Tabel untuk hasil sudah di filter (kategori dan sub kriteria) -->
+<!-- Tabel untuk hasil sudah di filter (kategori dan sub kriteria) -->
 <?php if(isset($_POST['id_sub_kriteria']) && isset($_POST['kategori_alternatif'])): ?>
 	<!-- Inisialisasi array dengan string "!-COMBINE FILTERS-!" untuk verifikasi filter kategori dan sub kriteria di laporan -->
 	<?php $combine = ['!-COMBINE FILTERS-!']; ?>
@@ -592,11 +592,11 @@
 							<th width="5%">Ranking</th>
 							<th width="5%">Kode</th>
 							<th>Alternatif</th>
-							<th width="15%">Kategori</th>
+							<th width="17%">Kategori</th>
 
 							<!-- Supaya Nilai K hanya tampil untuk Admin -->
 							<?php if($this->session->userdata('id_user_level') == '1'): ?>
-								<th width="10%">Nilai K</th>
+								<th width="12%">Nilai K</th>
 							<?php endif ?>
 
 							<th width="10%">Aksi</th>
