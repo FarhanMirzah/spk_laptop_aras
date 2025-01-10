@@ -19,14 +19,14 @@
 		<div class="card-body">
 			<div class="row">
 				<?php echo form_hidden('id_kriteria', $kriteria->id_kriteria) ?>
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-6" <?php if ($this->session->userdata('id_user_level') != "1") echo " style='display: none';"; ?>>
 					<label class="font-weight-bold">Kode Kriteria</label>
-					<input autocomplete="off" type="text" name="kode_kriteria" value="<?php echo $kriteria->kode_kriteria ?>" required class="form-control"/>
+					<input autocomplete="off" type="text" name="kode_kriteria" value="<?php echo $kriteria->kode_kriteria ?>" required class="form-control" <?php if($this->session->userdata('id_user_level') != "1"){echo "readonly";} ?> />
 				</div>
 				
 				<div class="form-group col-md-6">
 					<label class="font-weight-bold">Nama Kriteria</label>
-					<input autocomplete="off" type="text" name="keterangan" value="<?php echo $kriteria->keterangan ?>" required class="form-control"/>
+					<input autocomplete="off" type="text" name="keterangan" value="<?php echo $kriteria->keterangan ?>" required class="form-control" <?php if($this->session->userdata('id_user_level') != "1"){echo "readonly";} ?> />
 				</div>
 				
 				<div class="form-group col-md-6">
@@ -36,14 +36,23 @@
 				
 				<div class="form-group col-md-6">
 					<label class="font-weight-bold">Jenis Kriteria</label>
-					<select name="jenis" class="form-control" required>
+					<select name="jenis" class="form-control" required <?php if($this->session->userdata('id_user_level') != "1"){echo "readonly style='pointer-events: none';";} ?>>
 						<option value="Benefit" <?php if($kriteria->jenis == "Benefit"){ echo 'selected'; } ?>>Benefit</option>
 						<option value="Cost" <?php if($kriteria->jenis == "Cost"){ echo 'selected'; } ?>>Cost</option>						
 					</select>
 				</div>
 			</div>
-			<h6> Kriteria jenis Benefit: Nilai Sub Kriteria yang lebih besar = lebih baik </h6>
-			<h6> Kriteria jenis Cost: Nilai Sub Kriteria yang lebih kecil = lebih baik </h6>
+			<!-- Penjelasan Benefit / Cost jika Admin -->
+			<?php if($this->session->userdata('id_user_level') == '1'): ?>
+				<h6> Kriteria jenis Benefit: Nilai Sub Kriteria yang lebih besar = lebih baik </h6>
+				<h6> Kriteria jenis Cost: Nilai Sub Kriteria yang lebih kecil = lebih baik </h6>
+			<?php endif; ?>
+
+			<!-- Penjelasan Benefit / Cost jika User -->
+			<?php if($this->session->userdata('id_user_level') != '1'): ?>
+				<h6> Kriteria jenis Benefit bersifat "lebih besar = lebih baik" </h6>
+				<h6> Kriteria jenis Cost bersifat "lebih kecil = lebih baik" </h6>
+			<?php endif; ?>
 		</div>
 		<div class="card-footer text-right">
             <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>

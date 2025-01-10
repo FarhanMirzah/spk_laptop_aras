@@ -3,19 +3,17 @@
 <!-- Custom styles for this template-->
 <link href="<?= base_url('assets/')?>css/sb-admin-2.css" rel="stylesheet">
 
-<!-- Judul halaman jika Admin -->
-<?php if($this->session->userdata('id_user_level') == '1'): ?>
-	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+	<!-- Judul halaman jika Admin -->
+	<?php if($this->session->userdata('id_user_level') == '1'): ?>
 		<h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-chart-area"></i> Data Hasil Akhir</h1>
-	</div>
-<?php endif ?>
+	<?php endif ?>
 
-<!-- Judul halaman jika User -->
-<?php if($this->session->userdata('id_user_level') != '1'): ?>
-	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+	<!-- Judul halaman jika User -->
+	<?php if($this->session->userdata('id_user_level') != '1'): ?>
 		<h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-chart-area"></i> Pemilihan Laptop</h1>
-	</div>
-<?php endif ?>
+	<?php endif ?>
+</div>
 
 <!-- Fungsi Filter [WIP], sebaiknya dijadikan sidebar -->
 <div class="hasil-akhir-filter">

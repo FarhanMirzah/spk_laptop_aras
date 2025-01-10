@@ -1,9 +1,15 @@
 <?php $this->load->view('layouts/header_admin'); ?>
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-cube"></i> Data Kriteria</h1>
+	<!-- Judul halaman jika Admin -->
 	<?php if($this->session->userdata('id_user_level') == '1'): ?>
+    	<h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-cube"></i> Data Kriteria</h1>
     	<a href="<?= base_url('Kriteria/create'); ?>" class="btn btn-success"> <i class="fa fa-plus"></i> Tambah Data </a>
+	<?php endif; ?>
+
+	<!-- Judul halaman jika User -->
+	<?php if($this->session->userdata('id_user_level') != '1'): ?>
+		<h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-cube"></i> Pembobotan Kriteria</h1>
 	<?php endif; ?>
 </div>
 
@@ -20,13 +26,13 @@
 				<thead class="bg-info text-white">
 					<tr align="center">
 						<th width="5%">No</th>
-						<th>Kode Kriteria</th>
+						<?php if($this->session->userdata('id_user_level') == '1'): ?>
+							<th>Kode Kriteria</th>
+						<?php endif; ?>
 						<th>Nama Kriteria</th>
 						<th>Bobot</th>
 						<th>Jenis</th>
-						<?php if($this->session->userdata('id_user_level') == '1'): ?>
-							<th width="15%">Aksi</th>
-						<?php endif; ?>
+						<th width="15%">Aksi</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -36,18 +42,20 @@
 					?>
 					<tr align="center">
 						<td><?=$no ?></td>
-						<td><?php echo $value->kode_kriteria ?></td>
-						<td><?php echo $value->keterangan ?></td>
-						<td><?php echo $value->bobot ?></td>
-						<td><?php echo $value->jenis ?></td>
 						<?php if($this->session->userdata('id_user_level') == '1'): ?>
-							<td>
-								<div class="btn-group" role="group">
-									<a data-toggle="tooltip" data-placement="bottom" title="Edit Data" href="<?=base_url('Kriteria/edit/'.$value->id_kriteria)?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-									<a  data-toggle="tooltip" data-placement="bottom" title="Hapus Data" href="<?=base_url('Kriteria/destroy/'.$value->id_kriteria)?>" onclick="return confirm ('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-								</div>
-							</td>
+							<td><?php echo $value->kode_kriteria ?></td>
 						<?php endif; ?>
+						<td><?php echo $value->keterangan ?></td>
+						<td><?php echo ($value->bobot)*100 ?>% (<?php echo $value->bobot ?>)</td>
+						<td><?php echo $value->jenis ?></td>
+						<td>
+							<div class="btn-group" role="group">
+								<a data-toggle="tooltip" data-placement="bottom" title="Edit Data" href="<?=base_url('Kriteria/edit/'.$value->id_kriteria)?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+								<?php if($this->session->userdata('id_user_level') == '1'): ?>
+									<a  data-toggle="tooltip" data-placement="bottom" title="Hapus Data" href="<?=base_url('Kriteria/destroy/'.$value->id_kriteria)?>" onclick="return confirm ('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+								<?php endif; ?>
+							</div>
+						</td>
 					</tr>
 					<?php
 						$no++;
@@ -55,8 +63,17 @@
 					?>
 				</tbody>
 			</table>
-			<h6> Kriteria jenis Benefit: Nilai Sub Kriteria yang lebih besar = lebih baik </h6>
-			<h6> Kriteria jenis Cost: Nilai Sub Kriteria yang lebih kecil = lebih baik </h6>
+			<!-- Penjelasan Benefit / Cost jika Admin -->
+			<?php if($this->session->userdata('id_user_level') == '1'): ?>
+				<h6> Kriteria jenis Benefit: Nilai Sub Kriteria yang lebih besar = lebih baik </h6>
+				<h6> Kriteria jenis Cost: Nilai Sub Kriteria yang lebih kecil = lebih baik </h6>
+			<?php endif; ?>
+
+			<!-- Penjelasan Benefit / Cost jika User -->
+			<?php if($this->session->userdata('id_user_level') != '1'): ?>
+				<h6> Kriteria jenis Benefit bersifat "lebih besar = lebih baik" </h6>
+				<h6> Kriteria jenis Cost bersifat "lebih kecil = lebih baik" </h6>
+			<?php endif; ?>
 		</div>
 	</div>
 </div>

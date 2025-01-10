@@ -115,7 +115,7 @@ if($this->session->status !== ('Logged'))
 
     <?php if($this->session->userdata('id_user_level') == '1'): ?>
 	  <li class="nav-item <?php if($page=='Hasil'){echo 'active';}?>">
-        <a class="nav-link" href="<?= base_url('Perhitungan/hasil'); ?>">
+        <a class="nav-link" href="<?= base_url('Perhitungan?UpdateHasilAkhir'); ?>">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Data Hasil Akhir</span></a>
       </li>
@@ -123,9 +123,17 @@ if($this->session->status !== ('Logged'))
 
     <?php if($this->session->userdata('id_user_level') != '1'): ?>
 	  <li class="nav-item <?php if($page=='Hasil'){echo 'active';}?>">
-        <a class="nav-link" href="<?= base_url('Perhitungan/hasil'); ?>">
+        <a class="nav-link" href="<?= base_url('Perhitungan'); ?>">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Pemilihan Laptop</span></a>
+      </li>
+    <?php endif; ?>
+
+    <?php if($this->session->userdata('id_user_level') != '1'): ?>
+	  <li class="nav-item <?php if($page=='Kriteria'){echo 'active';}?>">
+        <a class="nav-link" href="<?= base_url('Kriteria'); ?>">
+          <i class="fas fa-fw fa-cube"></i>
+          <span>Pembobotan Kriteria</span></a>
       </li>
     <?php endif; ?>
 	  

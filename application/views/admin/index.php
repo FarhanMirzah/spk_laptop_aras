@@ -94,7 +94,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="<?= base_url('Perhitungan/hasil'); ?>" class="text-secondary text-decoration-none">Data Hasil Akhir</a></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="<?= base_url('Perhitungan?UpdateHasilAkhir'); ?>" class="text-secondary text-decoration-none">Data Hasil Akhir</a></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-chart-area fa-2x text-gray-300"></i>
@@ -137,7 +137,7 @@
     </div>
 
     <h5><b>Alur Aplikasi:</b></h5>
-    <b>1.</b> Admin menambah data <b>Kriteria</b>.
+    <b>1.</b> Admin menambah data <b>Kriteria</b> (User hanya dapat mengedit bobot kriteria).
     <br>
     <b>2.</b> Admin menambah data <b>Sub Kriteria</b> dari setiap Kriteria yang sudah di input sebelumnya.
     <br>
@@ -145,7 +145,7 @@
     <br>
     <b>4.</b> Admin menginput data <b>Penilaian</b> Sub Kriteria dari setiap Alternatif yang sudah di input sebelumnya. 
     <br>
-    <b>5.</b> Admin melihat setiap tahap <b>Perhitungan</b> pada pemilihan Alternatif menggunakan metode ARAS.
+    <b>5.</b> Admin melihat halaman <b>Perhitungan</b> pada pemilihan Alternatif menggunakan metode ARAS <b>(halaman Hasil Akhir akan ter-update)</b>.
     <br>
     <b>6.</b> Admin dan/atau User dapat melihat <b>Hasil Akhir</b> Perangkingan pemilihan Alternatif menggunakan metode ARAS.
     <br>
@@ -172,15 +172,16 @@
     <!-- Content Row -->
     <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        Selamat datang <span class="text-uppercase"><b><?= $this->session->username; ?>!</b></span> Silakan klik menu di bawah untuk memulai proses pemilihan laptop
+        Selamat datang <span class="text-uppercase"><b><?= $this->session->username; ?>!</b></span> Silakan klik menu di bawah untuk memulai proses pemilihan laptop atau pembobotan kriteria (opsional)
     </div>
     <div class="row">
-		<div class="col-xl-4 col-md-6 mb-4">
+
+        <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="<?= base_url('Perhitungan/hasil'); ?>" class="text-secondary text-decoration-none">Pemilihan Laptop</a></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="<?= base_url('Perhitungan'); ?>" class="text-secondary text-decoration-none">Pemilihan Laptop</a></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-chart-area fa-2x text-gray-300"></i>
@@ -189,6 +190,22 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="<?= base_url('Kriteria'); ?>" class="text-secondary text-decoration-none">Pembobotan Kriteria (Opsional)</a></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-cube fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 <?php endif; ?>

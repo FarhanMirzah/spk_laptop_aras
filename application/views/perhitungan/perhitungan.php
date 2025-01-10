@@ -528,6 +528,16 @@ skip_perhitungan:
 	</div>
 </div>
 
+<!-- Untuk redirect User ke Hasil Akhir jika mereka mengganti bobot kriteria sebelumnya (supaya Hasil Akhir ter-update) -->
+<?php if($this->session->userdata('id_user_level') != '1'): ?>
+	<?php redirect('Perhitungan/hasil'); ?>
+<?php endif ?>
+
+<!-- Untuk redirect Admin ke Hasil Akhir jika mereka mengganti kriteria, sub-kriteria, alternatif, atau penilaian sebelumnya (supaya Hasil Akhir ter-update) -->
+<?php if($_SERVER['QUERY_STRING'] == 'UpdateHasilAkhir'): ?>
+	<?php redirect('Perhitungan/hasil'); ?>
+<?php endif ?>
+
 <?php
 $this->load->view('layouts/footer_admin');
 ?>
