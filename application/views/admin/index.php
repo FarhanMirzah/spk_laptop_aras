@@ -177,21 +177,6 @@
     <div class="row">
 
         <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-danger shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="<?= base_url('Perhitungan'); ?>" class="text-secondary text-decoration-none">Pemilihan Laptop</a></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-chart-area fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -206,7 +191,32 @@
             </div>
         </div>
 
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="<?= base_url('Perhitungan'); ?>" class="text-secondary text-decoration-none">Pemilihan Laptop</a></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-chart-area fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <h5><b>Alur Aplikasi:</b></h5>
+    <b>1.</b> User dapat mengedit bobot <b>kriteria</b>.
+    <br>
+    <b>2.</b> User dapat melihat <b>Hasil Akhir</b> Perangkingan pemilihan Alternatif menggunakan metode ARAS.
+    <br>
+    <br>
+
+    <h5><b>Catatan:</b></h5>
+    • Hasil Akhir dapat di <b>filter</b> berdasarkan kategori kebutuhan dan sub kriteria. Hasil Akhir juga dapat di <b>cetak</b> menggunakan tombol Cetak Data.
+
 </div>
 <?php endif; ?>
 
