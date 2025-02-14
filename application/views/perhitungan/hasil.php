@@ -30,6 +30,7 @@
 
 <!-- Fungsi Filter [WIP], sebaiknya dijadikan sidebar -->
 <div class="hasil-akhir-filter">
+	<?php print_r($_POST); ?>
 	<form method="post">
 		<!-- Kode ubah warna tombol Filter -->
 		<!-- Tidak ada filter = Tombol warna abu-abu -->
@@ -153,19 +154,25 @@
 		<!-- /.card-header -->
 		<a href="<?= base_url('Laporan'); ?>" class="btn btn-primary float-right"> <i class="fa fa-print"></i> Cetak Data </a>
 	
+		<!-- [UNUSED] Tombol Konfirmasi -->
+		<!-- <button type="submit" form="form-confirm" name="submit" class="btn btn-success float-right" style="margin-right: 10px;"><i class="fa fa-check"></i> Konfirmasi</button> -->
+		
 		<!-- [WIP] Tombol Konfirmasi -->
-		<button type="submit" form="form-confirm" name="submit" class="btn btn-success float-right" style="margin-right: 10px;"><i class="fa fa-check"></i> Konfirmasi</button>
-
+		<form id="form-confirm" method="post">
+			<button type="submit" form="form-confirm" name="submit" class="btn btn-success float-right" style="margin-right: 10px;"><i class="fa fa-check"></i> Konfirmasi</button>
+		</form>
 		<div class="card-header py-3">
 			<h6 class="m-0 font-weight-bold text-info"><i class="fa fa-table"></i> Hasil Akhir Perankingan</h6>
 		</div>
 
 		<div class="card-body">
 			<div class="table-responsive">
-				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<table class="table table-bordered" id="dataTable-confirm" width="100%" cellspacing="0">
 					<thead class="bg-info text-white">
 						<tr align="center">
+							<th></th>
 							<th width="5%">Ranking</th>
+							<th width="5%" style="display:none;">ID</th>
 							<th width="5%">Kode</th>
 							<th>Alternatif</th>
 							<th width="17%">Kategori</th>
@@ -184,7 +191,9 @@
 							$jumlah_ranking = count($hasil);
 							foreach ($hasil as $keys): ?>
 						<tr align="center">
+							<td></td>
 							<td><?= $no; ?></td>
+							<td style="display:none;"><?= $keys->id_alternatif ?></td>
 							<td><?= $keys->kode_alternatif ?></td>
 							<td align="left"><?= $keys->nama_alternatif ?></td>
 							<td><?=$keys->kategori_alternatif ?></td>
@@ -197,13 +206,6 @@
 							<td>
 								<div class="btn-group" role="group">
 									<a data-toggle="modal" title="Detail Data" href="#detail<?= $keys->id_alternatif ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-								</div>
-
-								<div class="btn-group" role="group">
-									<!-- [WIP] Checkbox untuk Konfirmasi Alternatif yang dipilih -->
-									<form id="form-confirm" method="post">
-										<input type="checkbox" name="id_alternatif[]" value="<?= $keys->id_alternatif ?>" id="<?= $keys->id_alternatif ?>" form="form-confirm" style="margin-left: 20px;">
-									</form>
 								</div>
 							</td>
 						</tr>
@@ -292,17 +294,21 @@
 		<a href="<?= base_url('Laporan'); ?>?cluster=<?php echo $request_text; ?>" class="btn btn-primary float-right"> <i class="fa fa-print"></i> Cetak Data (Filtered) </a>
 
 		<!-- [WIP] Tombol Konfirmasi -->
-		<button type="submit" form="form-confirm" name="submit" class="btn btn-success float-right" style="margin-right: 10px;"><i class="fa fa-check"></i> Konfirmasi</button>
+		<form id="form-confirm" method="post">
+			<button type="submit" form="form-confirm" name="submit" class="btn btn-success float-right" style="margin-right: 10px;"><i class="fa fa-check"></i> Konfirmasi</button>
+		</form>
 
 		<div class="card-header py-3">
 			<h6 class="m-0 font-weight-bold text-info"><i class="fa fa-table"></i> Hasil Akhir Perankingan (Filtered)</h6>
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<table class="table table-bordered" id="dataTable-confirm" width="100%" cellspacing="0">
 					<thead class="bg-info text-white">
 						<tr align="center">
+							<th></th>
 							<th width="5%">Ranking</th>
+							<th width="5%" style="display:none;">ID</th>
 							<th width="5%">Kode</th>
 							<th>Alternatif</th>
 							<th width="17%">Kategori</th>
@@ -343,7 +349,9 @@
 							<!-- Filter alternatif berdasarkan Kategori -->
 							<?php if(in_array($keys->kategori_alternatif, $_POST['kategori_alternatif'])): ?>
 								<tr align="center">
+									<td></td>
 									<td><?= $no_filtered; ?></td>
+									<td style="display:none;"><?= $keys->id_alternatif ?></td>
 									<td><?= $keys->kode_alternatif ?></td>
 									<td align="left"><?= $keys->nama_alternatif ?></td>
 									<td><?=$keys->kategori_alternatif ?></td>
@@ -356,13 +364,6 @@
 									<td>
 										<div class="btn-group" role="group">
 											<a data-toggle="modal" title="Detail Data" href="#detail<?= $keys->id_alternatif ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-										</div>
-
-										<div class="btn-group" role="group">
-											<!-- [WIP] Checkbox untuk Konfirmasi Alternatif yang dipilih -->
-											<form id="form-confirm" method="post">
-												<input type="checkbox" name="id_alternatif[]" value="<?= $keys->id_alternatif ?>" id="<?= $keys->id_alternatif ?>" form="form-confirm" style="margin-left: 20px;">
-											</form>
 										</div>
 									</td>
 								</tr>
@@ -452,17 +453,21 @@
 		<a href="<?= base_url('Laporan'); ?>?cluster=<?php echo $request_text; ?>" class="btn btn-primary float-right"> <i class="fa fa-print"></i> Cetak Data (Filtered) </a>
 
 		<!-- [WIP] Tombol Konfirmasi -->
-		<button type="submit" form="form-confirm" name="submit" class="btn btn-success float-right" style="margin-right: 10px;"><i class="fa fa-check"></i> Konfirmasi</button>
+		<form id="form-confirm" method="post">
+			<button type="submit" form="form-confirm" name="submit" class="btn btn-success float-right" style="margin-right: 10px;"><i class="fa fa-check"></i> Konfirmasi</button>
+		</form>
 
 		<div class="card-header py-3">
 			<h6 class="m-0 font-weight-bold text-info"><i class="fa fa-table"></i> Hasil Akhir Perankingan (Filtered)</h6>
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<table class="table table-bordered" id="dataTable-confirm" width="100%" cellspacing="0">
 					<thead class="bg-info text-white">
 						<tr align="center">
+							<th></th>
 							<th width="5%">Ranking</th>
+							<th width="5%" style="display:none;">ID</th>
 							<th width="5%">Kode</th>
 							<th>Alternatif</th>
 							<th width="17%">Kategori</th>
@@ -516,7 +521,9 @@
 
 							<?php if (in_array($keys->id_alternatif, $f_unique)): ?>
 								<tr align="center">
+									<td></td>
 									<td><?= $no_filtered; ?></td>
+									<td style="display:none;"><?= $keys->id_alternatif ?></td>
 									<td><?= $keys->kode_alternatif ?></td>
 									<td align="left"><?= $keys->nama_alternatif ?></td>
 									<td><?=$keys->kategori_alternatif ?></td>
@@ -529,13 +536,6 @@
 									<td>
 										<div class="btn-group" role="group">
 											<a data-toggle="modal" title="Detail Data" href="#detail<?= $keys->id_alternatif ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-										</div>
-
-										<div class="btn-group" role="group">
-											<!-- [WIP] Checkbox untuk Konfirmasi Alternatif yang dipilih -->
-											<form id="form-confirm" method="post">
-												<input type="checkbox" name="id_alternatif[]" value="<?= $keys->id_alternatif ?>" id="<?= $keys->id_alternatif ?>" form="form-confirm" style="margin-left: 20px;">
-											</form>
 										</div>
 									</td>
 								</tr>
@@ -627,17 +627,21 @@
 		<a href="<?= base_url('Laporan'); ?>?cluster=<?php echo $request_text; ?>" class="btn btn-primary float-right"> <i class="fa fa-print"></i> Cetak Data (Filtered) </a>
 
 		<!-- [WIP] Tombol Konfirmasi -->
-		<button type="submit" form="form-confirm" name="submit" class="btn btn-success float-right" style="margin-right: 10px;"><i class="fa fa-check"></i> Konfirmasi</button>
+		<form id="form-confirm" method="post">
+			<button type="submit" form="form-confirm" name="submit" class="btn btn-success float-right" style="margin-right: 10px;"><i class="fa fa-check"></i> Konfirmasi</button>
+		</form>
 
 		<div class="card-header py-3">
 			<h6 class="m-0 font-weight-bold text-info"><i class="fa fa-table"></i> Hasil Akhir Perankingan (Filtered)</h6>
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<table class="table table-bordered" id="dataTable-confirm" width="100%" cellspacing="0">
 					<thead class="bg-info text-white">
 						<tr align="center">
+							<th></th>
 							<th width="5%">Ranking</th>
+							<th width="5%" style="display:none;">ID</th>
 							<th width="5%">Kode</th>
 							<th>Alternatif</th>
 							<th width="17%">Kategori</th>
@@ -697,7 +701,9 @@
 
 							<?php if (in_array($keys->id_alternatif, $f_unique)): ?>
 								<tr align="center">
+									<td></td>
 									<td><?= $no_filtered; ?></td>
+									<td style="display:none;"><?= $keys->id_alternatif ?></td>
 									<td><?= $keys->kode_alternatif ?></td>
 									<td align="left"><?= $keys->nama_alternatif ?></td>
 									<td><?=$keys->kategori_alternatif ?></td>
@@ -710,13 +716,6 @@
 									<td>
 										<div class="btn-group" role="group">
 											<a data-toggle="modal" title="Detail Data" href="#detail<?= $keys->id_alternatif ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
-										</div>
-
-										<div class="btn-group" role="group">
-											<!-- [WIP] Checkbox untuk Konfirmasi Alternatif yang dipilih -->
-											<form id="form-confirm" method="post">
-												<input type="checkbox" name="id_alternatif[]" value="<?= $keys->id_alternatif ?>" id="<?= $keys->id_alternatif ?>" form="form-confirm" style="margin-left: 20px;">
-											</form>
 										</div>
 									</td>
 								</tr>

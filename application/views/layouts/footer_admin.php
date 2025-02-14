@@ -40,8 +40,13 @@
   <script src="<?= base_url('assets/')?>vendor/chart.js/Chart.min.js"></script>
   
   <!-- Page level plugins -->
-  <script src="<?= base_url('assets/')?>vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?= base_url('assets/')?>vendor/datatables/jquery.dataTables.js"></script>
   <script src="<?= base_url('assets/')?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <!-- CHECKBOX SELECT
+  (https://datatables.net/forums/discussion/76407/how-to-get-the-row-data-marked-with-a-checkbox-checkbox-data-input-field-etc)
+  (https://live.datatables.net/tukusufu/6/edit) -->
+  <script src="<?= base_url('assets/')?>vendor/datatables/dataTables.js"></script>
+  <!-- -->
 
   <!-- Page level custom scripts -->
   <script src="<?= base_url('assets/')?>js/demo/datatables-demo.js"></script>

@@ -26,6 +26,11 @@ if($this->session->status !== ('Logged'))
   <link href="<?= base_url('assets/')?>css/sb-admin-2.min.css" rel="stylesheet">
 
   <link href="<?= base_url('assets/')?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <!-- CHECKBOX SELECT
+  (https://datatables.net/forums/discussion/76407/how-to-get-the-row-data-marked-with-a-checkbox-checkbox-data-input-field-etc)
+  (https://live.datatables.net/tukusufu/6/edit) -->
+  <link href="<?= base_url('assets/')?>vendor/datatables/dataTables.css" rel="stylesheet">
+  <!--  -->
   <link rel="shortcut icon" href="<?= base_url('assets/')?>img/favicon.ico" type="image/x-icon">
   <link rel="icon" href="<?= base_url('assets/')?>img/favicon.ico" type="image/x-icon">
 

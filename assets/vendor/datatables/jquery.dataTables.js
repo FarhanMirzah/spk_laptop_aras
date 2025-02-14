@@ -15352,3 +15352,62 @@
 
 	return $.fn.dataTable;
 }));
+
+// Attempt on checkbox 
+// (https://datatables.net/forums/discussion/76407/how-to-get-the-row-data-marked-with-a-checkbox-checkbox-data-input-field-etc)
+// (https://live.datatables.net/tukusufu/6/edit)
+$(document).ready(function (){
+	var table = $('#dataTable-confirm').DataTable({
+		'columnDefs': [
+			{
+				orderable: false,
+				className: 'select-checkbox',
+				targets:   0,
+				render: function (data, type, row) {
+					if (type === 'display') {
+						return '';
+					}
+					return data;
+				}
+			}
+		],
+		// (https://datatables.net/forums/discussion/74892/retrieving-row-values-using-checkboxes)
+		// (https://live.datatables.net/mutavegi/511/edit)
+		'columns': [
+			{ 'data': '' },
+			{ 'data': 'ranking' },
+			{ 'data': 'id' },
+			{ 'data': 'kode' },
+			{ 'data': 'alternatif' },
+			{ 'data': 'kategori' },
+			{ 'data': 'nilai k' },
+			{ 'data': 'aksi' }
+		],
+		'select': {
+			'style': 'multi',
+			'selector': 'td:first-child'
+		}
+	});
+
+
+   	// Handle form submission event 
+	// (https://www.gyrocode.com/projects/jquery-datatables-checkboxes/)
+	// (https://datatables.net/forums/discussion/74892/retrieving-row-values-using-checkboxes)
+	// (https://live.datatables.net/mutavegi/511/edit)
+   	$('#form-confirm').on('submit', function(e){
+		var form = this;
+
+		var rows_selected = table.rows( { selected: true } ).data().pluck('id');
+
+		// Iterate over all selected checkboxes
+		$.each(rows_selected, function(index, rowId){
+		// Create a hidden element 
+		$(form).append(
+			$('<input>')
+				.attr('type', 'hidden')
+				.attr('name', 'id_alternatif[]')
+				.val(rowId)
+		);
+		});
+ 	});   
+});
