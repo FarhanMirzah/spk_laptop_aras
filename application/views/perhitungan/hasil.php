@@ -30,7 +30,6 @@
 
 <!-- Fungsi Filter [WIP], sebaiknya dijadikan sidebar -->
 <div class="hasil-akhir-filter">
-	<?php print_r($_POST); ?>
 	<form method="post">
 		<!-- Kode ubah warna tombol Filter -->
 		<!-- Tidak ada filter = Tombol warna abu-abu -->
@@ -181,6 +180,9 @@
 							<?php if($this->session->userdata('id_user_level') == '1'): ?>
 								<th width="12%">Nilai K</th>
 							<?php endif ?>
+							<?php if($this->session->userdata('id_user_level') != '1'): ?>
+								<th width="12%" style="display:none;">Nilai K</th>
+							<?php endif ?>
 
 							<th width="10%">Aksi</th>
 						</tr>
@@ -201,6 +203,9 @@
 							<!-- Supaya Nilai K hanya tampil untuk Admin -->
 							<?php if($this->session->userdata('id_user_level') == '1'): ?>
 								<td><?= $keys->nilai_k ?></td>
+							<?php endif ?>
+							<?php if($this->session->userdata('id_user_level') != '1'): ?>
+								<td style="display:none;"><?= $keys->nilai_k ?></td>
 							<?php endif ?>
 
 							<td>
@@ -317,6 +322,9 @@
 							<?php if($this->session->userdata('id_user_level') == '1'): ?>
 								<th width="12%">Nilai K</th>
 							<?php endif ?>
+							<?php if($this->session->userdata('id_user_level') != '1'): ?>
+								<th width="12%" style="display:none;">Nilai K</th>
+							<?php endif ?>
 
 							<th width="10%">Aksi</th>
 						</tr>
@@ -359,6 +367,9 @@
 									<!-- Supaya Nilai K hanya tampil untuk Admin -->
 									<?php if($this->session->userdata('id_user_level') == '1'): ?>
 										<td><?= $keys->nilai_k ?></td>
+									<?php endif ?>
+									<?php if($this->session->userdata('id_user_level') != '1'): ?>
+										<td style="display:none;"><?= $keys->nilai_k ?></td>
 									<?php endif ?>
 
 									<td>
@@ -476,6 +487,9 @@
 							<?php if($this->session->userdata('id_user_level') == '1'): ?>
 								<th width="12%">Nilai K</th>
 							<?php endif ?>
+							<?php if($this->session->userdata('id_user_level') != '1'): ?>
+								<th width="12%" style="display:none;">Nilai K</th>
+							<?php endif ?>
 
 							<th width="10%">Aksi</th>
 						</tr>
@@ -531,6 +545,9 @@
 									<!-- Supaya Nilai K hanya tampil untuk Admin -->
 									<?php if($this->session->userdata('id_user_level') == '1'): ?>
 										<td><?= $keys->nilai_k ?></td>
+									<?php endif ?>
+									<?php if($this->session->userdata('id_user_level') != '1'): ?>
+										<td style="display:none;"><?= $keys->nilai_k ?></td>
 									<?php endif ?>
 
 									<td>
@@ -650,6 +667,9 @@
 							<?php if($this->session->userdata('id_user_level') == '1'): ?>
 								<th width="12%">Nilai K</th>
 							<?php endif ?>
+							<?php if($this->session->userdata('id_user_level') != '1'): ?>
+								<th width="12%" style="display:none;">Nilai K</th>
+							<?php endif ?>
 
 							<th width="10%">Aksi</th>
 						</tr>
@@ -711,6 +731,9 @@
 									<!-- Supaya Nilai K hanya tampil untuk Admin -->
 									<?php if($this->session->userdata('id_user_level') == '1'): ?>
 										<td><?= $keys->nilai_k ?></td>
+									<?php endif ?>
+									<?php if($this->session->userdata('id_user_level') != '1'): ?>
+										<td style="display:none;"><?= $keys->nilai_k ?></td>
 									<?php endif ?>
 
 									<td>
