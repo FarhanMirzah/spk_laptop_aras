@@ -44,13 +44,15 @@
                     'keterangan' => $this->input->post('keterangan'),
                     'kode_kriteria' => $this->input->post('kode_kriteria'),
                     'bobot' => $this->input->post('bobot'),
-                    'jenis' => $this->input->post('jenis')
+                    'jenis' => $this->input->post('jenis'),
+                    'status_kriteria' => $this->input->post('status_kriteria')
                 ];
                 
                 $this->form_validation->set_rules('keterangan', 'Keterangan', 'required|is_unique[kriteria.keterangan]');
                 $this->form_validation->set_rules('kode_kriteria', 'Kode Kriteria', 'required|is_unique[kriteria.kode_kriteria]');
                 $this->form_validation->set_rules('bobot', 'Bobot', 'required');
                 $this->form_validation->set_rules('jenis', 'Jenis', 'required');
+                $this->form_validation->set_rules('status_kriteria', 'Status Kriteria', 'required');
 
                 
     
@@ -91,7 +93,8 @@
                 'keterangan' => $this->input->post('keterangan'),
                 'kode_kriteria' => $this->input->post('kode_kriteria'),
                 'bobot' => $this->input->post('bobot'),
-                'jenis' => $this->input->post('jenis')
+                'jenis' => $this->input->post('jenis'),
+                'status_kriteria' => $this->input->post('status_kriteria')
             );
 
             // Validasi update data  (https://stackoverflow.com/questions/27621250/is-unique-in-codeigniter-for-edit-function) Ellix4u's solution

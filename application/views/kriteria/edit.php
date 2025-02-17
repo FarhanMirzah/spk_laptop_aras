@@ -41,6 +41,14 @@
 						<option value="Cost" <?php if($kriteria->jenis == "Cost"){ echo 'selected'; } ?>>Cost</option>						
 					</select>
 				</div>
+
+				<div class="form-group col-md-6">
+					<label class="font-weight-bold">Status Kriteria</label>
+					<select name="status_kriteria" class="form-control" required >
+						<option value="Aktif" <?php if($kriteria->status_kriteria == "Aktif"){ echo 'selected'; } ?>>Aktif</option>
+						<option value="Nonaktif" <?php if($kriteria->status_kriteria == "Nonaktif"){ echo 'selected'; } ?>>Nonaktif</option>						
+					</select>
+				</div>
 			</div>
 			<!-- Penjelasan Benefit / Cost jika Admin -->
 			<?php if($this->session->userdata('id_user_level') == '1'): ?>

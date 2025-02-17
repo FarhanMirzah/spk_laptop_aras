@@ -65,5 +65,12 @@
             $query = $this->db->query("SELECT id_kriteria FROM sub_kriteria WHERE id_sub_kriteria IN ($arr_str);");
             return $query->result_array();
         }
+
+        // Kode untuk mendapatkan id_kriteria dengan status "Nonaktif"
+        public function get_id_kriteria_tidak_aktif($status)
+        {
+            $query = $this->db->query("SELECT id_kriteria FROM kriteria WHERE status_kriteria = '".$status."';");
+            return $query->result_array();
+        }
     }
     

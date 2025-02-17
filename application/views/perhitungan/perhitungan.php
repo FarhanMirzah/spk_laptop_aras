@@ -13,6 +13,23 @@ if ($alternatifs == NULL || $kriterias == NULL){
 	goto skip_perhitungan;
 }
 
+// User dapat memilih kriteria yang digunakan (https://stackoverflow.com/questions/21168422/how-to-access-a-property-of-an-object-stdclass-object-member-element-of-an-arr)
+$status_kriteria = "Nonaktif";
+$id_kriteria_tidak_aktif1 = $this->Perhitungan_model->get_id_kriteria_tidak_aktif($status_kriteria);
+$id_kriteria_tidak_aktif2 = array_column($id_kriteria_tidak_aktif1, 'id_kriteria');
+$key_kriteria_tidak_aktif1 = array();
+
+foreach ($kriterias as $key => $obj)
+{
+	if(in_array($obj->id_kriteria, $id_kriteria_tidak_aktif2)){
+		$key_kriteria_tidak_aktif1[] = $key;
+   	}
+}
+
+foreach ($key_kriteria_tidak_aktif1 as $key_kriteria_tidak_aktif2) {
+	unset($kriterias[$key_kriteria_tidak_aktif2]);
+}
+
 foreach($alternatifs as $alternatif):
 	foreach($kriterias as $kriteria):
 		

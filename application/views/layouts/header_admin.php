@@ -78,6 +78,7 @@ if($this->session->status !== ('Logged'))
       </div>
     <?php endif; ?>
 
+    <!-- Sidebar untuk Admin -->
     <?php if($this->session->userdata('id_user_level') == '1'): ?>
 	  <li class="nav-item <?php if($page=='Kriteria'){echo 'active';}?>">
         <a class="nav-link" href="<?= base_url('Kriteria'); ?>">
@@ -126,19 +127,20 @@ if($this->session->status !== ('Logged'))
       </li>
     <?php endif; ?>
 
-    <?php if($this->session->userdata('id_user_level') != '1'): ?>
-	  <li class="nav-item <?php if($page=='Hasil'){echo 'active';}?>">
-        <a class="nav-link" href="<?= base_url('Perhitungan'); ?>">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Pemilihan Laptop</span></a>
-      </li>
-    <?php endif; ?>
-
+    <!-- Sidebar untuk User -->
     <?php if($this->session->userdata('id_user_level') != '1'): ?>
 	  <li class="nav-item <?php if($page=='Kriteria'){echo 'active';}?>">
         <a class="nav-link" href="<?= base_url('Kriteria'); ?>">
           <i class="fas fa-fw fa-cube"></i>
           <span>Pembobotan Kriteria</span></a>
+      </li>
+    <?php endif; ?>
+
+    <?php if($this->session->userdata('id_user_level') != '1'): ?>
+	  <li class="nav-item <?php if($page=='Hasil'){echo 'active';}?>">
+        <a class="nav-link" href="<?= base_url('Perhitungan'); ?>">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Pemilihan Laptop</span></a>
       </li>
     <?php endif; ?>
 	  

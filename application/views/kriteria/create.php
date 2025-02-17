@@ -41,6 +41,15 @@
 						<option value="Cost">Cost</option>						
 					</select>
 				</div>
+
+				<div class="form-group col-md-6">
+					<label class="font-weight-bold">Status Kriteria</label>
+					<select name="status_kriteria" class="form-control" required>
+						<option value="">--Pilih Status Kriteria--</option>
+						<option value="Benefit">Aktif</option>
+						<option value="Cost">Nonaktif</option>						
+					</select>
+				</div>
 			</div>
 			<h6> Kriteria jenis Benefit: Nilai Sub Kriteria yang lebih besar = lebih baik </h6>
 			<h6> Kriteria jenis Cost: Nilai Sub Kriteria yang lebih kecil = lebih baik </h6>

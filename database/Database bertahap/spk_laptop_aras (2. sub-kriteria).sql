@@ -58,22 +58,23 @@ CREATE TABLE `kriteria` (
   `keterangan` varchar(100) NOT NULL,
   `kode_kriteria` varchar(100) NOT NULL,
   `bobot` float NOT NULL,
-  `jenis` varchar(100) NOT NULL
+  `jenis` varchar(100) NOT NULL,
+  `status_kriteria` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kriteria`
 --
 
-INSERT INTO `kriteria` (`id_kriteria`, `keterangan`, `kode_kriteria`, `bobot`, `jenis`) VALUES
-(1, 'Harga', 'C1', 0.3, 'Cost'),
-(2, 'Processor / CPU', 'C2', 0.15, 'Benefit'),
-(3, 'RAM', 'C3', 0.1, 'Benefit'),
-(4, 'Storage', 'C4', 0.1, 'Benefit'),
-(5, 'Resolusi Layar', 'C5', 0.05, 'Benefit'),
-(6, 'Graphics Card / GPU', 'C6', 0.15, 'Benefit'),
-(7, 'Baterai', 'C7', 0.1, 'Benefit'),
-(8, 'Berat', 'C8', 0.05, 'Cost');
+INSERT INTO `kriteria` (`id_kriteria`, `keterangan`, `kode_kriteria`, `bobot`, `jenis`, `status_kriteria`) VALUES
+(1, 'Harga', 'C1', 0.3, 'Cost', 'Aktif'),
+(2, 'Processor / CPU', 'C2', 0.15, 'Benefit', 'Aktif'),
+(3, 'RAM', 'C3', 0.1, 'Benefit', 'Aktif'),
+(4, 'Storage', 'C4', 0.1, 'Benefit', 'Aktif'),
+(5, 'Resolusi Layar', 'C5', 0.05, 'Benefit', 'Aktif'),
+(6, 'Graphics Card / GPU', 'C6', 0.15, 'Benefit', 'Aktif'),
+(7, 'Baterai', 'C7', 0.1, 'Benefit', 'Aktif'),
+(8, 'Berat', 'C8', 0.05, 'Cost', 'Aktif');
 
 -- --------------------------------------------------------
 
