@@ -51,8 +51,10 @@
 					</select>
 				</div>
 			</div>
-			<h6> Kriteria jenis Benefit: Nilai Sub Kriteria yang lebih besar = lebih baik </h6>
-			<h6> Kriteria jenis Cost: Nilai Sub Kriteria yang lebih kecil = lebih baik </h6>
+			<h6> Kriteria jenis <b>Benefit</b>: Nilai Sub Kriteria yang lebih besar = lebih baik </h6>
+			<h6> Kriteria jenis <b>Cost</b>: Nilai Sub Kriteria yang lebih kecil = lebih baik </h6>
+			<h6> Kriteria status <b>Aktif</b>: Digunakan dalam perhitungan pemilihan alternatif </h6>
+			<h6> Kriteria status <b>Nonaktif</b>: Tidak digunakan dalam perhitungan pemilihan alternatif </h6>
 		</div>
 		<div class="card-footer text-right">
             <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>

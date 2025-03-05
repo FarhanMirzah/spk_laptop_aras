@@ -67,14 +67,18 @@
 			</table>
 			<!-- Penjelasan Benefit / Cost jika Admin -->
 			<?php if($this->session->userdata('id_user_level') == '1'): ?>
-				<h6> Kriteria jenis Benefit: Nilai Sub Kriteria yang lebih besar = lebih baik </h6>
-				<h6> Kriteria jenis Cost: Nilai Sub Kriteria yang lebih kecil = lebih baik </h6>
+				<h6> Kriteria jenis <b>Benefit</b>: Nilai Sub Kriteria yang lebih besar = lebih baik </h6>
+				<h6> Kriteria jenis <b>Cost</b>: Nilai Sub Kriteria yang lebih kecil = lebih baik </h6>
+				<h6> Kriteria status <b>Aktif</b>: Digunakan dalam perhitungan pemilihan alternatif </h6>
+				<h6> Kriteria status <b>Nonaktif</b>: Tidak digunakan dalam perhitungan pemilihan alternatif </h6>
 			<?php endif; ?>
 
 			<!-- Penjelasan Benefit / Cost jika User -->
 			<?php if($this->session->userdata('id_user_level') != '1'): ?>
-				<h6> Kriteria jenis Benefit bersifat "lebih besar = lebih baik" </h6>
-				<h6> Kriteria jenis Cost bersifat "lebih kecil = lebih baik" </h6>
+				<h6> Kriteria jenis <b>Benefit</b> bersifat "lebih besar = lebih baik" </h6>
+				<h6> Kriteria jenis <b>Cost</b> bersifat "lebih kecil = lebih baik" </h6>
+				<h6> Kriteria status <b>Aktif</b>: Digunakan dalam perhitungan pemilihan laptop </h6>
+				<h6> Kriteria status <b>Nonaktif</b>: Tidak digunakan dalam perhitungan pemilihan laptop </h6>
 			<?php endif; ?>
 		</div>
 	</div>

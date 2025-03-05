@@ -221,7 +221,14 @@
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h5 class="modal-title" id="myModalLabel"><i class="fa fa-eye"></i> Detail Alternatif - Hasil Akhir</h5>
+										<!-- Text Detail Alternatif / Laptop untuk Admin atau User -->
+										<?php if($this->session->userdata('id_user_level') == '1'): ?>
+											<h5 class="modal-title" id="myModalLabel"><i class="fa fa-eye"></i> Detail Alternatif</h5>
+										<?php endif ?>
+										<?php if($this->session->userdata('id_user_level') != '1'): ?>
+											<h5 class="modal-title" id="myModalLabel"><i class="fa fa-eye"></i> Detail Laptop</h5>
+										<?php endif ?>
+										
 										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 									</div>
 									<?= form_open('Perhitungan/detail_alternatif') ?>
@@ -385,7 +392,14 @@
 									<div class="modal-dialog">
 										<div class="modal-content">
 											<div class="modal-header">
-												<h5 class="modal-title" id="myModalLabel"><i class="fa fa-eye"></i> Detail Alternatif - Hasil Akhir</h5>
+												<!-- Text Detail Alternatif / Laptop untuk Admin atau User -->
+												<?php if($this->session->userdata('id_user_level') == '1'): ?>
+													<h5 class="modal-title" id="myModalLabel"><i class="fa fa-eye"></i> Detail Alternatif</h5>
+												<?php endif ?>
+												<?php if($this->session->userdata('id_user_level') != '1'): ?>
+													<h5 class="modal-title" id="myModalLabel"><i class="fa fa-eye"></i> Detail Laptop</h5>
+												<?php endif ?>
+
 												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 											</div>
 											<?= form_open('Perhitungan/detail_alternatif') ?>
@@ -563,7 +577,14 @@
 									<div class="modal-dialog">
 										<div class="modal-content">
 											<div class="modal-header">
-												<h5 class="modal-title" id="myModalLabel"><i class="fa fa-eye"></i> Detail Alternatif - Hasil Akhir</h5>
+												<!-- Text Detail Alternatif / Laptop untuk Admin atau User -->
+												<?php if($this->session->userdata('id_user_level') == '1'): ?>
+													<h5 class="modal-title" id="myModalLabel"><i class="fa fa-eye"></i> Detail Alternatif</h5>
+												<?php endif ?>
+												<?php if($this->session->userdata('id_user_level') != '1'): ?>
+													<h5 class="modal-title" id="myModalLabel"><i class="fa fa-eye"></i> Detail Laptop</h5>
+												<?php endif ?>
+
 												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 											</div>
 											<?= form_open('Perhitungan/detail_alternatif') ?>
@@ -749,7 +770,14 @@
 									<div class="modal-dialog">
 										<div class="modal-content">
 											<div class="modal-header">
-												<h5 class="modal-title" id="myModalLabel"><i class="fa fa-eye"></i> Detail Alternatif - Hasil Akhir</h5>
+												<!-- Text Detail Alternatif / Laptop untuk Admin atau User -->
+												<?php if($this->session->userdata('id_user_level') == '1'): ?>
+													<h5 class="modal-title" id="myModalLabel"><i class="fa fa-eye"></i> Detail Alternatif</h5>
+												<?php endif ?>
+												<?php if($this->session->userdata('id_user_level') != '1'): ?>
+													<h5 class="modal-title" id="myModalLabel"><i class="fa fa-eye"></i> Detail Laptop</h5>
+												<?php endif ?>
+
 												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 											</div>
 											<?= form_open('Perhitungan/detail_alternatif') ?>

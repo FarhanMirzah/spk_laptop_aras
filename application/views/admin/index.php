@@ -137,7 +137,7 @@
     </div>
 
     <h5><b>Alur Aplikasi:</b></h5>
-    <b>1.</b> Admin menambah data <b>Kriteria</b> (User hanya dapat mengedit bobot kriteria).
+    <b>1.</b> Admin menambah data <b>Kriteria</b> (User hanya dapat mengedit bobot dan status kriteria).
     <br>
     <b>2.</b> Admin menambah data <b>Sub Kriteria</b> dari setiap Kriteria yang sudah di input sebelumnya.
     <br>
@@ -152,11 +152,13 @@
     <br>
 
     <h5><b>Catatan:</b></h5>
-    • Hasil Akhir dapat di <b>filter</b> berdasarkan kategori kebutuhan dan sub kriteria. Hasil Akhir juga dapat di <b>cetak</b> menggunakan tombol Cetak Data.
+    • Hasil Akhir dapat dikonfirmasi dengan menceklis alternatif yang dipilih dan menekan tombol <b>Konfirmasi</b>.
+    <br>
+    • Hasil Akhir dapat di <b>Filter</b> berdasarkan kategori kebutuhan dan sub kriteria. Hasil Akhir (dengan atau tanpa filter) juga dapat di cetak menggunakan tombol <b>Cetak Data</b>.
     <br>
     • Di halaman <b>Profile</b>, Admin dapat melihat dan mengedit data profile Admin seperti <b>username</b> dan <b>password</b>.
     <br>
-    • <b>User</b> hanya bisa mengakses halaman Hasil Akhir (namanya diubah menjadi <b>Pemilihan Laptop</b>). User tidak bisa melihat <b>Nilai K</b> yang didapatkan dari Perhitungan Metode ARAS.
+    • <b>User</b> hanya bisa mengakses halaman Kriteria (<b>Pembobotan Kriteria</b>) dan Hasil Akhir (<b>Pemilihan Laptop</b>). User tidak bisa melihat <b>Nilai K</b> yang didapatkan dari Perhitungan Metode ARAS.
 
 </div>
 
@@ -208,14 +210,51 @@
     </div>
 
     <h5><b>Alur Aplikasi:</b></h5>
-    <b>1.</b> User dapat mengedit bobot <b>kriteria</b>.
+    <b>1.</b> User dapat mengedit bobot dan status <b>kriteria</b> di halaman <b>Pembobotan Kriteria</b>.
     <br>
-    <b>2.</b> User dapat melihat <b>Hasil Akhir</b> Perangkingan pemilihan Alternatif menggunakan metode ARAS.
+    <b>2.</b> User dapat melihat hasil perangkingan <b>Pemilihan Laptop</b> menggunakan metode ARAS.
+    <br>
+    <b>3.</b> Detail spesifikasi sebuah laptop dapat dilihat dengan menekan tombol <b>Detail</b>.
+    <br>
+    <b>4.</b> Laptop dapat dikonfirmasi dengan <b>menceklis</b> laptop yang dipilih dan menekan tombol <b>Konfirmasi</b>.
+    <br>
+    <b>5.</b> Hasil perangkinan Pemilihan Laptop dapat di <b>Filter</b> berdasarkan <b>ceklis</b> kategori kebutuhan dan sub kriteria.
+    <br>
+    <b>6.</b> Hasil perangkinan Pemilihan Laptop (dengan atau tanpa filter) dapat di cetak menggunakan tombol <b>Cetak Data</b>.
     <br>
     <br>
 
-    <h5><b>Catatan:</b></h5>
-    • Hasil Akhir dapat di <b>filter</b> berdasarkan kategori kebutuhan dan sub kriteria. Hasil Akhir juga dapat di <b>cetak</b> menggunakan tombol Cetak Data.
+    <!-- Modal untuk Gambar Alur Aplikasi 1 -->
+    <img type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalAlurAplikasiUser1" src="../assets/img/alur-aplikasi-user-1.jpg" alt="alur-aplikasi-user-1.jpg" onerror="this.src='../assets/img/default.jpg'" style="max-height: 350px; margin-right: 10px;">
+    <div class="modal fade" id="modalAlurAplikasiUser1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-xl">
+			<div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Alur Aplikasi (1)</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <img src="../assets/img/alur-aplikasi-user-1.jpg" alt="alur-aplikasi-user-1.jpg" onerror="this.src='../assets/img/default.jpg'" style="max-width: 1100px;">
+                </div>
+			</div>
+		</div>
+	</div>
+    
+    <!-- Modal untuk Gambar Alur Aplikasi 2 - 6 -->
+    <img type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalAlurAplikasiUser2" src="../assets/img/alur-aplikasi-user-2.jpg" alt="alur-aplikasi-user-2.jpg" onerror="this.src='../assets/img/default.jpg'" style="max-height: 350px;">
+    <div class="modal fade" id="modalAlurAplikasiUser2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-xl">
+			<div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Alur Aplikasi (2 - 6)</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <img src="../assets/img/alur-aplikasi-user-2.jpg" alt="alur-aplikasi-user-2.jpg" onerror="this.src='../assets/img/default.jpg'" style="max-width: 1100px;">
+                </div>
+			</div>
+		</div>
+	</div>
 
 </div>
 <?php endif; ?>
