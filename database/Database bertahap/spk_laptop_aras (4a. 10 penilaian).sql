@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2025 at 12:19 PM
+-- Generation Time: Nov 10, 2024 at 01:42 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -89,24 +89,23 @@ CREATE TABLE `kriteria` (
   `id_kriteria` int(11) NOT NULL,
   `keterangan` varchar(100) NOT NULL,
   `kode_kriteria` varchar(100) NOT NULL,
-  `bobot` float NOT NULL,
   `jenis` varchar(100) NOT NULL,
-  `status_kriteria` varchar(100) NOT NULL
+  `bobot` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kriteria`
 --
 
-INSERT INTO `kriteria` (`id_kriteria`, `keterangan`, `kode_kriteria`, `bobot`, `jenis`, `status_kriteria`) VALUES
-(1, 'Harga', 'C1', 0.3, 'Cost', 'Aktif'),
-(2, 'Processor / CPU', 'C2', 0.15, 'Benefit', 'Aktif'),
-(3, 'RAM', 'C3', 0.1, 'Benefit', 'Aktif'),
-(4, 'Storage', 'C4', 0.1, 'Benefit', 'Aktif'),
-(5, 'Resolusi Layar', 'C5', 0.05, 'Benefit', 'Aktif'),
-(6, 'Graphics Card / GPU', 'C6', 0.15, 'Benefit', 'Aktif'),
-(7, 'Baterai', 'C7', 0.1, 'Benefit', 'Aktif'),
-(8, 'Berat', 'C8', 0.05, 'Cost', 'Aktif');
+INSERT INTO `kriteria` (`id_kriteria`, `keterangan`, `kode_kriteria`, `jenis`, `bobot`) VALUES
+(1, 'Harga', 'C1', 'Cost', 30),
+(2, 'Processor / CPU', 'C2', 'Benefit', 15),
+(3, 'RAM', 'C3', 'Benefit', 10),
+(4, 'Storage', 'C4', 'Benefit', 10),
+(5, 'Resolusi Layar', 'C5', 'Benefit', 5),
+(6, 'Graphics Card / GPU', 'C6', 'Benefit', 15),
+(7, 'Baterai', 'C7', 'Benefit', 10),
+(8, 'Berat', 'C8', 'Cost', 5);
 
 -- --------------------------------------------------------
 

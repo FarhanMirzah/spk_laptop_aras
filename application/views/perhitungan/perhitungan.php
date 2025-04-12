@@ -14,8 +14,8 @@ if ($alternatifs == NULL || $kriterias == NULL){
 }
 
 // User dapat memilih kriteria yang digunakan (https://stackoverflow.com/questions/21168422/how-to-access-a-property-of-an-object-stdclass-object-member-element-of-an-arr)
-$status_kriteria = "Nonaktif";
-$id_kriteria_tidak_aktif1 = $this->Perhitungan_model->get_id_kriteria_tidak_aktif($status_kriteria);
+$bobot_kriteria_tidak_aktif = 0;
+$id_kriteria_tidak_aktif1 = $this->Perhitungan_model->get_id_kriteria_tidak_aktif($bobot_kriteria_tidak_aktif);
 $id_kriteria_tidak_aktif2 = array_column($id_kriteria_tidak_aktif1, 'id_kriteria');
 $key_kriteria_tidak_aktif1 = array();
 
@@ -145,7 +145,7 @@ foreach($alternatifs as $alternatif):
 	$id_alternatif = $alternatif->id_alternatif;
 	foreach($kriterias as $kriteria):
 		$id_kriteria = $kriteria->id_kriteria;
-		$bobot = $kriteria->bobot;
+		$bobot = ($kriteria->bobot)/100;
 		$r = $matriks_r[$id_kriteria][$id_alternatif];
 		$rb = $r*$bobot;
 		// Perhitungan bagian Matriks Normalisasi Terbobot (A1 dan berikutnya)
@@ -161,7 +161,7 @@ $total_rb0 = 0;
 foreach($kriterias as $kriteria):
 	$id_kriteria = $kriteria->id_kriteria;
 	$r0 = $matriks_r0[$id_kriteria];
-	$bobot = $kriteria->bobot;
+	$bobot = ($kriteria->bobot)/100;
 	$rb = $r0*$bobot;
 	// Perhitungan bagian Matriks Normalisasi Terbobot (A0 saja)
 	$matriks_rb0[$id_kriteria] = $rb;
@@ -415,7 +415,7 @@ skip_perhitungan:
 						<?php foreach ($kriterias as $kriteria): ?>
 						<td>
 						<?php 
-						echo $kriteria->bobot;
+						echo ($kriteria->bobot)/100;
 						?>
 						</td>
 						<?php endforeach ?>

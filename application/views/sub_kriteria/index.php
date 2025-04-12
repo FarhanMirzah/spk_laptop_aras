@@ -26,7 +26,7 @@
     <!-- /.card-header -->
     <div class="card-header py-3">
         <div class="d-sm-flex align-items-center justify-content-between">
-			<h6 class="m-0 font-weight-bold text-info"><i class="fa fa-table"></i> <?= $key->keterangan." (".$key->kode_kriteria.") - ".$key->jenis." [Bobot = ".$key->bobot."]" ?></h6>
+			<h6 class="m-0 font-weight-bold text-info"><i class="fa fa-table"></i> <?= $key->keterangan." (".$key->kode_kriteria.") - ".$key->jenis." [Bobot = ".$key->bobot."%]" ?></h6>
 			<?php if($this->session->userdata('id_user_level') == '1'): ?>
 				<a href="#tambah<?= $key->id_kriteria ?>" data-toggle="modal" class="btn btn-sm btn-success"> <i class="fa fa-plus"></i> Tambah Data </a>
 			<?php endif; ?>

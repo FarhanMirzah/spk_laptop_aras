@@ -30,16 +30,17 @@
 							<th>Kode Kriteria</th>
 						<?php endif; ?>
 						<th>Nama Kriteria</th>
-						<th>Bobot</th>
 						<th>Jenis</th>
-						<th>Status</th>
+						<th>Bobot</th>
 						<th width="15%">Aksi</th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php
+						$jumlah_bobot = 0;
 						$no=1;
 						foreach ($list as $data => $value) {
+							$jumlah_bobot += $value->bobot;
 					?>
 					<tr align="center">
 						<td><?=$no ?></td>
@@ -47,38 +48,97 @@
 							<td><?php echo $value->kode_kriteria ?></td>
 						<?php endif; ?>
 						<td><?php echo $value->keterangan ?></td>
-						<td><?php echo ($value->bobot)*100 ?>% (<?php echo $value->bobot ?>)</td>
 						<td><?php echo $value->jenis ?></td>
-						<td><?php echo $value->status_kriteria ?></td>
+						<td><?php echo $value->bobot ?>%</td>
 						<td>
 							<div class="btn-group" role="group">
-								<a data-toggle="tooltip" data-placement="bottom" title="Edit Data" href="<?=base_url('Kriteria/edit/'.$value->id_kriteria)?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+								<!-- Kolom Aksi untuk Admin -->
 								<?php if($this->session->userdata('id_user_level') == '1'): ?>
+									<a data-toggle="tooltip" data-placement="bottom" title="Edit Data" href="<?=base_url('Kriteria/edit/'.$value->id_kriteria)?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 									<a  data-toggle="tooltip" data-placement="bottom" title="Hapus Data" href="<?=base_url('Kriteria/destroy/'.$value->id_kriteria)?>" onclick="return confirm ('Apakah anda yakin untuk menghapus data ini?')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+								<?php endif; ?>
+
+								<!-- Kolom Aksi untuk User -->
+								<?php if($this->session->userdata('id_user_level') != '1'): ?>
+									<a data-toggle="modal" title="Edit Data" href="#editk<?= $value->id_kriteria ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 								<?php endif; ?>
 							</div>
 						</td>
 					</tr>
+
+					<!-- Modal Edit Bobot Kriteria (User) -->
+					<div class="modal fade" id="editk<?= $value->id_kriteria ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="myModalLabel"><i class="fa fa-edit"></i> Edit <?= $value->keterangan ?></h5>
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								</div>
+								<?= form_open('Kriteria/update_user/'.$value->id_kriteria) ?>
+									<?= form_hidden('id_kriteria', $value->id_kriteria) ?>
+									<div class="modal-body">
+										<input type="text" name="id_kriteria" value="<?= $value->id_kriteria ?>" hidden>
+										<div class="form-group" <?php if ($this->session->userdata('id_user_level') != "1") echo " style='display: none';"; ?>>
+											<label class="font-weight-bold">Kode Kriteria</label>
+											<input autocomplete="off" type="text" name="kode_kriteria" value="<?php echo $value->kode_kriteria ?>" required class="form-control" <?php if($this->session->userdata('id_user_level') != "1"){echo "readonly";} ?> />
+										</div>
+										<div class="form-group">
+											<label class="font-weight-bold">Nama Kriteria</label>
+											<input autocomplete="off" type="text" name="keterangan" value="<?php echo $value->keterangan ?>" required class="form-control" <?php if($this->session->userdata('id_user_level') != "1"){echo "readonly";} ?> />
+										</div>
+										<div class="form-group">
+											<label class="font-weight-bold">Jenis Kriteria</label>
+											<select name="jenis" class="form-control" required <?php if($this->session->userdata('id_user_level') != "1"){echo "readonly style='pointer-events: none';";} ?>>
+												<option value="Benefit" <?php if($value->jenis == "Benefit"){ echo 'selected'; } ?>>Benefit</option>
+												<option value="Cost" <?php if($value->jenis == "Cost"){ echo 'selected'; } ?>>Cost</option>						
+											</select>
+										</div>
+										<div class="form-group">
+											<label for="bobot" class="font-weight-bold">Bobot Kriteria (%)</label>
+											<input type="number" autocomplete="off" id="bobot" name="bobot" min="0" max="100" class="form-control" value="<?= $value->bobot ?>" required>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-times"></i> Batal</button>
+										<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
+									</div>
+								<?php echo form_close() ?>
+							</div>
+						</div>
+					</div>
+
 					<?php
 						$no++;
 						}
 					?>
 				</tbody>
+				<?php if($jumlah_bobot > 0): ?>
+					<tfoot style="text-align:center">
+						<tr>
+							<?php if($this->session->userdata('id_user_level') == '1'): ?>
+								<td colspan="4" ><b>Total Bobot = harus 100%</b></td>
+							<?php endif; ?>
+
+							<?php if($this->session->userdata('id_user_level') != '1'): ?>
+								<td colspan="3" ><b>Total Bobot = harus 100%</b></td>
+							<?php endif; ?>
+							<td><b><?php echo $jumlah_bobot ?>%</b></td>
+						</tr>
+					</tfoot>
+				<?php endif; ?>
 			</table>
 			<!-- Penjelasan Benefit / Cost jika Admin -->
 			<?php if($this->session->userdata('id_user_level') == '1'): ?>
 				<h6> Kriteria jenis <b>Benefit</b>: Nilai Sub Kriteria yang lebih besar = lebih baik </h6>
 				<h6> Kriteria jenis <b>Cost</b>: Nilai Sub Kriteria yang lebih kecil = lebih baik </h6>
-				<h6> Kriteria status <b>Aktif</b>: Digunakan dalam perhitungan pemilihan alternatif </h6>
-				<h6> Kriteria status <b>Nonaktif</b>: Tidak digunakan dalam perhitungan pemilihan alternatif </h6>
+				<h6> Kriteria bobot <b>0%</b>: Tidak digunakan dalam perhitungan pemilihan alternatif </h6>
 			<?php endif; ?>
 
 			<!-- Penjelasan Benefit / Cost jika User -->
 			<?php if($this->session->userdata('id_user_level') != '1'): ?>
 				<h6> Kriteria jenis <b>Benefit</b> bersifat "lebih besar = lebih baik" </h6>
 				<h6> Kriteria jenis <b>Cost</b> bersifat "lebih kecil = lebih baik" </h6>
-				<h6> Kriteria status <b>Aktif</b>: Digunakan dalam perhitungan pemilihan laptop </h6>
-				<h6> Kriteria status <b>Nonaktif</b>: Tidak digunakan dalam perhitungan pemilihan laptop </h6>
+				<h6> Kriteria bobot <b>0%</b>: Tidak digunakan dalam perhitungan pemilihan laptop </h6>
 			<?php endif; ?>
 		</div>
 	</div>

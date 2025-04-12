@@ -30,11 +30,6 @@
 				</div>
 				
 				<div class="form-group col-md-6">
-					<label class="font-weight-bold">Bobot Kriteria</label>
-					<input autocomplete="off" type="number" name="bobot" step="0.01" min="0.01" max="1" value="<?php echo $kriteria->bobot ?>" required class="form-control"/>
-				</div>
-				
-				<div class="form-group col-md-6">
 					<label class="font-weight-bold">Jenis Kriteria</label>
 					<select name="jenis" class="form-control" required <?php if($this->session->userdata('id_user_level') != "1"){echo "readonly style='pointer-events: none';";} ?>>
 						<option value="Benefit" <?php if($kriteria->jenis == "Benefit"){ echo 'selected'; } ?>>Benefit</option>
@@ -43,27 +38,22 @@
 				</div>
 
 				<div class="form-group col-md-6">
-					<label class="font-weight-bold">Status Kriteria</label>
-					<select name="status_kriteria" class="form-control" required >
-						<option value="Aktif" <?php if($kriteria->status_kriteria == "Aktif"){ echo 'selected'; } ?>>Aktif</option>
-						<option value="Nonaktif" <?php if($kriteria->status_kriteria == "Nonaktif"){ echo 'selected'; } ?>>Nonaktif</option>						
-					</select>
+					<label class="font-weight-bold">Bobot Kriteria (%)</label>
+					<input autocomplete="off" type="number" name="bobot" step="1" min="0" max="100" value="<?php echo $kriteria->bobot ?>" required class="form-control"/>
 				</div>
 			</div>
 			<!-- Penjelasan Benefit / Cost jika Admin -->
 			<?php if($this->session->userdata('id_user_level') == '1'): ?>
 				<h6> Kriteria jenis <b>Benefit</b>: Nilai Sub Kriteria yang lebih besar = lebih baik </h6>
 				<h6> Kriteria jenis <b>Cost</b>: Nilai Sub Kriteria yang lebih kecil = lebih baik </h6>
-				<h6> Kriteria status <b>Aktif</b>: Digunakan dalam perhitungan pemilihan alternatif </h6>
-				<h6> Kriteria status <b>Nonaktif</b>: Tidak digunakan dalam perhitungan pemilihan alternatif </h6>
+				<h6> Kriteria bobot <b>0%</b>: Tidak digunakan dalam perhitungan pemilihan alternatif </h6>
 			<?php endif; ?>
 
 			<!-- Penjelasan Benefit / Cost jika User -->
 			<?php if($this->session->userdata('id_user_level') != '1'): ?>
 				<h6> Kriteria jenis <b>Benefit</b> bersifat "lebih besar = lebih baik" </h6>
 				<h6> Kriteria jenis <b>Cost</b> bersifat "lebih kecil = lebih baik" </h6>
-				<h6> Kriteria status <b>Aktif</b>: Digunakan dalam perhitungan pemilihan laptop </h6>
-			<h6> Kriteria status <b>Nonaktif</b>: Tidak digunakan dalam perhitungan pemilihan laptop </h6>
+				<h6> Kriteria bobot <b>0%</b>: Tidak digunakan dalam perhitungan pemilihan laptop </h6>
 			<?php endif; ?>
 		</div>
 		<div class="card-footer text-right">

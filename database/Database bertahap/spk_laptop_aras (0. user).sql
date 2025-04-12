@@ -57,9 +57,8 @@ CREATE TABLE `kriteria` (
   `id_kriteria` int(11) NOT NULL,
   `keterangan` varchar(100) NOT NULL,
   `kode_kriteria` varchar(100) NOT NULL,
-  `bobot` float NOT NULL,
   `jenis` varchar(100) NOT NULL,
-  `status_kriteria` varchar(100) NOT NULL
+  `bobot` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

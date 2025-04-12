@@ -29,8 +29,7 @@
                 'keterangan' => $data['keterangan'],
                 'kode_kriteria' => $data['kode_kriteria'],
                 'bobot'  => $data['bobot'],
-                'jenis'  => $data['jenis'],
-                'status_kriteria'  => $data['status_kriteria']
+                'jenis'  => $data['jenis']
             );
 
             $this->db->where('id_kriteria', $id_kriteria);

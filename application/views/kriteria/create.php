@@ -29,11 +29,6 @@
 				</div>
 				
 				<div class="form-group col-md-6">
-					<label class="font-weight-bold">Bobot Kriteria</label>
-					<input autocomplete="off" type="number" name="bobot" step="0.01" min="0.01" max="1" required class="form-control"/>
-				</div>
-				
-				<div class="form-group col-md-6">
 					<label class="font-weight-bold">Jenis Kriteria</label>
 					<select name="jenis" class="form-control" required>
 						<option value="">--Pilih Jenis Kriteria--</option>
@@ -43,18 +38,13 @@
 				</div>
 
 				<div class="form-group col-md-6">
-					<label class="font-weight-bold">Status Kriteria</label>
-					<select name="status_kriteria" class="form-control" required>
-						<option value="">--Pilih Status Kriteria--</option>
-						<option value="Benefit">Aktif</option>
-						<option value="Cost">Nonaktif</option>						
-					</select>
+					<label class="font-weight-bold">Bobot Kriteria (%)</label>
+					<input autocomplete="off" type="number" name="bobot" step="1" min="0" max="100" required class="form-control"/>
 				</div>
 			</div>
 			<h6> Kriteria jenis <b>Benefit</b>: Nilai Sub Kriteria yang lebih besar = lebih baik </h6>
 			<h6> Kriteria jenis <b>Cost</b>: Nilai Sub Kriteria yang lebih kecil = lebih baik </h6>
-			<h6> Kriteria status <b>Aktif</b>: Digunakan dalam perhitungan pemilihan alternatif </h6>
-			<h6> Kriteria status <b>Nonaktif</b>: Tidak digunakan dalam perhitungan pemilihan alternatif </h6>
+			<h6> Kriteria bobot <b>0%</b>: Tidak digunakan dalam perhitungan pemilihan alternatif </h6>
 		</div>
 		<div class="card-footer text-right">
             <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>

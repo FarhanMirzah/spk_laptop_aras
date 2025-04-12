@@ -44,15 +44,13 @@
                     'keterangan' => $this->input->post('keterangan'),
                     'kode_kriteria' => $this->input->post('kode_kriteria'),
                     'bobot' => $this->input->post('bobot'),
-                    'jenis' => $this->input->post('jenis'),
-                    'status_kriteria' => $this->input->post('status_kriteria')
+                    'jenis' => $this->input->post('jenis')
                 ];
                 
                 $this->form_validation->set_rules('keterangan', 'Keterangan', 'required|is_unique[kriteria.keterangan]');
                 $this->form_validation->set_rules('kode_kriteria', 'Kode Kriteria', 'required|is_unique[kriteria.kode_kriteria]');
                 $this->form_validation->set_rules('bobot', 'Bobot', 'required');
                 $this->form_validation->set_rules('jenis', 'Jenis', 'required');
-                $this->form_validation->set_rules('status_kriteria', 'Status Kriteria', 'required');
 
                 
     
@@ -93,8 +91,7 @@
                 'keterangan' => $this->input->post('keterangan'),
                 'kode_kriteria' => $this->input->post('kode_kriteria'),
                 'bobot' => $this->input->post('bobot'),
-                'jenis' => $this->input->post('jenis'),
-                'status_kriteria' => $this->input->post('status_kriteria')
+                'jenis' => $this->input->post('jenis')
             );
 
             // Validasi update data  (https://stackoverflow.com/questions/27621250/is-unique-in-codeigniter-for-edit-function) Ellix4u's solution
@@ -108,6 +105,28 @@
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal di update! Kode atau Nama Kriteria sudah ada di database.</div>');
                 redirect('Kriteria/edit/'.$id_kriteria);
+            }
+        }
+
+        public function update_user($id_kriteria)
+        {
+            // TODO: implementasi update data berdasarkan $id_sub_kriteria
+            $id_kriteria = $this->input->post('id_kriteria');
+            $data = array(
+                'keterangan' => $this->input->post('keterangan'),
+                'kode_kriteria' => $this->input->post('kode_kriteria'),
+                'bobot' => $this->input->post('bobot'),
+                'jenis' => $this->input->post('jenis')
+            );
+
+            // Validasi update data  (https://stackoverflow.com/questions/27621250/is-unique-in-codeigniter-for-edit-function) Ellix4u's solution
+            $id = $this->uri->segment(3);
+            $this->form_validation->set_rules('keterangan', 'Keterangan', 'required|edit_unique[kriteria.keterangan.id_kriteria.'.$id.']');
+            if ($this->form_validation->run() != false) {
+                $this->Kriteria_model->update($id_kriteria, $data);
+                
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Bobot Kriteria "'.$this->input->post('keterangan').'" berhasil di update!</div>');
+                redirect('Kriteria');
             }
         }
     

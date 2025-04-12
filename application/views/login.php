@@ -71,12 +71,12 @@
                                             <div class="form-group">
                                                 <input required autocomplete="off" type="password" class="form-control form-control-user" id="exampleInputPassword" name="password" placeholder="Password" />
                                             </div>
-                                            <button name="submit" type="submit" class="btn btn-info btn-user btn-block"><i class="fas fa-fw fa-sign-in-alt mr-1"></i> Login sebagai Admin</button>
+                                            <button name="submit" type="submit" class="btn btn-info btn-user btn-block"><i class="fas fa-fw fa-sign-in-alt mr-1"></i> Login sebagai Admin / Karyawan</button>
                                         </form>
 
                                         <form class="user" action="<?php echo site_url('Login/masuk_user'); ?>" method="post">
                                             <hr class="sidebar-divider">
-                                            <button name="masuk" type="submit" class="btn btn-primary btn-user btn-block"><i class="fas fa-fw fa-caret-right mr-1"></i> Masuk sebagai User (tanpa perlu login)</button>
+                                            <button name="masuk" type="submit" class="btn btn-primary btn-user btn-block"><i class="fas fa-fw fa-caret-right mr-1"></i> Masuk sebagai User / Pelanggan (tanpa login)</button>
                                         </form>
                                        
                                     </div>

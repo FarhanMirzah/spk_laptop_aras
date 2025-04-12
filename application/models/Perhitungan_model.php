@@ -67,9 +67,9 @@
         }
 
         // Kode untuk mendapatkan id_kriteria dengan status "Nonaktif"
-        public function get_id_kriteria_tidak_aktif($status)
+        public function get_id_kriteria_tidak_aktif($bobot)
         {
-            $query = $this->db->query("SELECT id_kriteria FROM kriteria WHERE status_kriteria = '".$status."';");
+            $query = $this->db->query("SELECT id_kriteria FROM kriteria WHERE bobot = '".$bobot."';");
             return $query->result_array();
         }
     }
